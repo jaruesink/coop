@@ -1,0 +1,25 @@
+{
+  "version": "0.0.1",
+  "name": "chattr",
+  "launch_path": "/index.html",
+  "description": "prototyping",
+  "icons": {
+    "128": "/images/touch/icon-128x128.png"
+  },
+  "developer": {
+    "name": "jaruesink/djrobotfreak",
+    "url": "http://jakeruesink.com"
+  },
+  "installs_allowed_from": [
+    "*"
+  ],
+  "default_locale": "en",
+  "permissions": {
+  },
+  "locales": {
+    "en": {
+      "name": "chattr",
+      "description": "prototyping"
+    }
+  }
+}
