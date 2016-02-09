@@ -12,6 +12,7 @@ System.config({
     "babel-runtime": "npm:babel-runtime@6.5.0",
     "normalize.css": "github:necolas/normalize.css@3.0.3",
     "rxjs": "npm:rxjs@5.0.0-beta.0",
+    "twbs/bootstrap": "github:twbs/bootstrap@4.0.0-alpha.2",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
@@ -77,6 +78,10 @@ System.config({
     },
     "github:necolas/normalize.css@3.0.3": {
       "css": "github:systemjs/plugin-css@0.1.20"
+    },
+    "github:twbs/bootstrap@4.0.0-alpha.2": {
+      "jquery": "github:components/jquery@2.2.0",
+      "tether": "github:HubSpot/tether@1.1.1"
     },
     "npm:amdefine@1.0.0": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
