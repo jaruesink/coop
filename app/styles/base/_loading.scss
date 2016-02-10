@@ -50,29 +50,29 @@
          -o-animation-delay: 0ms;
             animation-delay: 0ms;
 }
-.loading {
+.loading.la-sm {
     width: 26px;
     height: 8px;
 }
-.loading > div {
+.loading.la-sm > div {
     width: 4px;
     height: 4px;
     margin: 2px;
 }
-.loading.la-2x {
+.loading.la-md {
     width: 108px;
     height: 36px;
 }
-.loading.la-2x > div {
+.loading.la-md > div {
     width: 20px;
     height: 20px;
     margin: 8px;
 }
-.loading.la-3x {
+.loading.la-lg {
     width: 162px;
     height: 54px;
 }
-.loading.la-3x > div {
+.loading.la-lg > div {
     width: 30px;
     height: 30px;
     margin: 12px;

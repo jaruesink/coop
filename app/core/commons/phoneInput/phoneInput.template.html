@@ -1,0 +1,4 @@
+<div class="phoneInput">
+<span class="areaCode">( <input #areaCode (keydown)="checkNumber($event, areaCode, firstThree)" (keyup)="setNumber(areaCode, firstThree, lastFour)" class="form-control" type="number" min="99" max="999" required> )</span>
+<input #firstThree (keydown)="checkNumber($event, firstThree, lastFour)" (keyup)="checkNumber(areaCode, firstThree, lastFour)" class="form-control" type="number" min="99" max="999" required> - <input #lastFour (keydown)="checkNumber($event, lastFour, false)" (keyup)="checkNumber(areaCode, firstThree, lastFour)" class="form-control" type="number" min="999" max="9999" required>
+</div>

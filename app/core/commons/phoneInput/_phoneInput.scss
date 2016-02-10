@@ -1,0 +1,23 @@
+///
+/// All styles for the Home page
+///
+
+.phoneInput{
+  font-size: 36px; line-height: 42px;
+  input{
+    width:60px;
+    display: inline-block;
+    font-size: 14px;
+    text-align: center;
+    position: relative;
+    top: -4px;
+  }
+  & > input:last-child{
+    width: 80px;
+  }
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+  }
+}
