@@ -12,7 +12,12 @@
     "web"
   ],
   "bugs": "jaruesink@gmail.com",
-  "licenses": [{ "type": "none - all rights reserved", "url": "http://google.com"}],
+  "licenses": [
+    {
+      "type": "none - all rights reserved",
+      "url": "http://google.com"
+    }
+  ],
   "repository": "https://github.com/jaruesink/chattr",
   "private": true,
   "version": "0.0.1",
