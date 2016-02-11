@@ -22,6 +22,10 @@ export class PhoneInput {
     var lower = parseInt(this_input.attributes.min.value.slice(1));
     // prevent anything more than 1 digit above the min value
     if(this_input.value > min && e.keyCode >= 48 && e.keyCode <= 57) {
+      if(!next_input.value) {
+        next_input.value = String.fromCharCode(e.keyCode)
+        next_input.focus();
+      }
       e.preventDefault();
     }
     // set focus on next input if at the end of an input
@@ -35,7 +39,7 @@ export class PhoneInput {
     //when deleting move focus to previous
     if(e.keyCode === 8 && prev_input.attributes.name.value !== "lastFour") {
       setTimeout( function() {
-        if(!this_input.value) {
+        if(!this_input.value && prev_input.value) {
           prev_input.focus();
         }
       }, 1);
