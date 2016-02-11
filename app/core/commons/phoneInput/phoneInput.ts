@@ -17,41 +17,34 @@ export class PhoneInput {
 	constructor() {
 		console.log("Phone input component loaded");
 	}
-  checkNumber(e: any, this_input: any, next_input: any) {
-    var min   = parseInt(this_input.attributes.min.value);
-    var lower = parseInt(this_input.attributes.min.value.slice(1));
+  checkNumber(e: any, this_input: any, next_input: any, prev_input: any) {
+    // prevent anything more than 1 digit above the min value
     if(this_input.value > min && e.keyCode >= 48 && e.keyCode <= 57) {
       e.preventDefault();
     }
+    // set focus on next input if at the end of an input
+    var min   = parseInt(this_input.attributes.min.value);
+    var lower =	parseInt(this_input.attributes.min.value.slice(1));
     if(this_input.value > lower && this_input.value < min && e.keyCode >= 48 && e.keyCode <= 57) {
       if(next_input) {
         setTimeout(function() {
           next_input.focus();
-        }, 10);
+        }, 1);
       }
-      else{
+      else {
         setTimeout(function() {
           this_input.blur();
-        }, 10);
+        }, 1);
       }
     }
-  }
-  setNumber(a: any, b: any, c: any) {
-    var current = a.value+b.value+c.value;
-    if ( current.length === 10 ) {
-      this.phoneNumber = new PhoneNumber(a.value, b.value, c.value);
-      console.log('the phone number is: ', this.phoneNumber);
+    //when deleting move focus to previous
+    if(e.keyCode === 8) {
+      setTimeout(function() {
+        console.log(this_input.value);
+        if(!this_input.value){
+          prev_input.focus();
+        }
+      }, 1);
     }
-  }
-}
-
-export class PhoneNumber {
-  constructor(
-  areaCode: string,
-  firstThree: string,
-  lastFour: string,
-  public phoneNumber: string
-  ) {
-    this.phoneNumber = "("+areaCode+") "+firstThree+"-"+lastFour;
   }
 }
