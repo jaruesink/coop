@@ -10,8 +10,9 @@ import {PhoneInput} from "../../core/commons/phoneInput/phoneInput";
 	directives: [PhoneInput]
 })
 export class Home {
-
+  phoneNumber: string;
 	constructor() {
 		console.log("Home component loaded");
+    this.phoneNumber = '';
 	}
 }

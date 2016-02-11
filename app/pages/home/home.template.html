@@ -1,7 +1,8 @@
 <div class="container m-t-1">
 <h1>Hello World</h1>
 <form action="submit">
-<phone-input></phone-input>
+<phone-input [(phoneNumber)]="phoneNumber"></phone-input>
+<p><input type="hidden" [value]="phoneNumber"> when the phone number is complete, this should say the phone number: {{phoneNumber}}</p>
 <hr>
 <button class="btn btn-default" type="submit">test</button>
 </form>

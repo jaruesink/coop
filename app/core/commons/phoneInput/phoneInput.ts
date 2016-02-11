@@ -1,16 +1,19 @@
 "use strict";
 
 // import Angular 2
-import {Component} from "angular2/core";
+import {Component, EventEmitter} from "angular2/core";
 import {FORM_DIRECTIVES, FormBuilder, ControlGroup} from "angular2/common";
 
 @Component({
 	selector: "phone-input",
 	templateUrl: "../core/commons/phoneInput/phoneInput.template.html",
-	directives: [FORM_DIRECTIVES]
+	directives: [FORM_DIRECTIVES],
+  inputs: ['phoneNumber'],
+  outputs: ['updateNumber: numberAdded']
 })
 export class PhoneInput {
   phoneNumber: string;
+  updateNumber: EventEmitter<any> = new EventEmitter();
 	constructor() {
 		console.log("Phone input component loaded");
 	}
@@ -41,6 +44,7 @@ export class PhoneInput {
   checkNumber(a: number, b: number, c: number) {
     if( (a+b+c).toString().length === 10 && this.phoneNumber !== ('('+a+') '+b+'-'+c) ) {
       this.phoneNumber = '('+a+') '+b+'-'+c;
+      this.updateNumber.next(this.phoneNumber);
       console.log('added: ', this.phoneNumber);
     }
     if( (a+b+c).toString().length < 10 && this.phoneNumber) {
