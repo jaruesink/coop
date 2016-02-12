@@ -1,15 +1,15 @@
 <div class="phoneInput">
+<form (ngSubmit)="addMember(areaCode, firstThree, lastFour)">
 <span class="areaCode">( <input #areaCode name="areaCode"
-  (keydown)="focusInput($event, areaCode, firstThree, lastFour)"
-  (keyup)="checkNumber(areaCode.value, firstThree.value, lastFour.value)"
-  class="form-control" type="number" min="99" max="999" required> )
+  (keydown)="focusInput($event, areaCode, firstThree, false)"
+  class="form-control" type="number" min="100" max="999" required> )
 </span>
   <input #firstThree name="firstThree"
   (keydown)="focusInput($event, firstThree, lastFour, areaCode)"
-  (keyup)="checkNumber(areaCode.value, firstThree.value, lastFour.value)"
-  class="form-control" type="number" min="99" max="999" required> - 
+  class="form-control" type="number" min="100" max="999" required> - 
   <input #lastFour name="lastFour"
-  (keydown)="focusInput($event, lastFour, areaCode, firstThree)"
-  (keyup)="checkNumber(areaCode.value, firstThree.value, lastFour.value)"
-  class="form-control" type="number" min="999" max="9999" required>
+  (keydown)="focusInput($event, lastFour, false, firstThree)"
+  class="form-control" type="number" min="1000" max="9999" required>
+  <button class="btn btn-default" type="submit">Add</button>
+</form>
 </div>

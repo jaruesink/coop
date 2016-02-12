@@ -8,6 +8,7 @@ import {bootstrap} from "angular2/bootstrap";
 import {provide, enableProdMode} from "angular2/core";
 import {HTTP_PROVIDERS} from "angular2/http";
 import {ELEMENT_PROBE_PROVIDERS} from "angular2/platform/common_dom";
+import {appServicesInjectables} from "./services/services";
 
 // import Angular 2 Component Router
 // reference: http://blog.thoughtram.io/angular/2015/06/16/routing-in-angular-2.html
@@ -21,7 +22,7 @@ console.log("Bootstrapping the App");
 
 // in [] is the list of injector bindings. Those bindings are used when an injector is created. Passing these here make the bindings available application-wide
 bootstrap(App, [
-	//appServicesInjectables, // alternative way of filling the injector with all the classes we want to be able to inject
+	appServicesInjectables, // alternative way of filling the injector with all the classes we want to be able to inject
 	ROUTER_PROVIDERS,
 	HTTP_PROVIDERS,
 	ELEMENT_PROBE_PROVIDERS, // remove in production

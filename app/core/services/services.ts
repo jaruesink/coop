@@ -1,9 +1,9 @@
 "use strict";
 // way to create a list all injectable classes
-/*
-import {BlahService} from 'components/posts/posts.service';
+
+import {AddMembersByPhone} from '../services/addMembersByPhone/addMembersByPhone.service';
 
 export let appServicesInjectables : Array<any> = [
-	PostsService
+	AddMembersByPhone
 ];
-*/
+

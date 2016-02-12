@@ -1,20 +1,18 @@
 ///
-/// All styles for the Home page
+/// All styles for the Phone Input
 ///
 
 .phoneInput{
-  font-size: 36px; line-height: 42px;
+  font-size: 36px;
   color: #55595c;
   input{
     width:60px;
     display: inline-block;
-    font-size: 24px;
+    font-size: 22px;
     text-align: center;
-    position: relative;
-    top: -2px;
     padding: 2px;
   }
-  & > input:last-child{
+  form > input:last-of-type{
     width: 80px;
   }
   input[type=number]::-webkit-inner-spin-button,
@@ -22,4 +20,5 @@
       -webkit-appearance: none;
       margin: 0;
   }
+  button{color:black;}
 }

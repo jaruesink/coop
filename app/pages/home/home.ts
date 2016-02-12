@@ -3,6 +3,7 @@
 // import Angular 2
 import {Component} from "angular2/core";
 import {PhoneInput} from "../../core/commons/phoneInput/phoneInput";
+import {AddMembersByPhone} from "../../core/services/addMembersByPhone/addMembersByPhone.service";
 
 @Component({
 	selector: "page-home",
@@ -12,11 +13,9 @@ import {PhoneInput} from "../../core/commons/phoneInput/phoneInput";
 export class Home {
   phoneNumber: string;
   e: any;
-	constructor() {
+	constructor(public membersToAdd:AddMembersByPhone) {
 		console.log("Home component loaded");
+    console.log(membersToAdd);
     this.phoneNumber = '';
 	}
-  updateNumber() {
-    console.log('this event is emitting: ');
-  }
 }
