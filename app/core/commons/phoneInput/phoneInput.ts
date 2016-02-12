@@ -22,21 +22,21 @@ export class PhoneInput {
     // prevent anything more than 1 digit above the min value
     if(this_input.value > min && e.keyCode >= 48 && e.keyCode <= 57) {
       e.preventDefault();
-      if(!next_input.value) {
+      if(next_input && !next_input.value) {
         next_input.value = String.fromCharCode(e.keyCode);
         next_input.focus();
       }
     }
     // set focus on next input if at the end of an input
     if(this_input.value > lower && this_input.value < min && e.keyCode >= 48 && e.keyCode <= 57) {
-      if(next_input.attributes.name.value) {
+      if(next_input) {
         setTimeout( function() {
           next_input.focus();
         }, 1);
       }
     }
     //when deleting move focus to previous
-    if(e.keyCode === 8 && prev_input.attributes.name.value) {
+    if(e.keyCode === 8 && prev_input) {
       setTimeout( function() {
         if(!this_input.value && prev_input.value) {
           prev_input.focus();
