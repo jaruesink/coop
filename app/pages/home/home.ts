@@ -11,8 +11,12 @@ import {PhoneInput} from "../../core/commons/phoneInput/phoneInput";
 })
 export class Home {
   phoneNumber: string;
+  e: any;
 	constructor() {
 		console.log("Home component loaded");
     this.phoneNumber = '';
 	}
+  updateNumber() {
+    console.log('this event is emitting: ');
+  }
 }

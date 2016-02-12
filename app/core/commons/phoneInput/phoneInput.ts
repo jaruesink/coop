@@ -1,19 +1,17 @@
 "use strict";
 
 // import Angular 2
-import {Component, EventEmitter} from "angular2/core";
+import {Component, EventEmitter, Output} from "angular2/core";
 import {FORM_DIRECTIVES, FormBuilder, ControlGroup} from "angular2/common";
 
 @Component({
 	selector: "phone-input",
 	templateUrl: "../core/commons/phoneInput/phoneInput.template.html",
 	directives: [FORM_DIRECTIVES],
-  inputs: ['phoneNumber'],
-  outputs: ['updateNumber: numberAdded']
 })
 export class PhoneInput {
+  @Output() updateNumber = new EventEmitter();
   phoneNumber: string;
-  updateNumber: EventEmitter<any> = new EventEmitter();
 	constructor() {
 		console.log("Phone input component loaded");
 	}
@@ -23,7 +21,7 @@ export class PhoneInput {
     // prevent anything more than 1 digit above the min value
     if(this_input.value > min && e.keyCode >= 48 && e.keyCode <= 57) {
       if(!next_input.value) {
-        next_input.value = String.fromCharCode(e.keyCode)
+        next_input.value = String.fromCharCode(e.keyCode);
         next_input.focus();
       }
       e.preventDefault();
@@ -48,7 +46,7 @@ export class PhoneInput {
   checkNumber(a: number, b: number, c: number) {
     if( (a+b+c).toString().length === 10 && this.phoneNumber !== ('('+a+') '+b+'-'+c) ) {
       this.phoneNumber = '('+a+') '+b+'-'+c;
-      this.updateNumber.next(this.phoneNumber);
+      this.updateNumber.emit("event");
       console.log('added: ', this.phoneNumber);
     }
     if( (a+b+c).toString().length < 10 && this.phoneNumber) {
