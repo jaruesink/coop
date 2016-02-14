@@ -1,15 +1,15 @@
 <div class="phoneInput">
 <form (ngSubmit)="addMember(areaCode, firstThree, lastFour)">
 <span class="areaCode">( <input #areaCode name="areaCode"
-  (keydown)="focusInput($event, areaCode, firstThree, false)"
-  class="form-control" type="number" min="100" max="999" required> )
+  (keydown)="onKeyDown($event, areaCode, firstThree, false)"
+  class="form-control" type="number" pattern="[0-9]{3}" max="999" autocomplete="off" required> )
 </span>
   <input #firstThree name="firstThree"
-  (keydown)="focusInput($event, firstThree, lastFour, areaCode)"
-  class="form-control" type="number" min="100" max="999" required> - 
+  (keydown)="onKeyDown($event, firstThree, lastFour, areaCode)"
+  class="form-control" type="number" pattern="[0-9]{3}" max="999" autocomplete="off" required> - 
   <input #lastFour name="lastFour"
-  (keydown)="focusInput($event, lastFour, false, firstThree)"
-  class="form-control" type="number" min="1000" max="9999" required>
+  (keydown)="onKeyDown($event, lastFour, false, firstThree)"
+  class="form-control" type="number" pattern="[0-9]{4}" max="9999" autocomplete="off" required>
   <button class="btn btn-success" type="submit"><i class="fa fa-user-plus"></i></button>
   <button class="btn btn-primary" type="submit"><i class="fa fa-book"></i> Address Book</button>
 </form>

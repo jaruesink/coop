@@ -16,11 +16,16 @@ export class PhoneInput {
 		console.log("Phone input component loaded");
     this.membersToAdd = membersToAdd;
 	}
-  focusInput(e:any, this_input:any, next_input:any, prev_input:any) {
-    var min   = parseInt(this_input.attributes.min.value) - 1;
-    var lower = parseInt(min.toString().slice(1));
+  onKeyDown(e: any, this_input: any, next_input: any, prev_input: any) {
+    var pattern    = new RegExp(this_input.attributes.pattern.value);
+    var max_length = this_input.attributes.max.value.length;
+    console.log(max_length);
+    // disable - and . from being entered
+    if (e.keyCode === 190 || e.keyCode === 110 || e.keyCode === 189 || e.keyCode === 32) {
+      e.preventDefault();
+    }
     // prevent anything more than 1 digit above the min value
-    if(this_input.value > min && e.keyCode >= 48 && e.keyCode <= 57) {
+    if(pattern.test(this_input.value) && e.keyCode >= 48 && e.keyCode <= 57) {
       e.preventDefault();
       if(next_input && !next_input.value) {
         next_input.value = String.fromCharCode(e.keyCode);
@@ -28,7 +33,7 @@ export class PhoneInput {
       }
     }
     // set focus on next input if at the end of an input
-    if(this_input.value > lower && this_input.value < min && e.keyCode >= 48 && e.keyCode <= 57) {
+    if(this_input.value.toString().length === max_length - 1 && e.keyCode >= 48 && e.keyCode <= 57) {
       if(next_input) {
         setTimeout( function() {
           next_input.focus();
