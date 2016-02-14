@@ -19,14 +19,6 @@ export class Home {
     this.phoneNumber = '';
 	}
   inviteMembers() {
-    // making a cleaner list to send out
-    var list = membersToAdd.phoneNumbers;
-    var new_list:Array<string> = [];
-    for (let i = 0; i < list.length; i++) {
-      new_list.push(list[i].phoneNumber);
-    }
-    this.invitedMembers = new_list;
-    // clear out membersToAdd
-    delete membersToAdd.phoneNumbers;
+    //send member data here
   }
 }
