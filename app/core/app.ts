@@ -9,7 +9,7 @@ import {Component} from "angular2/core";
 import {RouteConfig, Route, RouterOutlet, RouterLink, Router} from "angular2/router";
 
 // app components
-import {Home} from "../pages/home/home";
+import {Login} from "../pages/login/login";
 
 // app services
 //import {appServicesInjectables} from "core/services/services";
@@ -20,7 +20,7 @@ import {Home} from "../pages/home/home";
 	directives: [RouterOutlet, RouterLink]
 })
 @RouteConfig([
-	{ path: "/", component: Home, as: "Home", data: undefined } // the as serves as alias for links, etc
+	{ path: "/", component: Login, as: "Login", data: undefined } // the as serves as alias for links, etc
 ])
 export class App {
 	constructor() {
