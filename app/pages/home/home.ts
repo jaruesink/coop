@@ -7,13 +7,13 @@ import {PhoneInput} from "../../core/commons/phoneInput/phoneInput";
 import {LoginService} from "../../core/services/loginService/login.service";
 
 @Component({
-    selector: "page-login",
-    templateUrl: "pages/login/login.template.html",
+    selector: "page-home",
+    templateUrl: "pages/home/home.template.html",
     directives: [PhoneInput, FORM_DIRECTIVES]
 })
-export class Login {
-    constructor(public loginService: LoginService) {
-        console.log("Login component loaded");
+export class Home {
+    constructor(loginService: LoginService) {
+        console.log("Home component loaded");
         console.log("user is logged in: ", loginService.isLoggedIn);
     }
 }

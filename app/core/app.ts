@@ -10,21 +10,29 @@ import {RouteConfig, Route, RouterOutlet, RouterLink, Router} from "angular2/rou
 
 // app components
 import {Login} from "../pages/login/login";
+import {Home} from "../pages/home/home";
 
 // app services
-//import {appServicesInjectables} from "core/services/services";
+import {appServicesInjectables} from "../core/services/services";
+import {LoginService} from "../core/services/loginService/login.service";
 
 @Component({
-	selector: "app",
-	templateUrl: "core/app.template.html", //template: "<router-outlet></router-outlet>",
-	directives: [RouterOutlet, RouterLink]
+    selector: "app",
+    templateUrl: "core/app.template.html", //template: "<router-outlet></router-outlet>",
+    directives: [RouterOutlet, RouterLink]
 })
 @RouteConfig([
-	{ path: "/", component: Login, as: "Login", data: undefined } // the as serves as alias for links, etc
+    { path: "/", component: Login, as: "Login", data: undefined, useAsDefault: true },
+    { path: "/home", component: Home, as: "Home", data: undefined }
 ])
 export class App {
-	constructor() {
-		console.log("Application bootstrapped!");
-	}
+    constructor(loginService:LoginService, router:Router) {
+        console.log("Application bootstrapped!");
+        if (loginService.isLoggedIn === true) {
+            router.navigate(['/Home']);
+        }
+        else {
+            router.navigate(['/Login']);
+        }
+    }
 }
-
