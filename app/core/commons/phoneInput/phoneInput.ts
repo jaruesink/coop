@@ -19,11 +19,6 @@ export class PhoneInput {
   onKeyDown(e: any, this_input: any, next_input: any, prev_input: any) {
     var pattern    = new RegExp(this_input.attributes.pattern.value);
     var max_length = this_input.attributes.max.value.length;
-    console.log(max_length);
-    // disable - and . from being entered
-    if (e.keyCode === 190 || e.keyCode === 110 || e.keyCode === 189 || e.keyCode === 32) {
-      e.preventDefault();
-    }
     // prevent anything more than 1 digit above the min value
     if(pattern.test(this_input.value) && e.keyCode >= 48 && e.keyCode <= 57) {
       e.preventDefault();
@@ -48,13 +43,6 @@ export class PhoneInput {
         }
       }, 1);
     }
-  }
-  addMember(areaCode:any, firstThree:any, lastFour:any) {
-    this.membersToAdd.phoneNumbers.push(new PhoneNumberModel(areaCode.value, firstThree.value, lastFour.value));
-    areaCode.value = '';
-    firstThree.value = '';
-    lastFour.value = '';
-    areaCode.focus();
   }
 }
 

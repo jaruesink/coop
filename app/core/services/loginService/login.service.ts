@@ -8,8 +8,8 @@ import {Injectable} from "angular2/core";
 
 @Injectable()
 export class LoginService {
-    isLoggedIn: boolean = true;
+    isLoggedIn: boolean = false;
     constructor() {
-
+        console.log('Login service is loaded.');
     }
 }
