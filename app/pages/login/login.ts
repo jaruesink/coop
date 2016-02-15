@@ -13,11 +13,11 @@ import {RouteConfig, Route, RouterOutlet, RouterLink, Router} from "angular2/rou
     directives: [PhoneInput, FORM_DIRECTIVES]
 })
 export class Login {
-    constructor(public loginService: LoginService) {
+    constructor(public loginService:LoginService, private router:Router) {
         console.log("Login component loaded");
         console.log("user is logged in: ", loginService.isLoggedIn);
     }
     userLogin() {
-        console.log('hello');
+        this.loginService.checkAccount();
     }
 }
