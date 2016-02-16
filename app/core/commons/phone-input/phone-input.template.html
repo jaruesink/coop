@@ -1,12 +1,15 @@
 <div class="phoneInput">
 <span class="areaCode">( <input #areaCode name="areaCode"
   (keydown)="onKeyDown($event, areaCode, firstThree, false)"
+  (keyup)="setNumber(areaCode, firstThree, lastFour)"
   class="form-control" type="text" pattern="[0-9]{3}" maxlength="3" autocomplete="off" autofocus required> )
 </span>
   <input #firstThree name="firstThree"
   (keydown)="onKeyDown($event, firstThree, lastFour, areaCode)"
+  (keyup)="setNumber(areaCode, firstThree, lastFour)"
   class="form-control" type="text" pattern="[0-9]{3}" maxlength="3" autocomplete="off" required> - 
   <input #lastFour name="lastFour"
   (keydown)="onKeyDown($event, lastFour, false, firstThree)"
+  (keyup)="setNumber(areaCode, firstThree, lastFour)"
   class="form-control" type="text" pattern="[0-9]{4}" maxlength="4" autocomplete="off" required>
 </div>

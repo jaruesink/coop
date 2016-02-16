@@ -12,7 +12,9 @@ import {LoginService} from "../../core/services/login-service/login.service";
     directives: [PhoneInput, FORM_DIRECTIVES]
 })
 export class Home {
+    loginService: any;
     constructor(loginService: LoginService) {
+        this.loginService = loginService;
         console.log("Home component loaded");
         console.log("user is logged in: ", loginService.isLoggedIn);
     }

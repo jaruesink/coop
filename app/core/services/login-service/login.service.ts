@@ -11,10 +11,12 @@ import {RouteConfig, Route, RouterOutlet, RouterLink, Router} from "angular2/rou
 export class LoginService {
     isLoggedIn: boolean = false;
     accountExists: boolean = false;
+    userNumber: string;
     constructor(private router:Router) {
         console.log('Login service is loaded.');
     }
-    checkAccount() {
+    checkAccount(userNumber:string) {
+        this.userNumber = userNumber;
         if (this.accountExists) {
             this.router.navigate(['/LoginLink']);
         } else {

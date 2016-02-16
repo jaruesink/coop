@@ -1,18 +1,27 @@
 "use strict";
 
-import {Component} from "angular2/core";
+import {Component, Output, EventEmitter} from "angular2/core";
 import {FORM_DIRECTIVES} from "angular2/common";
 
 @Component({
 	selector: "phone-input",
 	templateUrl: "../core/commons/phone-input/phone-input.template.html",
-	directives: [FORM_DIRECTIVES],
+	directives: [FORM_DIRECTIVES]
 })
 export class PhoneInput {
-  phoneNumber: any;
+  phoneNumber: string;
+  @Output() phoneNumberChanged = new EventEmitter<string>();
 	constructor() {
 		console.log("Phone input component loaded");
 	}
+  setNumber(areaCode: any, firstThree: any, lastFour: any) {
+    if (areaCode.value.toString().length + firstThree.value.toString().length + lastFour.value.toString().length === 10) {
+      this.phoneNumber = '('+areaCode.value+') '+firstThree.value+'-'+lastFour.value
+    } else {
+      this.phoneNumber = ''
+    }
+    this.phoneNumberChanged.emit(this.phoneNumber);
+  }
   onKeyDown(e: any, this_input: any, next_input: any, prev_input: any) {
     var pattern    = new RegExp(this_input.attributes.pattern.value);
     var max_length = this_input.attributes.maxlength.value;
@@ -40,12 +49,5 @@ export class PhoneInput {
         }
       }, 1);
     }
-  }
-}
-
-export class PhoneNumberModel {
-  public phoneNumber:string = '';
-  constructor(a:number, b:number, c:number) {
-    this.phoneNumber = '('+a+') '+b+'-'+c;
   }
 }
