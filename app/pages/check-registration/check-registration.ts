@@ -10,12 +10,13 @@ import {LoginService} from "../../core/services/login-service/login.service";
     directives: []
 })
 export class CheckRegistration {
-    constructor(loginService:LoginService, private router:Router) {
+    constructor(public loginService:LoginService, private router:Router) {
         console.log("Check registration component loaded");
     }
     ngOnInit() {
         setTimeout(() => {
             this.router.navigate(['/Home']);
+            this.loginService.isLoggedIn = true;
         }, 4000);
     }
 }
