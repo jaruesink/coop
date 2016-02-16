@@ -9,9 +9,9 @@ import {RouteConfig, Route, RouterOutlet, RouterLink, Router} from "angular2/rou
 
 @Injectable()
 export class LoginService {
-    isLoggedIn: boolean = false;
-    accountExists: boolean = false;
-    userNumber: string;
+    isLoggedIn: string = 'login_token';
+    accountExists: boolean = true;
+    userNumber: string = '(512) 450-8236';
     constructor(private router:Router) {
         console.log('Login service is loaded.');
     }
@@ -20,7 +20,7 @@ export class LoginService {
         if (this.accountExists) {
             this.router.navigate(['/LoginLink']);
         } else {
-            this.router.navigate(['/CheckRegistration']);
+            this.router.navigate(['/VerifyRegistration']);
         }
     }
 }

@@ -5,11 +5,11 @@ import {RouteConfig, Route, RouterOutlet, RouterLink, Router} from "angular2/rou
 import {LoginService} from "../../core/services/login-service/login.service";
 
 @Component({
-    selector: "page-check-registration",
-    templateUrl: "pages/check-registration/check-registration.template.html",
+    selector: "page-verify-registration",
+    templateUrl: "pages/verify-registration/verify-registration.template.html",
     directives: []
 })
-export class CheckRegistration implements OnInit, OnDestroy {
+export class VerifyRegistration implements OnInit, OnDestroy {
     example_wait: any;
     constructor(public loginService:LoginService, private router:Router) {
         console.log("Check registration component loaded");
