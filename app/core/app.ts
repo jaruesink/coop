@@ -9,22 +9,31 @@ import {Component} from "angular2/core";
 import {RouteConfig, Route, RouterOutlet, RouterLink, Router} from "angular2/router";
 
 // app components
+import {Login} from "../pages/login/login";
+import {CheckRegistration} from "../pages/check-registration/check-registration";
 import {Home} from "../pages/home/home";
 
 // app services
-//import {appServicesInjectables} from "core/services/services";
+import {appServicesInjectables} from "../core/services/services";
+import {LoginService} from "../core/services/login-service/login.service";
 
 @Component({
-	selector: "app",
-	templateUrl: "core/app.template.html", //template: "<router-outlet></router-outlet>",
-	directives: [RouterOutlet, RouterLink]
+    selector: "app",
+    templateUrl: "core/app.template.html", //template: "<router-outlet></router-outlet>",
+    directives: [RouterOutlet, RouterLink]
 })
 @RouteConfig([
-	{ path: "/", component: Home, as: "Home", data: undefined } // the as serves as alias for links, etc
+    { path: "/", component: Login, as: "Login", data: undefined, useAsDefault: true },
+    { path: "/home", component: Home, as: "Home", data: undefined },
+    { path: "/check-registration", component: CheckRegistration, as: "CheckRegistration", data: undefined }
 ])
 export class App {
-	constructor() {
-		console.log("Application bootstrapped!");
-	}
+    constructor(loginService:LoginService, router:Router) {
+        console.log("Application bootstrapped!");
+        if (loginService.isLoggedIn === true) {
+            router.navigate(['/Home']);
+        } else {
+            router.navigate(['/Login']);
+        }
+    }
 }
-
