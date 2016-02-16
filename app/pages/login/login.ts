@@ -3,8 +3,8 @@
 // import Angular 2
 import {Component} from "angular2/core";
 import {FORM_DIRECTIVES} from "angular2/common";
-import {PhoneInput} from "../../core/commons/phoneInput/phoneInput";
-import {LoginService} from "../../core/services/loginService/login.service";
+import {PhoneInput} from "../../core/commons/phone-input/phone-input";
+import {LoginService} from "../../core/services/login-service/login.service";
 import {RouteConfig, Route, RouterOutlet, RouterLink, Router} from "angular2/router";
 
 @Component({

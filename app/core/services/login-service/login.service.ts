@@ -18,7 +18,7 @@ export class LoginService {
         if (this.accountExists) {
             this.router.navigate(['/LoginLink']);
         } else {
-            this.router.navigate(['/Home']);
+            this.router.navigate(['/CheckRegistration']);
         }
     }
 }

@@ -1,7 +1,7 @@
 <div class="phoneInput">
 <span class="areaCode">( <input #areaCode name="areaCode"
   (keydown)="onKeyDown($event, areaCode, firstThree, false)"
-  class="form-control" type="text" pattern="[0-9]{3}" maxlength="3" autocomplete="off" required> )
+  class="form-control" type="text" pattern="[0-9]{3}" maxlength="3" autocomplete="off" autofocus required> )
 </span>
   <input #firstThree name="firstThree"
   (keydown)="onKeyDown($event, firstThree, lastFour, areaCode)"

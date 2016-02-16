@@ -10,11 +10,12 @@ import {RouteConfig, Route, RouterOutlet, RouterLink, Router} from "angular2/rou
 
 // app components
 import {Login} from "../pages/login/login";
+import {CheckRegistration} from "../pages/check-registration/check-registration";
 import {Home} from "../pages/home/home";
 
 // app services
 import {appServicesInjectables} from "../core/services/services";
-import {LoginService} from "../core/services/loginService/login.service";
+import {LoginService} from "../core/services/login-service/login.service";
 
 @Component({
     selector: "app",
@@ -23,7 +24,8 @@ import {LoginService} from "../core/services/loginService/login.service";
 })
 @RouteConfig([
     { path: "/", component: Login, as: "Login", data: undefined, useAsDefault: true },
-    { path: "/home", component: Home, as: "Home", data: undefined }
+    { path: "/home", component: Home, as: "Home", data: undefined },
+    { path: "/check-registration", component: CheckRegistration, as: "CheckRegistration", data: undefined }
 ])
 export class App {
     constructor(loginService:LoginService, router:Router) {
