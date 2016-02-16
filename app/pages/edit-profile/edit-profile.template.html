@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="card card-block">
+        <form (ngSubmit)="saveProfile()">
+            <fieldset class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" [(ngModel)]="username">
+            </fieldset>
+            <fieldset class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" class="form-control" id="fullName" [(ngModel)]="fullName">
+            </fieldset>
+            <fieldset class="form-group">
+                <label for="fullName">Phone Number</label>
+                <phone-input [userNumber]="userNumber" (phoneNumberChanged)="userNumber = $event"></phone-input>
+            </fieldset>
+            <button class="btn btn-success btn-block m-t-1" type="submit">Save</button>
+            <a class="btn btn-danger btn-block m-t-1" [routerLink]="['/Home']">Cancel</a>
+        </form>
+    </div>
+</div>

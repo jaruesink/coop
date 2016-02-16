@@ -1,7 +1,7 @@
 "use strict";
 
 import {Component, OnInit, OnDestroy} from "angular2/core";
-import {RouteConfig, Route, RouterOutlet, RouterLink, Router} from "angular2/router";
+import {ROUTER_DIRECTIVES, Router} from "angular2/router";
 import {LoginService} from "../../core/services/login-service/login.service";
 
 @Component({
@@ -17,7 +17,7 @@ export class VerifyRegistration implements OnInit, OnDestroy {
     ngOnInit() {
         this.example_wait = setTimeout(() => {
             this.router.navigate(['/Home']);
-            this.loginService.isLoggedIn = true;
+            this.loginService.isLoggedIn = 'random_token';
         }, 4000);
     }
     ngOnDestroy() {

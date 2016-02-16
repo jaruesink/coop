@@ -1,6 +1,6 @@
 "use strict";
 
-import {Component, Output, EventEmitter} from "angular2/core";
+import {Component, Input, Output, EventEmitter} from "angular2/core";
 import {FORM_DIRECTIVES} from "angular2/common";
 
 @Component({
@@ -9,11 +9,23 @@ import {FORM_DIRECTIVES} from "angular2/common";
 	directives: [FORM_DIRECTIVES]
 })
 export class PhoneInput {
-  phoneNumber: string;
+  @Input() focusFirst:boolean;
+  @Input() userNumber:string;
   @Output() phoneNumberChanged = new EventEmitter<string>();
+  userAreaCode: number;
+  userFirstThree: number;
+  userLastFour: number;
+  phoneNumber: string;
 	constructor() {
 		console.log("Phone input component loaded");
 	}
+  ngOnInit() {
+    if(this.userNumber) {
+      this.userAreaCode   = parseInt(this.userNumber.slice(1,4));
+      this.userFirstThree = parseInt(this.userNumber.slice(6,9));
+      this.userLastFour   = parseInt(this.userNumber.slice(10,14));
+    }
+  }
   setNumber(areaCode: any, firstThree: any, lastFour: any) {
     if (areaCode.value.toString().length + firstThree.value.toString().length + lastFour.value.toString().length === 10) {
       this.phoneNumber = '('+areaCode.value+') '+firstThree.value+'-'+lastFour.value;

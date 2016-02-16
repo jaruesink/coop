@@ -10,6 +10,7 @@ import {RouteConfig, Route, RouterOutlet, RouterLink, Router} from "angular2/rou
 // app components
 import {Login} from "../pages/login/login";
 import {VerifyRegistration} from "../pages/verify-registration/verify-registration";
+import {EditProfile} from "../pages/edit-profile/edit-profile";
 import {Home} from "../pages/home/home";
 
 // app services
@@ -23,8 +24,9 @@ import {LoginService} from "../core/services/login-service/login.service";
 })
 @RouteConfig([
     { path: "/", component: Login, as: "Login", data: undefined, useAsDefault: true },
+    { path: "/verify-registration", component: VerifyRegistration, as: "VerifyRegistration", data: undefined },
     { path: "/home", component: Home, as: "Home", data: undefined },
-    { path: "/verify-registration", component: VerifyRegistration, as: "VerifyRegistration", data: undefined }
+    { path: "/edit-profile", component: EditProfile, as: "EditProfile", data: undefined}
 ])
 export class App {
     constructor(loginService:LoginService, router:Router) {

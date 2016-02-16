@@ -2,19 +2,17 @@
 
 // import Angular 2
 import {Component} from "angular2/core";
-import {FORM_DIRECTIVES} from "angular2/common";
+import {ROUTER_DIRECTIVES} from "angular2/router";
 import {PhoneInput} from "../../core/commons/phone-input/phone-input";
 import {LoginService} from "../../core/services/login-service/login.service";
 
 @Component({
     selector: "page-home",
     templateUrl: "pages/home/home.template.html",
-    directives: [PhoneInput, FORM_DIRECTIVES]
+    directives: [PhoneInput, ROUTER_DIRECTIVES]
 })
 export class Home {
-    loginService: any;
-    constructor(loginService: LoginService) {
-        this.loginService = loginService;
+    constructor(public loginService: LoginService) {
         console.log("Home component loaded");
         console.log("user is logged in: ", loginService.isLoggedIn);
     }
