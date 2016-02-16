@@ -16,9 +16,9 @@ export class PhoneInput {
 	}
   setNumber(areaCode: any, firstThree: any, lastFour: any) {
     if (areaCode.value.toString().length + firstThree.value.toString().length + lastFour.value.toString().length === 10) {
-      this.phoneNumber = '('+areaCode.value+') '+firstThree.value+'-'+lastFour.value
+      this.phoneNumber = '('+areaCode.value+') '+firstThree.value+'-'+lastFour.value;
     } else {
-      this.phoneNumber = ''
+      this.phoneNumber = '';
     }
     this.phoneNumberChanged.emit(this.phoneNumber);
   }

@@ -1,4 +1,3 @@
-///<reference path="node_modules/angular2/typings/browser.d.ts"/>
 "use strict";
 
 // import the application
