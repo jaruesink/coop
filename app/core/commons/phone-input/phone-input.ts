@@ -37,12 +37,18 @@ export class PhoneInput {
   onKeyDown(e: any, this_input: any, next_input: any, prev_input: any) {
     var pattern    = new RegExp(this_input.attributes.pattern.value);
     var max_length = this_input.attributes.maxlength.value;
-    // prevent anything more than 1 digit above the min value
+    var selectionStart = this_input.selectionStart;
+    var selectionEnd   = this_input.selectionEnd;
+    // prevent anything more than 1 digit above the min value unless text is selected
     if(pattern.test(this_input.value) && e.keyCode >= 48 && e.keyCode <= 57) {
-      e.preventDefault();
-      if(next_input && !next_input.value) {
-        next_input.value = String.fromCharCode(e.keyCode);
-        next_input.focus();
+      if (selectionStart < selectionEnd) {
+        // allow input
+      } else {
+        e.preventDefault();
+        if(next_input && !next_input.value) {
+          next_input.focus();
+          next_input.value = String.fromCharCode(e.keyCode);
+        }
       }
     }
     // set focus on next input if at the end of an input
@@ -50,6 +56,7 @@ export class PhoneInput {
       if(next_input) {
         setTimeout(() => {
           next_input.focus();
+          next_input.value = next_input.value;
         }, 1);
       }
     }
@@ -58,6 +65,7 @@ export class PhoneInput {
       setTimeout(() => {
         if(!this_input.value && prev_input.value) {
           prev_input.focus();
+          prev_input.value = prev_input.value;
         }
       }, 1);
     }
