@@ -7,11 +7,14 @@ import {Component} from "angular2/core";
 // reference: http://blog.thoughtram.io/angular/2015/06/16/routing-in-angular-2.html
 import {RouteConfig, Route, RouterOutlet, RouterLink, Router} from "angular2/router";
 
-// app components
+// app pages
 import {Login} from "../pages/login/login";
 import {VerifyRegistration} from "../pages/verify-registration/verify-registration";
 import {EditProfile} from "../pages/edit-profile/edit-profile";
 import {Home} from "../pages/home/home";
+
+// app modules
+import {AppHeader} from "../modules/app-header/app-header";
 
 // app services
 import {appServicesInjectables} from "../core/services/services";
@@ -20,7 +23,7 @@ import {LoginService} from "../core/services/login-service/login.service";
 @Component({
     selector: "app",
     templateUrl: "core/app.template.html", //template: "<router-outlet></router-outlet>",
-    directives: [RouterOutlet, RouterLink]
+    directives: [RouterOutlet, RouterLink, AppHeader]
 })
 @RouteConfig([
     { path: "/", component: Login, as: "Login", data: undefined, useAsDefault: true },
