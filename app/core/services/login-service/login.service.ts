@@ -4,18 +4,20 @@
 import {Injectable} from "angular2/core";
 import {RouteConfig, Route, RouterOutlet, RouterLink, Router} from "angular2/router";
 
-// app services
-//import {appServicesInjectables} from "core/services/services";
-
 @Injectable()
 export class LoginService {
-    isLoggedIn: string = 'random_token';
-    accountExists: boolean = true;
-    userNumber: string = '(512) 450-8236';
-    username: string = 'jaruesink';
-    fullName: string = 'Jake Ruesink';
+    isLoggedIn: string = 'sample_token';
+    accountExists: boolean =  true;
+    userNumber: string;
+    username: string;
+    fullName: string;
     constructor(private router:Router) {
         console.log('Login service is loaded.');
+        if(this.isLoggedIn) {
+            this.userNumber = '(512) 450-8236';
+            this.fullName = 'Jake Ruesink';
+            this.username = 'jaruesink';
+        }
     }
     checkAccount(userNumber:string) {
         this.userNumber = userNumber;

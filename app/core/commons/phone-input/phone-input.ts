@@ -11,6 +11,7 @@ import {FORM_DIRECTIVES} from "angular2/common";
 export class PhoneInput {
   @Input() focusFirst:boolean;
   @Input() userNumber:string;
+  @Input() disabled:boolean;
   @Output() phoneNumberChanged = new EventEmitter<string>();
   userAreaCode: number;
   userFirstThree: number;

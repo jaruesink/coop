@@ -16,8 +16,7 @@ export class VerifyRegistration implements OnInit, OnDestroy {
     }
     ngOnInit() {
         this.example_wait = setTimeout(() => {
-            this.router.navigate(['/Home']);
-            this.loginService.isLoggedIn = 'random_token';
+            this.router.navigate(['/CreateProfile']);
         }, 4000);
     }
     ngOnDestroy() {

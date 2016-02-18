@@ -2,7 +2,7 @@
 
 // import Angular 2
 import {Component} from "angular2/core";
-import {ROUTER_DIRECTIVES} from "angular2/router";
+import {ROUTER_DIRECTIVES, Router} from "angular2/router";
 import {PhoneInput} from "../../core/commons/phone-input/phone-input";
 import {LoginService} from "../../core/services/login-service/login.service";
 
@@ -12,8 +12,9 @@ import {LoginService} from "../../core/services/login-service/login.service";
     directives: [PhoneInput, ROUTER_DIRECTIVES]
 })
 export class Home {
-    constructor(public loginService: LoginService) {
+    constructor(public loginService: LoginService, private router:Router) {
         console.log("Home component loaded");
         console.log("user is logged in: ", loginService.isLoggedIn);
+        console.log('this_route = ', this.router.hostComponent.name)
     }
 }
