@@ -20,7 +20,7 @@ export class LoginService {
     checkAccount(userNumber:string) {
         this.userNumber = userNumber;
         if (this.accountExists) {
-            this.router.navigate(['/VerifyRegistration']);
+            this.router.navigate(['/VerifyAccount']);
         } else {
             this.router.navigate(['/VerifyRegistration']);
         }
