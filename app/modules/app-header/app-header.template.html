@@ -1,1 +1,8 @@
-<header>this is the header</header>
+<header>
+<nav class="navbar navbar-full navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand">Chattr</a>
+        <a class="btn btn-primary pull-xs-right" [routerLink]="['/EditProfile']">{{loginService.fullName}}&nbsp;&nbsp;&nbsp;<i class="fa fa-gear fa-lg"></i></a>
+    </div>
+</nav>
+</header>
