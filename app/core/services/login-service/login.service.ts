@@ -6,8 +6,8 @@ import {RouteConfig, Route, RouterOutlet, RouterLink, Router} from "angular2/rou
 
 @Injectable()
 export class LoginService {
-    isLoggedIn: string = 'sample_token';
-    accountExists: boolean =  true;
+    isLoggedIn: string = '';
+    accountExists: boolean =  false;
     userNumber: string;
     username: string;
     fullName: string;

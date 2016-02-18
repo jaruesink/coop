@@ -1,8 +1,8 @@
-<header>
+<header class="app-header">
 <nav class="navbar navbar-full navbar-dark bg-primary">
     <div class="container">
         <a class="navbar-brand">Chattr</a>
-        <a class="btn btn-primary pull-xs-right" *ngIf="loginService.isLoggedIn" [routerLink]="['/EditProfile']">{{loginService.fullName}}&nbsp;&nbsp;&nbsp;<i class="fa fa-gear fa-lg"></i></a>
+        <a class="btn btn-primary active pull-xs-right" *ngIf="loginService.isLoggedIn" [routerLink]="['/EditProfile']">{{loginService.fullName}}&nbsp;&nbsp;&nbsp;<i class="fa fa-gear fa-lg"></i></a>
     </div>
 </nav>
 </header>

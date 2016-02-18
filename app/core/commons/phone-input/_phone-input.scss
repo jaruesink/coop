@@ -5,15 +5,16 @@
 .phone-input{
   font-size: 30px;
   color: #55595c;
+  letter-spacing: -0.05em;
   input{
-    width:60px;
+    width:55px;
     display: inline-block;
     font-size: 22px;
     text-align: center;
     padding: 2px;
   }
   & > input:last-of-type{
-    width: 80px;
+    width: 65px;
   }
   input[type=number]::-webkit-inner-spin-button,
   input[type=number]::-webkit-outer-spin-button {

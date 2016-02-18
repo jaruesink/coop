@@ -1,0 +1,17 @@
+<div class="container">
+<div class="card card-block">
+<h1 class="card-title">Create Group</h1>
+<form (ngSubmit)="saveGroup()">
+    <fieldset class="form-group">
+        <label for="groupName">Group Name</label>
+        <input type="text" class="form-control" id="groupName" [(ngModel)]="groupName">
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="groupDescription">Description</label>
+        <input type="text" class="form-control" id="groupDescription" [(ngModel)]="groupDescription">
+    </fieldset>
+    <button class="btn btn-success btn-block m-t-1" type="submit">Save</button>
+    <a class="btn btn-danger btn-block m-t-1" [routerLink]="['/Home']">Cancel</a>
+</form>
+</div>
+</div>

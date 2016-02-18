@@ -16,7 +16,6 @@ export class Login {
     userNumber: string;
     constructor(public loginService:LoginService, private router:Router) {
         console.log("Login component loaded");
-        console.log("user is logged in: ", loginService.isLoggedIn);
     }
     userLogin() {
         this.loginService.checkAccount(this.userNumber);

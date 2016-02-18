@@ -15,7 +15,7 @@ export class CreateProfile {
     fullName: string;
     userNumber: string;
     constructor(public loginService:LoginService, private router:Router) {
-        console.log("Edit profile component loaded");
+        console.log("Create profile component loaded");
         this.userNumber = loginService.userNumber;
     }
     saveProfile() {

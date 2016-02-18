@@ -1,20 +1,28 @@
-<div class="container">
+<div class="container create-profile">
 <div class="card card-block">
-<form (ngSubmit)="saveProfile()">
-    <fieldset class="form-group">
+<h1 class="card-title">Create Profile</h1>
+<form (ngSubmit)="saveProfile()" >
+    <div class="row">
+    <fieldset class="form-group col-sm-6">
         <label for="fullName">Full Name</label>
         <input type="text" class="form-control" id="fullName" [(ngModel)]="fullName">
     </fieldset>
-    <fieldset class="form-group">
+    <fieldset class="form-group col-sm-6">
         <label for="username">Username</label>
         <input type="text" class="form-control" id="username" [(ngModel)]="username">
     </fieldset>
+    </div>
     <fieldset class="form-group">
-        <label for="fullName">Phone Number</label>
-        <phone-input [userNumber]="userNumber" [disabled]="true" (phoneNumberChanged)="userNumber = $event"></phone-input>
+        <label for="phoneNumber">Phone Number: {{userNumber}}</label>
     </fieldset>
-    <button class="btn btn-success btn-block m-t-1" type="submit">Save</button>
-    <a class="btn btn-danger btn-block m-t-1" [routerLink]="['/Login']">Cancel</a>
+    <div class="row">
+        <div class="col-xs-6 col-sm-3 col-sm-offset-3">
+            <button class="btn btn-success btn-block m-t-1" type="submit">Save</button>
+        </div>
+        <div class="col-xs-6 col-sm-3">
+            <a class="btn btn-danger btn-block m-t-1" [routerLink]="['/Login']">Cancel</a>
+        </div>
+    </div>
 </form>
 </div>
 </div>

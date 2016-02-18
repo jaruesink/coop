@@ -1,5 +1,10 @@
 <div class="container">
     <div class="card card-block">
-        <p>Your number is {{loginService.userNumber}}</p>
+        <p>You are not in any groups. Create one by clicking the big green button below.</p>
+        <div class="row">
+            <div class="col-xs-offset-3 col-xs-6 col-md-offset-4 col-md-4">
+                <button class="btn btn-success btn-block m-t-1" type="button" [routerLink]="['/CreateGroup']">Create Group&nbsp;&nbsp;&nbsp;<i class="fa fa-plus fa-lg"></i></button>
+            </div>
+        </div>
     </div>
 </div>

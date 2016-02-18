@@ -15,6 +15,7 @@ import {CreateProfile} from "../pages/create-profile/create-profile";
 import {VerifyAccount} from "../pages/verify-account/verify-account";
 import {EditProfile} from "../pages/edit-profile/edit-profile";
 import {Home} from "../pages/home/home";
+import {CreateGroup} from "../pages/create-group/create-group";
 
 // app modules
 import {AppHeader} from "../modules/app-header/app-header";
@@ -34,14 +35,13 @@ import {LoginService} from "../core/services/login-service/login.service";
     { path: "/create-profile", component: CreateProfile, as: "CreateProfile", data: undefined },
     { path: "/verify-account", component: VerifyAccount, as: "VerifyAccount", data: undefined },
     { path: "/", component: Home, as: "Home", data: undefined },
+    { path: "/create-group", component: CreateGroup, as: "CreateGroup", data: undefined },
     { path: "/edit-profile", component: EditProfile, as: "EditProfile", data: undefined}
 ])
 export class App {
     constructor(loginService:LoginService, router:Router) {
         console.log("Application bootstrapped!");
-        if (loginService.isLoggedIn) {
-            router.navigate(['/Home']);
-        } else {
+        if (!loginService.isLoggedIn) {
             router.navigate(['/Login']);
         }
     }
