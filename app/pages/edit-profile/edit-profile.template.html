@@ -3,19 +3,23 @@
 <h1 class="card-title">Edit Profile</h1>
 <form (ngSubmit)="saveProfile()" >
     <div class="row">
-    <fieldset class="form-group col-sm-6">
+    <fieldset class="form-group col-sm-9">
         <label for="fullName">Full Name</label>
         <input type="text" class="form-control" id="fullName" [(ngModel)]="fullName">
     </fieldset>
-    <fieldset class="form-group col-sm-6">
+    </div>
+    <div class="row">
+    <fieldset class="form-group col-sm-9">
         <label for="username">Username</label>
         <input type="text" class="form-control" id="username" [(ngModel)]="username">
     </fieldset>
     </div>
-    <fieldset class="form-group">
-        <label for="phoneNumber">Phone Number <button class="btn btn-warning btn-sm" type="button" disabled="true">Edit (coming soon)</button></label>
-        <phone-input id="phoneNumber" [userNumber]="userNumber" [disabled]="true" (phoneNumberChanged)="userNumber = $event"></phone-input>
+    <div class="row">
+    <fieldset class="form-group col-sm-9">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" [(ngModel)]="email">
     </fieldset>
+    </div>
     <div class="row">
         <div class="col-xs-6 col-sm-3 col-sm-offset-3">
             <button class="btn btn-success btn-block m-t-1" type="submit">Save</button>

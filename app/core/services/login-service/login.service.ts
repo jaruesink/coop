@@ -11,12 +11,14 @@ export class LoginService {
     userNumber: string;
     username: string;
     fullName: string;
+    userEmail: string;
     constructor(private router:Router) {
         console.log('Login service is loaded.');
         if(this.isLoggedIn) {
             this.userNumber = '(512) 450-8236';
             this.fullName = 'Jake Ruesink';
             this.username = 'jaruesink';
+            this.userEmail = 'jaruesink@gmail.com'
         }
     }
     checkAccount(userNumber:string) {

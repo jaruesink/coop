@@ -14,6 +14,7 @@ export class CreateProfile {
     username: string;
     fullName: string;
     userNumber: string;
+    email: string;
     constructor(public loginService:LoginService, private router:Router) {
         console.log("Create profile component loaded");
         this.userNumber = loginService.userNumber;
@@ -21,6 +22,7 @@ export class CreateProfile {
     saveProfile() {
         this.loginService.username   = this.username;
         this.loginService.fullName   = this.fullName;
+        this.loginService.userEmail  = this.email
         this.loginService.userNumber = this.userNumber;
         this.loginService.isLoggedIn = 'random_token';
         this.router.navigate(['/Home']);

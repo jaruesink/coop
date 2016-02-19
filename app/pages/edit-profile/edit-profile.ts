@@ -14,12 +14,14 @@ export class EditProfile {
     username: string;
     fullName: string;
     userNumber: string;
+    email: string
     constructor(public loginService:LoginService, private router:Router) {
         console.log("Edit profile component loaded");
         this.username = loginService.username;
         this.fullName = loginService.fullName;
         this.userNumber = loginService.userNumber;
-    }
+        this.email = loginService.userEmail;
+        }
     saveProfile() {
         this.loginService.username   = this.username;
         this.loginService.fullName   = this.fullName;
