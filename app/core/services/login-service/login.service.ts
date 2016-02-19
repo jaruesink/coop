@@ -3,10 +3,11 @@
 // import Angular 2
 import {Injectable} from "angular2/core";
 import {RouteConfig, Route, RouterOutlet, RouterLink, Router} from "angular2/router";
+import {AccountService} from "../account-service/account.service";
 
 @Injectable()
 export class LoginService {
-    isLoggedIn: string = '';
+    isLoggedIn: string = 'string';
     accountExists: boolean =  false;
     userNumber: string;
     username: string;
@@ -18,7 +19,7 @@ export class LoginService {
             this.userNumber = '(512) 450-8236';
             this.fullName = 'Jake Ruesink';
             this.username = 'jaruesink';
-            this.userEmail = 'jaruesink@gmail.com'
+            this.userEmail = 'jaruesink@gmail.com';
         }
     }
     checkAccount(userNumber:string) {

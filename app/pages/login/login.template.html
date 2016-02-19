@@ -1,7 +1,6 @@
 <div class="container login-page">
     <div class="card card-block">
         <h1 class="card-title">Login/Register</h1>
-        <p>Making the <i class="fa fa-globe fa-lg"></i> a better place for communicating.</p>
         <p>Enter your phone number to login.<br>If you don't already have an account,<br>we'll set one up for you.</p>
         <form (ngSubmit)="userLogin()">
             <phone-input [focusFirst]="true" (phoneNumberChanged)="userNumber = $event"></phone-input>

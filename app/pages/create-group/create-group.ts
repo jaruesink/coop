@@ -2,6 +2,7 @@
 
 import {Component} from "angular2/core";
 import {ROUTER_DIRECTIVES, Router} from "angular2/router";
+import {GroupService} from "../../core/services/group-service/group.service";
 
 @Component({
     selector: "page-create-group",
@@ -9,13 +10,16 @@ import {ROUTER_DIRECTIVES, Router} from "angular2/router";
     directives: [ROUTER_DIRECTIVES]
 })
 export class CreateGroup {
-    username: string;
-    fullName: string;
-    userNumber: string;
-    constructor() {
+    groupName: string;
+    groupDescription: string;
+    constructor(private router:Router, public groupService: GroupService) {
         console.log("Create group component loaded");
     }
     saveGroup() {
-        // this.router.navigate(['/InviteMembers']);
+        var group = {};
+        group['name'] = this.groupName;
+        group['description'] = this.groupDescription;
+        this.groupService.groups.push(group);
+        this.router.navigate(['/Home']);
     }
 }

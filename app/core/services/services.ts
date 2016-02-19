@@ -2,8 +2,10 @@
 // way to create a list all injectable classes
 
 import {LoginService} from '../services/login-service/login.service';
+import {AccountService} from '../services/account-service/account.service';
+import {GroupService} from '../services/group-service/group.service';
 
 export let appServicesInjectables : Array<any> = [
-	LoginService
+	LoginService, AccountService, GroupService
 ];
 
