@@ -16,6 +16,7 @@ import {VerifyAccount} from "../pages/verify-account/verify-account";
 import {EditAccount} from "../pages/edit-account/edit-account";
 import {Home} from "../pages/home/home";
 import {CreateGroup} from "../pages/create-group/create-group";
+import {Group} from "../pages/group/group";
 
 // app modules
 import {AppHeader} from "../modules/app-header/app-header";
@@ -36,7 +37,8 @@ import {LoginService} from "../core/services/login-service/login.service";
     { path: "/verify-account", component: VerifyAccount, as: "VerifyAccount", data: undefined },
     { path: "/", component: Home, as: "Home", data: undefined },
     { path: "/create-group", component: CreateGroup, as: "CreateGroup", data: undefined },
-    { path: "/edit-account", component: EditAccount, as: "EditAccount", data: undefined}
+    { path: "/edit-account", component: EditAccount, as: "EditAccount", data: undefined},
+    { path: "/group/:group_id", component: Group, as: "Group", data: undefined }
 ])
 export class App {
     constructor(loginService:LoginService, router:Router, private location:Location) {

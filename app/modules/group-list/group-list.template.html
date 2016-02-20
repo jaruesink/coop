@@ -1,4 +1,5 @@
-<div id="{{group.id}}" class="card group-list" *ngFor="#group of groupService.groups">
+<section class="group-list">
+<div id="{{group.id}}" class="card" *ngFor="#group of groupService.groups" [routerLink]="['/Group', {group_id: group.id}]">
     <div class="card-header m-b-0">
     <h3>{{group.name}}</h3>
     <p class="m-b-0 text-xs-right font-italic">{{group.members}} members</p>
@@ -7,3 +8,4 @@
         <p class="card-text">{{group.description}}</p>
     </div>
 </div>
+</section>

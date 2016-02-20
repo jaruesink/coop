@@ -1,13 +1,13 @@
 "use strict";
 
 import {Component, Input, Output, EventEmitter} from "angular2/core";
-import {FORM_DIRECTIVES} from "angular2/common";
+import {ROUTER_DIRECTIVES, Router, RouterLink} from "angular2/router";
 import {GroupService} from "../../core/services/group-service/group.service";
 
 @Component({
     selector: "group-list",
     templateUrl: "../modules/group-list/group-list.template.html",
-    directives: [FORM_DIRECTIVES]
+    directives: [RouterLink]
 })
 export class GroupList {
 
