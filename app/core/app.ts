@@ -43,8 +43,7 @@ export class App {
         console.log("Application bootstrapped!");
         if (!loginService.isLoggedIn) {
             router.navigate(['/Login']);
-        } else if ( this.location.path() === '/login')
-        {
+        } else if ( this.location.path() === '/login') {
             router.navigate(['/Home']);
         }
     }

@@ -1,6 +1,6 @@
 "use strict";
 
-import {Component} from "angular2/core";
+import {Component, Renderer} from "angular2/core";
 import {ROUTER_DIRECTIVES, Router} from "angular2/router";
 import {LoginService} from "../../core/services/login-service/login.service";
 import {AccountService} from "../../core/services/account-service/account.service";

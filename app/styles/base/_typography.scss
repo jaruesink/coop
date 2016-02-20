@@ -31,7 +31,7 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 
 	// font-family: 'Roboto-Regular', monospace, sans-serif;
-	font-family: 'sketchnote-square', sans-serif;
+	font-family: "nimbus-sans",sans-serif;
 	font-size: 12px; // necessary for older browsers
 	font-size: 1rem; // text's default font size (14px)
 	font-style: normal;
@@ -43,5 +43,9 @@ body {
 .container > header > h1 {
 	font-size: 40px;
 	font-size: 4.0rem;
+}
+
+.btn{
+	font-weight: bold;
 }
 

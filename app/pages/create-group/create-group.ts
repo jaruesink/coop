@@ -17,8 +17,11 @@ export class CreateGroup {
     }
     saveGroup() {
         var group = {};
+        var randomID = (Math.random() + 1).toString(36).slice(2, 9);
+        group['id'] = randomID;
         group['name'] = this.groupName;
         group['description'] = this.groupDescription;
+        group['members'] = 0;
         this.groupService.groups.push(group);
         this.router.navigate(['/Home']);
     }

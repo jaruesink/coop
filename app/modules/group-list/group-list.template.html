@@ -1,0 +1,9 @@
+<div id="{{group.id}}" class="card group-list" *ngFor="#group of groupService.groups">
+    <div class="card-header m-b-0">
+    <h3>{{group.name}}</h3>
+    <p class="m-b-0 text-xs-right font-italic">{{group.members}} members</p>
+     </div>
+    <div class="card-block">
+        <p class="card-text">{{group.description}}</p>
+    </div>
+</div>
