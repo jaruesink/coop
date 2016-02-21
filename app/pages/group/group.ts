@@ -2,7 +2,8 @@
 
 // import Angular 2
 import {Component} from "angular2/core";
-import {RouteConfig, Route, RouterOutlet, RouterLink, Router} from "angular2/router";
+import {RouteConfig, Route, RouterOutlet, RouterLink, Router, RouteParams} from "angular2/router";
+import {GroupService} from '../../core/services/group-service/group.service';
 
 @Component({
     selector: "page-group",
@@ -10,8 +11,12 @@ import {RouteConfig, Route, RouterOutlet, RouterLink, Router} from "angular2/rou
     directives: []
 })
 export class Group {
-    userNumber: string;
-    constructor() {
+    groupName: string;
+    groupDescription: string;
+    constructor(private routeParams: RouteParams, public groupService: GroupService) {
         console.log("Group component loaded");
+        var group_id = this.routeParams.get('group_id');
+        this.groupName = this.groupService.groupInfo[group_id].name;
+        this.groupDescription = this.groupService.groupInfo[group_id].description;
     }
 }
