@@ -1,8 +1,8 @@
 <header class="app-header">
 <nav class="navbar navbar-full navbar-dark bg-primary">
     <div class="container">
-        <a *ngIf="!loginService.isLoggedIn" class="navbar-brand">Chattr</a>
-        <a *ngIf="loginService.isLoggedIn" class="navbar-brand btn btn-primary" [routerLink]="['/Home']">Chattr</a>
+        <a *ngIf="!loginService.isLoggedIn" class="navbar-brand">GroupChat</a>
+        <a *ngIf="loginService.isLoggedIn" class="navbar-brand btn btn-primary" [routerLink]="['/Home']">GroupChat</a>
         <a class="btn btn-primary active pull-xs-right" *ngIf="loginService.isLoggedIn" [routerLink]="['/EditAccount']">{{accountService.fullName}}&nbsp;&nbsp;&nbsp;<i class="fa fa-gear fa-lg"></i></a>
     </div>
 </nav>
