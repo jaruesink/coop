@@ -17,6 +17,7 @@ import {EditAccount} from "../pages/edit-account/edit-account";
 import {Home} from "../pages/home/home";
 import {CreateGroup} from "../pages/create-group/create-group";
 import {Group} from "../pages/group/group";
+import {Post} from "../pages/post/post";
 
 // app modules
 import {AppHeader} from "../modules/app-header/app-header";
@@ -38,7 +39,8 @@ import {LoginService} from "../core/services/login-service/login.service";
     { path: "/", component: Home, as: "Home", data: undefined },
     { path: "/create-group", component: CreateGroup, as: "CreateGroup", data: undefined },
     { path: "/edit-account", component: EditAccount, as: "EditAccount", data: undefined},
-    { path: "/group/:group_id", component: Group, as: "Group", data: undefined }
+    { path: "/:group_id", component: Group, as: "Group", data: undefined },
+    { path: "/:group_id/:post_id", component: Post, as: "Post", data: undefined }
 ])
 export class App {
     constructor(loginService:LoginService, router:Router, private location:Location) {
