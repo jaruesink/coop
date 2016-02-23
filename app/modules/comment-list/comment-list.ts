@@ -13,6 +13,6 @@ export class CommentList {
     commentList: Array<any>;
     constructor(private groupService: GroupService) {
         console.log("Comment list component loaded");
-        this.commentList = this.groupService.postInfo[this.groupService.currentPostID].comments
+        this.commentList = this.groupService.postInfo[this.groupService.currentPostID].comments;
     }
 }

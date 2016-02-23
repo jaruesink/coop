@@ -4,11 +4,12 @@ import {Component} from "angular2/core";
 import {RouteConfig, Route, RouterOutlet, RouterLink, Router, RouteParams} from "angular2/router";
 import {GroupService} from '../../core/services/group-service/group.service';
 import {PostList} from '../../modules/post-list/post-list';
+import {AddPost} from '../../core/commons/add-post/add-post';
 
 @Component({
     selector: "page-group",
     templateUrl: "pages/group/group.template.html",
-    directives: [PostList]
+    directives: [PostList, AddPost]
 })
 export class Group {
     groupName: string;
