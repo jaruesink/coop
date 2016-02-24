@@ -25,6 +25,7 @@ export class CreateGroup {
         group['description'] = this.groupDescription;
         this.groupService.groupInfo[randomID].description = this.groupDescription;
         group['members'] = 0;
+        this.groupService.groupInfo[randomID].posts = {};
         this.groupService.groups.push(group);
         this.router.navigate(['/Home']);
     }
