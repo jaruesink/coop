@@ -4,11 +4,12 @@ import {Component} from "angular2/core";
 import {RouteConfig, Route, RouterOutlet, RouterLink, Router, RouteParams} from "angular2/router";
 import {GroupService} from '../../core/services/group-service/group.service';
 import {CommentList} from '../../modules/comment-list/comment-list';
+import {AddComment} from '../../core/commons/add-comment/add-comment';
 
 @Component({
     selector: "page-post",
     templateUrl: "pages/post/post.template.html",
-    directives: [CommentList]
+    directives: [CommentList, AddComment]
 })
 export class Post {
     postContent: string;
