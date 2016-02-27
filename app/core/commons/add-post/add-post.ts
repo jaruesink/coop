@@ -19,9 +19,12 @@ export class AddPost {
       var randomID = (Math.random() + 1).toString(36).slice(2, 9);
       new_post['id'] = randomID;
       this.groupService.postInfo[randomID] = {};
+      this.groupService.postInfo[randomID].id = randomID;
       new_post['content'] = input.value;
       this.groupService.postInfo[randomID].content = input.value;
       new_post['author'] = this.loginService.fullName;
+      new_post['comments'] = [];
+      this.groupService.postInfo[randomID].comments = [];
       this.groupService.postInfo[randomID].author = this.loginService.fullName;
       this.groupService.groupInfo[this.groupService.currentGroupID].posts.push(new_post);
       input.value = '';
