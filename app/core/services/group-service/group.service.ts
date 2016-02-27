@@ -37,7 +37,7 @@ export class GroupService {
                 "posts": [
                     {
                         "id": "samplePostID1",
-                        "content": "This is a post content",
+                        "content": "This is a post.",
                         "author": "Jake Ruesink",
                         "time_stamp": "Two Weeks Ago",
                         "comments": 1

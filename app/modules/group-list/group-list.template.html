@@ -2,10 +2,12 @@
 <div id="{{group.id}}" class="card" *ngFor="#group of groupService.groups" [routerLink]="['/Group', {group_id: group.id}]">
     <div class="card-header m-b-0">
     <h3>{{group.name}}</h3>
-    <p class="m-b-0 text-xs-right text-muted">1 new post | 2 new comments | {{group.members}} members</p>
      </div>
     <div class="card-block">
         <p class="card-text">{{group.description}}</p>
+    </div>
+    <div class="card-footer">
+        <p class="m-b-0 text-xs-right text-muted">1 new post | 2 new comments | {{group.members}} members</p>
     </div>
 </div>
 </section>
