@@ -26,7 +26,7 @@ export class AddPost {
       new_post['comments'] = [];
       this.groupService.postInfo[randomID].comments = [];
       this.groupService.postInfo[randomID].author = this.loginService.fullName;
-      this.groupService.groupInfo[this.groupService.currentGroupID].posts.push(new_post);
+      this.groupService.groupInfo[this.groupService.currentGroupID].posts.unshift(new_post);
       input.value = '';
   }
 }
