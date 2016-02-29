@@ -1,6 +1,6 @@
 <div class="container login-page">
 
-<ul class="nav nav-tabs m-b-2">
+<ul class="nav nav-tabs nav-justified m-b-1">
   <li class="nav-item">
     <a class="nav-link" [routerLink]="['/Login']">Login</a>
   </li>
@@ -9,24 +9,20 @@
   </li>
 </ul>
 
+<form (ngSubmit)="userRegister()">
+    <fieldset class="form-group">
+        <label for="username">Username</label>
+        <input type="username" class="form-control" id="username" [(ngModel)]="username" autofocus="true" autocomplete="off" required>
+    </fieldset>
+    <button class="btn btn-lg btn-success btn-block m-t-1" type="submit">Register</button>
+</form>
+
+<hr class="or m-y-2">
+
 <div class="row">
     <div class="col-xs-4"><button class="btn btn-block btn-primary"><i class="fa fa-lg fa-inverse fa-facebook"></i></button></div>
     <div class="col-xs-4"><button class="btn btn-block btn-danger"><i class="fa fa-lg fa-inverse fa-google"></i></button></div>
     <div class="col-xs-4"><button class="btn btn-block btn-info"><i class="fa fa-lg fa-inverse fa-twitter"></i></button></div>
 </div>
-
-<hr class="or m-y-2">
-
-<form (ngSubmit)="userLogin()">
-    <fieldset class="form-group">
-        <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" [(ngModel)]="email" required>
-    </fieldset>
-    <fieldset class="form-group">
-      <label for="phone">Phone</label>
-      <phone-input id="phone" [focusFirst]="true" (phoneNumberChanged)="userNumber = $event"></phone-input>
-    </fieldset>
-    <button class="btn btn-lg btn-success btn-block m-t-1" type="submit">Register</button>
-</form>
 
 </div>

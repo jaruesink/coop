@@ -1,5 +1,12 @@
 .login-page{
     max-width:320px;
+    .nav-tabs{
+        white-space: nowrap;
+        overflow: visible;
+    }
+    .nav-item{
+        display: inline-block;
+    }
     .nav-link{
         font-weight: bold;
         letter-spacing: .02rem;
@@ -20,4 +27,5 @@ hr.or:before{
     line-height: 14px;
     font-size: 14px;
     top: -8px;
+    color: rgba(0, 0, 0, .4);
 }

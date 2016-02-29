@@ -25,7 +25,7 @@ export class LoginService {
     loginAccount() {
         //to do
     }
-    registerAccount(){
+    registerAccount() {
         //to do
     }
 }
