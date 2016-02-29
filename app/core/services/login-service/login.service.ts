@@ -7,7 +7,7 @@ import {AccountService} from "../account-service/account.service";
 
 @Injectable()
 export class LoginService {
-    isLoggedIn: string = 'string';
+    isLoggedIn: string = '';
     accountExists: boolean =  false;
     userNumber: string;
     username: string;
@@ -22,12 +22,10 @@ export class LoginService {
             this.userEmail = 'jaruesink@gmail.com';
         }
     }
-    checkAccount(userNumber:string) {
-        this.userNumber = userNumber;
-        if (this.accountExists) {
-            this.router.navigate(['/VerifyAccount']);
-        } else {
-            this.router.navigate(['/VerifyRegistration']);
-        }
+    loginAccount() {
+        //to do
+    }
+    registerAccount(){
+        //to do
     }
 }

@@ -9,6 +9,7 @@ import {Component} from "angular2/core";
 import {RouteConfig, Route, RouterOutlet, RouterLink, Router, Location} from "angular2/router";
 
 // app pages
+import {Register} from "../pages/register/register";
 import {Login} from "../pages/login/login";
 import {VerifyRegistration} from "../pages/verify-registration/verify-registration";
 import {CreateAccount} from "../pages/create-account/create-account";
@@ -32,6 +33,7 @@ import {LoginService} from "../core/services/login-service/login.service";
     directives: [RouterOutlet, RouterLink, AppHeader]
 })
 @RouteConfig([
+    { path: "/register", component: Register, as: "Register", data: undefined },
     { path: "/login", component: Login, as: "Login", data: undefined, useAsDefault: true },
     { path: "/verify-registration", component: VerifyRegistration, as: "VerifyRegistration", data: undefined },
     { path: "/create-account", component: CreateAccount, as: "CreateAccount", data: undefined },

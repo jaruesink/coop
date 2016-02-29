@@ -2,10 +2,10 @@
 
 <ul class="nav nav-tabs m-b-2">
   <li class="nav-item">
-    <a class="nav-link active">Login</a>
+    <a class="nav-link" [routerLink]="['/Login']">Login</a>
   </li>
-  <li class="nav-item" [routerLink]="['/Register']">
-    <a class="nav-link">Register</a>
+  <li class="nav-item">
+    <a class="nav-link active">Register</a>
   </li>
 </ul>
 
@@ -19,14 +19,14 @@
 
 <form (ngSubmit)="userLogin()">
     <fieldset class="form-group">
-        <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" [(ngModel)]="username" required>
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" [(ngModel)]="email" required>
     </fieldset>
     <fieldset class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" [(ngModel)]="password" required>
+      <label for="phone">Phone</label>
+      <phone-input id="phone" [focusFirst]="true" (phoneNumberChanged)="userNumber = $event"></phone-input>
     </fieldset>
-    <button class="btn btn-lg btn-success btn-block m-t-1" type="submit">Login</button>
+    <button class="btn btn-lg btn-success btn-block m-t-1" type="submit">Register</button>
 </form>
 
 </div>
