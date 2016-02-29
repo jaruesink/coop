@@ -1,9 +1,17 @@
 <header class="app-header">
 <nav class="navbar navbar-full navbar-dark bg-primary">
     <div class="container">
-        <a *ngIf="!loginService.isLoggedIn" class="navbar-brand">Coop&nbsp;<img src="../../../images/cooper.png"></a>
-        <a *ngIf="loginService.isLoggedIn" class="navbar-brand btn btn-primary" [routerLink]="['/Home']">Coop&nbsp;<img src="../../../images/cooper.png"></a>
-        <a class="btn btn-primary active pull-xs-right" *ngIf="loginService.isLoggedIn" [routerLink]="['/EditAccount']">{{accountService.fullName}}&nbsp;&nbsp;&nbsp;<i class="fa fa-gear fa-lg"></i></a>
+        <a id="brand" *ngIf="!loginService.isLoggedIn" class="navbar-brand">Coop&nbsp;<img src="../../../images/cooper.png"></a>
+        <a id="brand" *ngIf="loginService.isLoggedIn && !groupService.currentGroupID" class="navbar-brand btn btn-primary" [routerLink]="['/Home']">Coop <img src="../../../images/cooper.png"></a>
+
+        <a id="go_back" *ngIf="groupService.currentGroupID" class="btn btn-primary active" (click)="goBack()"><i class="fa fa-arrow-left fa-lg"></i></a>
+
+        <div id="user_name" *ngIf="groupService.currentGroupID">{{groupService.groupInfo[groupService.currentGroupID].name}}</div>
+        <div id="group_name" *ngIf="!groupService.currentGroupID">{{accountService.fullName}}</div>
+
+        <a id="settings" *ngIf="!groupService.currentGroupID" class="btn btn-primary active pull-xs-right" [routerLink]="['/EditAccount']"> <i class="fa fa-gear fa-lg"></i></a>
+        <a id="settings" *ngIf="groupService.currentGroupID" class="btn btn-primary active pull-xs-right"><i class="fa fa-gear fa-lg"></i></a>
+        
     </div>
 </nav>
 </header>

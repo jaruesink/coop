@@ -37,6 +37,7 @@ body {
 	font-style: normal;
 	font-weight: normal;
 	letter-spacing: -0.02em;
+	word-spacing: -.05em;
 	color: $fontColorDefault;
 }
 
@@ -45,7 +46,4 @@ body {
 	font-size: 4.0rem;
 }
 
-.btn{
-	font-weight: bold;
-}
-
+p{line-height: 1;}

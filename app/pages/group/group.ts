@@ -15,9 +15,10 @@ export class Group {
     groupName: string;
     groupDescription: string;
     constructor(private routeParams: RouteParams, public groupService: GroupService) {
-        console.log("Group component loaded");
         var group_id = this.routeParams.get('group_id');
         this.groupService.currentGroupID = group_id;
+        console.log("Group component loaded, current group: ", group_id);
+        this.groupService.currentPostID = ''
         this.groupName = this.groupService.groupInfo[group_id].name;
         this.groupDescription = this.groupService.groupInfo[group_id].description;
     }

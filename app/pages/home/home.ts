@@ -12,7 +12,9 @@ import {GroupList} from "../../modules/group-list/group-list";
     directives: [ROUTER_DIRECTIVES, RouterLink, GroupList]
 })
 export class Home {
-    constructor(private groupService:GroupService) {
+    constructor(public groupService:GroupService) {
         console.log("Home component loaded");
+        this.groupService.currentGroupID = '';
+        this.groupService.currentPostID = '';
     }
 }
