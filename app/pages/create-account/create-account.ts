@@ -25,7 +25,6 @@ export class CreateAccount {
         this.accountService.fullName   = this.fullName;
         this.accountService.userEmail = this.email;
         this.accountService.userNumber = this.userNumber;
-        this.loginService.isLoggedIn   = 'random_token';
         this.router.navigate(['/Home']);
     }
 }

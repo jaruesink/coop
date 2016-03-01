@@ -18,7 +18,7 @@ export class Group {
         var group_id = this.routeParams.get('group_id');
         this.groupService.currentGroupID = group_id;
         console.log("Group component loaded, current group: ", group_id);
-        this.groupService.currentPostID = ''
+        this.groupService.currentPostID = '';
         this.groupName = this.groupService.groupInfo[group_id].name;
         this.groupDescription = this.groupService.groupInfo[group_id].description;
     }

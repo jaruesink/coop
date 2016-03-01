@@ -17,7 +17,6 @@ export class VerifyAccount implements OnInit, OnDestroy {
     ngOnInit() {
         this.example_wait = setTimeout(() => {
             this.router.navigate(['/Home']);
-            this.loginService.isLoggedIn = 'random_token';
         }, 4000);
     }
     ngOnDestroy() {
