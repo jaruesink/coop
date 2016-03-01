@@ -43,6 +43,7 @@
 	<base href="/">
 </head>
 <body>
+	<div id="fb-root"></div>
 	<app>
 		<div class="container m-t-3 p-t-3">
 			<div class="loading la-md"><div></div><div></div><div></div></div>
@@ -70,5 +71,26 @@
 	<!-- Fonts added by this should be replaced by downloaded fonts. -->
 	<script src="https://use.typekit.net/ffe4vjm.js"></script>
 	<script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+	<script type="text/javascript">
+    // Facebook SDK
+	  (function(d, s, id) {
+	      var js, fjs = d.getElementsByTagName(s)[0];
+	      if (d.getElementById(id)) return;
+	      js = d.createElement(s); js.id = id;
+	      js.src = "//connect.facebook.net/en_US/sdk.js";
+	      fjs.parentNode.insertBefore(js, fjs);
+	  } (document, 'script', 'facebook-jssdk'));
+
+	  window['fbAsyncInit'] = function() {
+	      window.FB.init({
+	          appId: '228671707475003',
+	          status: true,
+	          cookie: true,
+	          xfbml: true,
+	          version: 'v2.5'
+	      });
+	  };
+	</script>
 </body>
 </html>
