@@ -5,11 +5,12 @@ import {ROUTER_DIRECTIVES, RouteConfig, Route, RouterOutlet, RouterLink, Router,
 import {AccountService} from "../../core/services/account-service/account.service";
 import {LoginService} from "../../core/services/login-service/login.service";
 import {GroupService} from "../../core/services/group-service/group.service";
+import {SettingsMenu} from "../settings-menu/settings-menu";
 
 @Component({
     selector: "app-header",
     templateUrl: "modules/app-header/app-header.template.html",
-    directives: [ROUTER_DIRECTIVES]
+    directives: [ROUTER_DIRECTIVES, SettingsMenu]
 })
 export class AppHeader {
     constructor(public accountService: AccountService, public loginService: LoginService, public groupService: GroupService, private location: Location, private router: Router) {

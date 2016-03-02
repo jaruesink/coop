@@ -16,13 +16,20 @@ import {FacebookLoginService} from "../../core/services/login-facebook-service/l
     directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES]
 })
 export class Login {
-    window: any;
+    FB: any = window.FB;
     constructor(public loginService: LoginService, public accountService: AccountService, private router: Router, public facebookLoginService: FacebookLoginService) {
         console.log("Login component loaded");
+        // Check if logged in
+        this.FB.getLoginStatus(function(response: any) {
+            if (response.status === 'connected') {
+                console.log(response.authResponse.accessToken);
+                loginService.isLoggedIn = true;
+                router.navigate(['Home']);
+            }
+        });
     }
     facebookLogin() {
         this.facebookLoginService.loginWithFacebook();
-        console.log( this.facebookLoginService.user );
         if ( this.facebookLoginService.user ) {
             this.loginService.isLoggedIn = true;
             this.accountService.fullName = this.facebookLoginService.user.name;

@@ -1,6 +1,6 @@
 <div class="container login-page">
 
-<ul class="nav nav-tabs nav-justified m-b-2">
+<ul class="nav nav-tabs nav-justified m-b-1">
   <li class="nav-item">
     <a class="nav-link active">Login</a>
   </li>
@@ -8,13 +8,6 @@
     <a class="nav-link">Register</a>
   </li>
 </ul>
-
-<div class="row">
-    <div class="col-xs-6"><button class="btn btn-block btn-primary" (click)="facebookLogin()"><i class="fa fa-lg fa-inverse fa-facebook"></i></button></div>
-    <div class="col-xs-6"><button class="btn btn-block btn-danger" (click)="facebookLogout()"><i class="fa fa-lg fa-inverse fa-google"></i></button></div>
-</div>
-
-<hr class="or m-t-2 m-b-1">
 
 <form (ngSubmit)="passwordLogin()">
     <fieldset class="form-group">
@@ -25,7 +18,14 @@
         <label for="password">Password</label>
         <input type="password" class="form-control" id="password" [(ngModel)]="password" required>
     </fieldset>
-    <button class="btn btn-lg btn-success btn-block m-t-1" type="submit">Login</button>
+    <button class="btn btn-lg btn-success btn-block m-t-1" type="submit">Enter</button>
 </form>
+
+<hr class="or m-y-2">
+
+<div class="row">
+    <div class="col-xs-6"><button class="btn btn-block btn-primary" (click)="facebookLogin()"><i class="fa fa-lg fa-inverse fa-facebook"></i></button></div>
+    <div class="col-xs-6"><button class="btn btn-block btn-danger" (click)="facebookLogout()"><i class="fa fa-lg fa-inverse fa-google"></i></button></div>
+</div>
 
 </div>

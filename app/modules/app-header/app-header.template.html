@@ -4,14 +4,12 @@
         <a id="brand" *ngIf="!loginService.isLoggedIn" class="navbar-brand">Coop&nbsp;<img src="../../../images/cooper.png"></a>
         <a id="brand" *ngIf="loginService.isLoggedIn && !groupService.currentGroupID" class="navbar-brand btn btn-primary" [routerLink]="['/Home']">Coop <img src="../../../images/cooper.png"></a>
 
-        <a id="go_back" *ngIf="groupService.currentGroupID" class="btn btn-primary active" (click)="goBack()"><i class="fa fa-arrow-left fa-lg"></i></a>
+        <a id="go_back" *ngIf="groupService.currentGroupID" class="btn btn-primary" (click)="goBack()"><i class="fa fa-arrow-left fa-lg"></i></a>
 
         <div id="user_name" *ngIf="groupService.currentGroupID">{{groupService.groupInfo[groupService.currentGroupID].name}}</div>
         <div id="group_name" *ngIf="loginService.isLoggedIn && !groupService.currentGroupID">{{accountService.fullName}}</div>
 
-        <a id="settings" *ngIf="loginService.isLoggedIn && !groupService.currentGroupID" class="btn btn-primary active pull-xs-right" [routerLink]="['/EditAccount']"> <i class="fa fa-gear fa-lg"></i></a>
-        <a id="settings" *ngIf="loginService.isLoggedIn && groupService.currentGroupID" class="btn btn-primary active pull-xs-right"><i class="fa fa-gear fa-lg"></i></a>
-        
+        <settings-menu *ngIf="loginService.isLoggedIn"></settings-menu>
     </div>
 </nav>
 </header>

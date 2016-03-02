@@ -12,17 +12,24 @@ export class FacebookLoginService {
         console.log('Facebook login service is loaded.');
     }
     loginWithFacebook() {
-        this.FB.login(function(response: any) {
-            if (response.authResponse) {
-                console.log('Welcome!  Fetching your information.... ');
-                this.FB.api('/me', function(response: any) {
-                    this.user = response;
-                    console.log('Good to see you, ' + response.name + '.');
-                });
-                return true;
+        this.FB.getLoginStatus(function(response: any) {
+            if (response.status === 'connected') {
+                console.log(response.authResponse.accessToken);
+                alert('You are already logged in.');
             } else {
-                console.log('User cancelled login or did not fully authorize.');
-                return false;
+                this.FB.login(function(response: any) {
+                    if (response.authResponse) {
+                        console.log('Welcome!  Fetching your information.... ');
+                        this.FB.api('/me', function(response: any) {
+                            this.user = response;
+                            console.log('Good to see you, ' + response.name + '.');
+                        });
+                        return true;
+                    } else {
+                        console.log('User cancelled login or did not fully authorize.');
+                        return false;
+                    }
+                });
             }
         });
     }

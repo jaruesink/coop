@@ -27,7 +27,9 @@
         width: 100%;
         text-align: center;
     }
-    #settings{position:absolute; top:0; right:15px;}
+    #settings{position:absolute; top:0; right:15px;
+        .dropdown-toggle::after {content: none;}
+    }
     @media (max-width:740px) {
         #settings{position:absolute; top:0; right:0;}
     }

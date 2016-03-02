@@ -8,7 +8,7 @@ import {FacebookLoginService} from "../login-facebook-service/login-facebook.ser
 
 @Injectable()
 export class LoginService {
-    isLoggedIn: boolean = false;
+    isLoggedIn: boolean;
     accountExists: boolean = false;
     userNumber: string;
     username: string;
