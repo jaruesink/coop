@@ -1,8 +1,8 @@
 <header class="app-header">
 <nav class="navbar navbar-full navbar-dark bg-primary">
     <div class="container">
-        <a id="brand" *ngIf="!loginService.isLoggedIn" class="navbar-brand">Coop&nbsp;<img src="../../../images/cooper.png"></a>
-        <a id="brand" *ngIf="loginService.isLoggedIn && !groupService.currentGroupID" class="navbar-brand btn btn-primary" [routerLink]="['/Home']">Coop <img src="../../../images/cooper.png"></a>
+
+        <a id="brand" *ngIf="!groupService.currentGroupID" class="navbar-brand">Coop <img src="../../../images/cooper.png"></a>
 
         <a id="go_back" *ngIf="groupService.currentGroupID" class="btn btn-primary" (click)="goBack()"><i class="fa fa-arrow-left fa-lg"></i></a>
 

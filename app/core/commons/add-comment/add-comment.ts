@@ -2,7 +2,7 @@
 
 import {Component, Input, Output, EventEmitter} from "angular2/core";
 import {FORM_DIRECTIVES} from "angular2/common";
-import {LoginService} from '../../services/login-service/login.service';
+import {AccountService} from '../../services/account-service/account.service';
 import {GroupService} from '../../services/group-service/group.service';
 
 @Component({
@@ -11,7 +11,7 @@ import {GroupService} from '../../services/group-service/group.service';
 	directives: [FORM_DIRECTIVES]
 })
 export class AddComment {
-  constructor(public groupService: GroupService, public loginService: LoginService) {
+  constructor(public groupService: GroupService, public accountService: AccountService) {
 		console.log("Add comment component loaded");
 	}
   addComment(input:any) {
@@ -20,7 +20,7 @@ export class AddComment {
       var randomID = (Math.random() + 1).toString(36).slice(2, 9);
       new_comment['id'] = randomID;
       new_comment['content'] = input.value;
-      new_comment['author'] = this.loginService.fullName;
+      new_comment['author'] = this.accountService.fullName;
       this.groupService.postInfo[currentPostID].comments.push(new_comment);
       input.value = '';
   }

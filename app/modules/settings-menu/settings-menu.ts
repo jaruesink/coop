@@ -13,7 +13,6 @@ import {GroupService} from "../../core/services/group-service/group.service";
 })
 export class SettingsMenu {
     isOpen: boolean;
-    event: any;
     localEvent: any;
     listener: any;
 
@@ -27,6 +26,7 @@ export class SettingsMenu {
     }
     toggleSettings() {
         this.isOpen = !this.isOpen;
+        console.log('Toggling the settings menu;');
         if (this.isOpen) {
             this.listener = this.renderer.listenGlobal('document', 'click', (event: any) => {
                 if (event.target.tagName !== this.localEvent.target.tagName) {

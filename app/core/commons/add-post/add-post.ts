@@ -1,8 +1,8 @@
-"use strict";
+ "use strict";
 
 import {Component, Input, Output, EventEmitter} from "angular2/core";
 import {FORM_DIRECTIVES} from "angular2/common";
-import {LoginService} from '../../services/login-service/login.service';
+import {AccountService} from '../../services/account-service/account.service';
 import {GroupService} from '../../services/group-service/group.service';
 
 @Component({
@@ -11,7 +11,7 @@ import {GroupService} from '../../services/group-service/group.service';
 	directives: [FORM_DIRECTIVES]
 })
 export class AddPost {
-  constructor(public groupService: GroupService, public loginService: LoginService) {
+  constructor(public groupService: GroupService, public accountService: AccountService) {
 		console.log("Add Post component loaded");
 	}
   addPost(input:any) {
@@ -22,10 +22,10 @@ export class AddPost {
       this.groupService.postInfo[randomID].id = randomID;
       new_post['content'] = input.value;
       this.groupService.postInfo[randomID].content = input.value;
-      new_post['author'] = this.loginService.fullName;
+      new_post['author'] = this.accountService.fullName;
       new_post['comments'] = [];
       this.groupService.postInfo[randomID].comments = [];
-      this.groupService.postInfo[randomID].author = this.loginService.fullName;
+      this.groupService.postInfo[randomID].author = this.accountService.fullName;
       this.groupService.groupInfo[this.groupService.currentGroupID].posts.unshift(new_post);
       input.value = '';
   }
