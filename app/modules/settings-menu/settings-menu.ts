@@ -21,7 +21,7 @@ export class SettingsMenu {
         this.localEvent = event;
     }
 
-    constructor(public accountService: AccountService, public loginService: LoginService, public groupService: GroupService, private router: Router, private renderer: Renderer) {
+    constructor(public accountService: AccountService, public loginService: LoginService, public groupService: GroupService, public router: Router, private renderer: Renderer) {
 
     }
     toggleSettings() {
@@ -40,5 +40,9 @@ export class SettingsMenu {
     }
     handleOutsideClick() {
         this.toggleSettings();
+    }
+    userLogout() {
+        this.loginService.isLoggedIn = false;
+        this.router.navigate(['Login']);
     }
 }

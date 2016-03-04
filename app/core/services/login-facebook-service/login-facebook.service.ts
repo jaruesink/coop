@@ -17,19 +17,21 @@ export class FacebookLoginService {
                 console.log(response.authResponse.accessToken);
                 alert('You are already logged in.');
             } else {
-                this.FB.login(function(response: any) {
-                    if (response.authResponse) {
-                        console.log('Welcome!  Fetching your information.... ');
-                        this.FB.api('/me', function(response: any) {
-                            this.user = response;
-                            console.log('Good to see you, ' + response.name + '.');
-                        });
-                        return true;
-                    } else {
-                        console.log('User cancelled login or did not fully authorize.');
-                        return false;
-                    }
-                });
+                if (this.FB) {
+                    this.FB.login(function(response: any) {
+                        if (response.authResponse) {
+                            console.log('Welcome!  Fetching your information.... ');
+                            this.FB.api('/me', function(response: any) {
+                                this.user = response;
+                                console.log('Good to see you, ' + response.name + '.');
+                            });
+                            return true;
+                        } else {
+                            console.log('User cancelled login or did not fully authorize.');
+                            return false;
+                        }
+                    });
+                }
             }
         });
     }

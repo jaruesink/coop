@@ -4,5 +4,46 @@
 //
 
 body{
-    background: #f5f5f5;
+    background: $background;
+}
+.nav-tabs .nav-link.active, .nav-tabs .nav-link.active:hover {
+    background: $background;
+}
+
+main .btn, #logout .btn{
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: .02rem;
+}
+
+.group-list, .post-list, .comment-list{
+    .card{border-radius: 0; background: white;}
+    .card-header{
+      border-bottom: 0;
+      padding-bottom: 0;
+      background: white;
+    }
+    .card-block{
+        padding: .25rem .75rem 0;
+    }
+    .card-footer{
+        border-top: 0;
+        padding: .25rem .75rem;
+        font-size:12px;
+        letter-spacing: .02rem;
+        background: white;
+    }
+}
+
+.nav-tabs.nav-justified {
+  width: 100%;
+  white-space: nowrap;
+  text-align: center;
+  .nav-item{
+    display: inline-block;
+    width: 50%;
+    &:last-child{ width:48%; }
+  }
 }
