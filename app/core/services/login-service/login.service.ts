@@ -14,7 +14,7 @@ export class LoginService {
     username: string;
     fullName: string;
     userEmail: string;
-    constructor(private router: Router, public facebookLoginService: FacebookLoginService) {
+    constructor(public router: Router, public facebookLoginService: FacebookLoginService) {
         console.log('Login service is loaded.');
         if (this.isLoggedIn) {
             this.userNumber = '(512) 450-8236';
@@ -23,10 +23,14 @@ export class LoginService {
             this.userEmail = 'jaruesink@gmail.com';
         }
     }
-    loginAccount() {
-        //to do 
-    }
     registerAccount() {
         //to do
+    }
+    userLogin() {
+        //to do 
+    }
+    userLogout() {
+        this.isLoggedIn = false;
+        this.router.navigate(['Login']);
     }
 }

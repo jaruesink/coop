@@ -45,7 +45,7 @@ import {LoginService} from "../core/services/login-service/login.service";
     { path: "/:group_id/:post_id", component: Post, as: "Post", data: undefined }
 ])
 export class App {
-    constructor(loginService:LoginService, router:Router, private location:Location) {
+    constructor(public loginService:LoginService, public router:Router, private location:Location) {
         console.log("Application bootstrapped!");
         if (!loginService.isLoggedIn) {
             router.navigate(['/Login']);

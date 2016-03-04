@@ -41,8 +41,4 @@ export class SettingsMenu {
     handleOutsideClick() {
         this.toggleSettings();
     }
-    userLogout() {
-        this.loginService.isLoggedIn = false;
-        this.router.navigate(['Login']);
-    }
 }
