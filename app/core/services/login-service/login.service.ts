@@ -27,7 +27,7 @@ export class LoginService {
         //to do
     }
     userLogin() {
-        //to do 
+        this.router.navigate(['Home']);
     }
     userLogout() {
         this.isLoggedIn = false;

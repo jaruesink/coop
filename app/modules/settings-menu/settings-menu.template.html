@@ -1,8 +1,8 @@
 <div id="settings" class="btn-group" [ngClass]="{open: isOpen}">
   <button type="button" class="btn btn-primary dropdown-toggle" (click)="toggleSettings()">
-    <i class="fa fa-gear fa-lg"></i>settings
+    <i class="fa fa-gear fa-lg"></i>
   </button>
-  <div class="dropdown-menu dropdown-menu-right">
+  <div class="dropdown-menu dropdown-menu-right animated" [ngClass]="{fadeInDown: isOpen}">
     <a class="dropdown-item" href="#">Action</a>
     <a class="dropdown-item" href="#">Another action</a>
     <a class="dropdown-item" href="#">Something else here</a>

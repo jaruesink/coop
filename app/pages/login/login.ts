@@ -20,7 +20,7 @@ export class Login {
     constructor(public loginService: LoginService, public accountService: AccountService, private router: Router, public facebookLoginService: FacebookLoginService) {
         console.log("Login component loaded");
         // Check if logged in
-        if (this.FB) {
+        if (this.FB && this.loginService.isLoggedIn) {
             this.FB.getLoginStatus(function(response: any) {
                 if (response.status === 'connected') {
                     console.log(response.authResponse.accessToken);

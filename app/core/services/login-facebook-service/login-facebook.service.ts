@@ -8,14 +8,14 @@ import {RouteConfig, Route, RouterOutlet, RouterLink, Router} from "angular2/rou
 export class FacebookLoginService {
     FB: any = window.FB;
     user: any;
-    constructor(private router:Router) {
+    constructor() {
         console.log('Facebook login service is loaded.');
     }
     loginWithFacebook() {
         this.FB.getLoginStatus(function(response: any) {
             if (response.status === 'connected') {
                 console.log(response.authResponse.accessToken);
-                alert('You are already logged in.');
+                return true;
             } else {
                 if (this.FB) {
                     this.FB.login(function(response: any) {

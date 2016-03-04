@@ -4,7 +4,7 @@
 
         <a id="brand" *ngIf="!loginService.isLoggedIn || !groupService.currentGroupID" class="navbar-brand">Coop <img src="../../../images/cooper.png"></a>
 
-        <a id="go_back" *ngIf="loginService.isLoggedIn && groupService.currentGroupID" class="btn btn-primary" (click)="goBack()"><i class="fa fa-arrow-left fa-lg"></i>back</a>
+        <a id="go_back" *ngIf="loginService.isLoggedIn && groupService.currentGroupID" class="btn btn-primary" (click)="goBack()"><i class="fa fa-arrow-left fa-lg"></i></a>
 
         <div id="user_name" *ngIf="loginService.isLoggedIn && groupService.currentGroupID">{{groupService.groupInfo[groupService.currentGroupID].name}}</div>
         <div id="group_name" *ngIf="loginService.isLoggedIn && !groupService.currentGroupID">{{accountService.fullName}}</div>

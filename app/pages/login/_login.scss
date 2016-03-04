@@ -1,8 +1,8 @@
 .login-page{
     max-width:320px;
-    .nav-tabs{
-        white-space: nowrap;
-        overflow: visible;
+    .nav-tabs .nav-link:hover{background: white;}
+    .nav-tabs .nav-link.active, .nav-tabs .nav-link.active:hover {
+        background: $background;
     }
     .nav-item{
         display: inline-block;
@@ -22,7 +22,7 @@ hr.or:before{
     text-align: center;
     width: 30px;
     margin: 0 auto;
-    background: white;
+    background: $background;
     position: relative;
     line-height: 14px;
     font-size: 14px;
