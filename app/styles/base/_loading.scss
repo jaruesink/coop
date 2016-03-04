@@ -1,202 +1,90 @@
-.loading,
-.loading > div {
-    position: relative;
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
+.cs-loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
 }
-.loading {
-    display: block;
-    font-size: 0;
-    color: #333;
-    margin: 0 auto;
+
+.cs-loader-inner {
+  top: 20%;
+  position: absolute;
+  width: 100%;
+  color: #0275d8;
+  padding: 0 100px;
+  text-align: center;
 }
-.loading > div {
-    display: inline-block;
-    float: none;
-    background-color: currentColor;
-    border: 0 solid currentColor;
+
+.cs-loader-inner > div {
+  font-size: 20px;
+  opacity: 0;
+  display:inline-block;
 }
-.loading {
-    width: 54px;
-    height: 18px;
-}
-.loading > div {
-    width: 10px;
-    height: 10px;
-    margin: 4px;
-    border-radius: 100%;
+
+@keyframes lol {
+  0% {
     opacity: 0;
-    -webkit-animation: ball-fall 1s ease-in-out infinite;
-       -moz-animation: ball-fall 1s ease-in-out infinite;
-         -o-animation: ball-fall 1s ease-in-out infinite;
-            animation: ball-fall 1s ease-in-out infinite;
+    transform: translateX(-300px);
+  }
+  33% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+  66% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(300px);
+  }
 }
-.loading > div:nth-child(1) {
-    -webkit-animation-delay: -200ms;
-       -moz-animation-delay: -200ms;
-         -o-animation-delay: -200ms;
-            animation-delay: -200ms;
+
+@-webkit-keyframes lol {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-300px);
+  }
+  33% {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+  }
+  66% {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateX(300px);
+  }
 }
-.loading > div:nth-child(2) {
-    -webkit-animation-delay: -100ms;
-       -moz-animation-delay: -100ms;
-         -o-animation-delay: -100ms;
-            animation-delay: -100ms;
+
+.cs-loader-inner > div:nth-child(6) {
+  -webkit-animation: lol 3s infinite ease-in-out;
+  animation: lol 3s 500ms infinite ease-in-out;
 }
-.loading > div:nth-child(3) {
-    -webkit-animation-delay: 0ms;
-       -moz-animation-delay: 0ms;
-         -o-animation-delay: 0ms;
-            animation-delay: 0ms;
+
+.cs-loader-inner > div:nth-child(5) {
+  -webkit-animation: lol 3s 100ms infinite ease-in-out;
+  animation: lol 3s 600ms infinite ease-in-out;
 }
-.loading.la-sm {
-    width: 26px;
-    height: 8px;
+
+.cs-loader-inner > div:nth-child(4) {
+  -webkit-animation: lol 3s 200ms infinite ease-in-out;
+  animation: lol 3s 700ms infinite ease-in-out;
 }
-.loading.la-sm > div {
-    width: 4px;
-    height: 4px;
-    margin: 2px;
+
+.cs-loader-inner > div:nth-child(3) {
+  -webkit-animation: lol 3s 300ms infinite ease-in-out;
+  animation: lol 3s 800ms infinite ease-in-out;
 }
-.loading.la-md {
-    width: 108px;
-    height: 36px;
+
+.cs-loader-inner > div:nth-child(2) {
+  -webkit-animation: lol 3s 400ms infinite ease-in-out;
+  animation: lol 3s 900ms infinite ease-in-out;
 }
-.loading.la-md > div {
-    width: 20px;
-    height: 20px;
-    margin: 8px;
-}
-.loading.la-lg {
-    width: 162px;
-    height: 54px;
-}
-.loading.la-lg > div {
-    width: 30px;
-    height: 30px;
-    margin: 12px;
-}
-/*
- * Animation
- */
-@-webkit-keyframes ball-fall {
-    0% {
-        opacity: 0;
-        -webkit-transform: translateY(-145%);
-                transform: translateY(-145%);
-    }
-    10% {
-        opacity: .5;
-    }
-    20% {
-        opacity: 1;
-        -webkit-transform: translateY(0);
-                transform: translateY(0);
-    }
-    80% {
-        opacity: 1;
-        -webkit-transform: translateY(0);
-                transform: translateY(0);
-    }
-    90% {
-        opacity: .5;
-    }
-    100% {
-        opacity: 0;
-        -webkit-transform: translateY(145%);
-                transform: translateY(145%);
-    }
-}
-@-moz-keyframes ball-fall {
-    0% {
-        opacity: 0;
-        -moz-transform: translateY(-145%);
-             transform: translateY(-145%);
-    }
-    10% {
-        opacity: .5;
-    }
-    20% {
-        opacity: 1;
-        -moz-transform: translateY(0);
-             transform: translateY(0);
-    }
-    80% {
-        opacity: 1;
-        -moz-transform: translateY(0);
-             transform: translateY(0);
-    }
-    90% {
-        opacity: .5;
-    }
-    100% {
-        opacity: 0;
-        -moz-transform: translateY(145%);
-             transform: translateY(145%);
-    }
-}
-@-o-keyframes ball-fall {
-    0% {
-        opacity: 0;
-        -o-transform: translateY(-145%);
-           transform: translateY(-145%);
-    }
-    10% {
-        opacity: .5;
-    }
-    20% {
-        opacity: 1;
-        -o-transform: translateY(0);
-           transform: translateY(0);
-    }
-    80% {
-        opacity: 1;
-        -o-transform: translateY(0);
-           transform: translateY(0);
-    }
-    90% {
-        opacity: .5;
-    }
-    100% {
-        opacity: 0;
-        -o-transform: translateY(145%);
-           transform: translateY(145%);
-    }
-}
-@keyframes ball-fall {
-    0% {
-        opacity: 0;
-        -webkit-transform: translateY(-145%);
-           -moz-transform: translateY(-145%);
-             -o-transform: translateY(-145%);
-                transform: translateY(-145%);
-    }
-    10% {
-        opacity: .5;
-    }
-    20% {
-        opacity: 1;
-        -webkit-transform: translateY(0);
-           -moz-transform: translateY(0);
-             -o-transform: translateY(0);
-                transform: translateY(0);
-    }
-    80% {
-        opacity: 1;
-        -webkit-transform: translateY(0);
-           -moz-transform: translateY(0);
-             -o-transform: translateY(0);
-                transform: translateY(0);
-    }
-    90% {
-        opacity: .5;
-    }
-    100% {
-        opacity: 0;
-        -webkit-transform: translateY(145%);
-           -moz-transform: translateY(145%);
-             -o-transform: translateY(145%);
-                transform: translateY(145%);
-    }
+
+.cs-loader-inner > div:nth-child(1) {
+  -webkit-animation: lol 3s 500ms infinite ease-in-out;
+  animation: lol 3s 1000ms infinite ease-in-out;
 }
