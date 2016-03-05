@@ -31,14 +31,19 @@ export class SettingsMenu {
             this.listener = this.renderer.listenGlobal('document', 'click', (event: any) => {
                 if (event.target.tagName !== this.localEvent.target.tagName) {
                     event.preventDefault();
-                    this.handleOutsideClick();
+                    this.handleClick(event);
+                } else if ( event.target.className == "dropdown-item" ) {
+                  this.handleClick(event);
+                } else {
+                  //does nothing
                 }
             });
         } else {
             this.listener();
         }
     }
-    handleOutsideClick() {
+    handleClick(event:any) {
+        console.log(event.target.className);
         this.toggleSettings();
     }
 }

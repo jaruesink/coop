@@ -11,6 +11,7 @@ import {RouteConfig, Route, RouterOutlet, RouterLink, Router, Location} from "an
 // app pages
 import {Register} from "../pages/register/register";
 import {Login} from "../pages/login/login";
+import {NotConnected} from "../pages/not-connected/not-connected";
 import {VerifyRegistration} from "../pages/verify-registration/verify-registration";
 import {CreateAccount} from "../pages/create-account/create-account";
 import {VerifyAccount} from "../pages/verify-account/verify-account";
@@ -35,6 +36,7 @@ import {LoginService} from "../core/services/login-service/login.service";
 @RouteConfig([
     { path: "/register", component: Register, as: "Register", data: undefined },
     { path: "/login", component: Login, as: "Login", data: undefined, useAsDefault: true },
+    { path: "/not-connected", component: NotConnected, as: "NotConnected", data: undefined},
     { path: "/verify-registration", component: VerifyRegistration, as: "VerifyRegistration", data: undefined },
     { path: "/create-account", component: CreateAccount, as: "CreateAccount", data: undefined },
     { path: "/verify-account", component: VerifyAccount, as: "VerifyAccount", data: undefined },

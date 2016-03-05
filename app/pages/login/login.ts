@@ -31,12 +31,17 @@ export class Login {
         }
     }
     facebookLogin() {
-        this.facebookLoginService.loginWithFacebook();
-        if ( this.FB.getAuthResponse() ) {
-            this.loginService.isLoggedIn = true;
-            this.loginService.userLogin();
+        if ( this.FB ) {
+          this.facebookLoginService.loginWithFacebook();
+          if ( this.FB.getAuthResponse() ) {
+              this.loginService.isLoggedIn = true;
+              this.loginService.userLogin();
+          } else {
+              console.log('Facebook Login user not returned.');
+          }
         } else {
-            console.log('Facebook Login user not returned.');
+          // not connected to internet
+          this.router.navigate(['/NotConnected']);
         }
     }
     facebookLogout() {
