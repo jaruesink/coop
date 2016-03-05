@@ -32,10 +32,9 @@ export class Login {
     }
     facebookLogin() {
         this.facebookLoginService.loginWithFacebook();
-        if ( this.facebookLoginService.user ) {
+        if ( this.FB.getAuthResponse() ) {
             this.loginService.isLoggedIn = true;
-            this.accountService.fullName = this.facebookLoginService.user.name;
-            this.router.navigate(['Home']);
+            this.loginService.userLogin();
         } else {
             console.log('Facebook Login user not returned.');
         }

@@ -14,16 +14,17 @@ export class FacebookLoginService {
     loginWithFacebook() {
         this.FB.getLoginStatus(function(response: any) {
             if (response.status === 'connected') {
-                console.log(response.authResponse.accessToken);
-                return true;
+              console.log('You are already logged in.');
+              this.userID = response.authResponse.userID;
+              return true;
             } else {
                 if (this.FB) {
                     this.FB.login(function(response: any) {
                         if (response.authResponse) {
-                            console.log('Welcome!  Fetching your information.... ');
                             this.FB.api('/me', function(response: any) {
-                                this.user = response;
-                                console.log('Good to see you, ' + response.name + '.');
+                                this.userID = response.id;
+                                this.userName = response.name
+                                console.log('You are logged in as: ', response.name);
                             });
                             return true;
                         } else {
