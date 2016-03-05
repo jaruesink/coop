@@ -18,6 +18,7 @@ import {VerifyAccount} from "../pages/verify-account/verify-account";
 import {EditAccount} from "../pages/edit-account/edit-account";
 import {Home} from "../pages/home/home";
 import {CreateGroup} from "../pages/create-group/create-group";
+import {EditGroup} from "../pages/edit-group/edit-group";
 import {Group} from "../pages/group/group";
 import {Post} from "../pages/post/post";
 
@@ -40,9 +41,10 @@ import {LoginService} from "../core/services/login-service/login.service";
     { path: "/verify-registration", component: VerifyRegistration, as: "VerifyRegistration", data: undefined },
     { path: "/create-account", component: CreateAccount, as: "CreateAccount", data: undefined },
     { path: "/verify-account", component: VerifyAccount, as: "VerifyAccount", data: undefined },
+    { path: "/edit-account", component: EditAccount, as: "EditAccount", data: undefined},
     { path: "/", component: Home, as: "Home", data: undefined },
     { path: "/create-group", component: CreateGroup, as: "CreateGroup", data: undefined },
-    { path: "/edit-account", component: EditAccount, as: "EditAccount", data: undefined},
+    { path: "/edit-group", component: EditGroup, as: "EditGroup", data: undefined},
     { path: "/:group_id", component: Group, as: "Group", data: undefined },
     { path: "/:group_id/:post_id", component: Post, as: "Post", data: undefined }
 ])
