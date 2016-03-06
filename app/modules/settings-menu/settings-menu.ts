@@ -32,10 +32,8 @@ export class SettingsMenu {
                 if (event.target.tagName !== this.localEvent.target.tagName) {
                     event.preventDefault();
                     this.handleClick(event);
-                } else if ( event.target.className == "dropdown-item" ) {
+                } else if ( event.target.className === "dropdown-item" ) {
                   this.handleClick(event);
-                } else {
-                  //does nothing
                 }
             });
         } else {
