@@ -13,5 +13,7 @@ export class GroupList {
 
     constructor(private groupService: GroupService) {
         console.log("Group list component loaded");
+        console.log(this.groupService);
+        // for some reason when logging in with facebook, the group list isn't populate with the data, but the log works still?
     }
 }

@@ -44,4 +44,8 @@ export class SettingsMenu {
         console.log(event.target.className);
         this.toggleSettings();
     }
+    logOut() {
+        this.toggleSettings();
+        this.loginService.userLogout();
+    }
 }

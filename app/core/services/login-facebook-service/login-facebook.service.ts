@@ -12,7 +12,8 @@ export class FacebookLoginService {
         console.log('Facebook login service is loaded.');
     }
     loginWithFacebook() {
-        var loginService = this.loginService
+        if (this.FB) {
+        var loginService = this.loginService;
           this.FB.getLoginStatus(function(response: any) {
               if (response.status === 'connected') {
                 console.log('You are already logged in.');
@@ -35,17 +36,24 @@ export class FacebookLoginService {
                   }
               }
             });
-        }
-    logoutOfFacebook() {
-        if (this.FB.getAccessToken()) {
-            this.FB.logout(function(response:any) {
-                console.log('You are now logged out.');
-            });
         } else {
-            console.log('You are already logged out.');
+            this.router.navigate(['NotConnected']);
         }
     }
-    public registerWithFacebook() {
+    logoutOfFacebook() {
+        if (this.FB) {
+            if (this.FB.getAccessToken()) {
+                this.FB.logout(function(response:any) {
+                    console.log('You are now logged out.');
+                });
+            } else {
+                console.log('You are already logged out.');
+            }
+        } else {
+            this.router.navigate(['NotConnected']);
+        }
+    }
+    registerWithFacebook() {
         //to do
     }
 }

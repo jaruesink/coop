@@ -30,11 +30,7 @@ export class Login {
     }
     facebookLogin() {
         if ( this.FB ) {
-          if ( this.facebookLoginService.loginWithFacebook() ) {
-              this.loginService.userLogin();
-          } else {
-              console.log('Facebook Login user not returned.');
-          }
+            this.facebookLoginService.loginWithFacebook();
         } else {
           // not connected to internet
           this.router.navigate(['/NotConnected']);
