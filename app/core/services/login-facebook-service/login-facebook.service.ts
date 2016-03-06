@@ -17,28 +17,36 @@ export class FacebookLoginService {
           this.FB.getLoginStatus(function(response: any) {
               if (response.status === 'connected') {
                 console.log('You are already logged in.');
-                loginService.userLogin();
-                return true;
+                loginService.userLogin('fb');
               } else {
-                  if (this.FB) {
-                      this.FB.login(function(response: any) {
-                          if (response.authResponse) {
-                              this.FB.api('/me', function(response: any) {
-                                  console.log('You are logged in as: ', response.name);
-                                  loginService.userLogin();
-                              });
-                              return true;
-                          } else {
-                              console.log('User cancelled login or did not fully authorize.');
-                              return false;
-                          }
-                      });
-                  }
+                  this.FB.login(function(response: any) {
+                      if (response.authResponse) {
+                          this.FB.api('/me', function(response: any) {
+                              console.log('You are logged in as: ', response.name);
+                              loginService.userLogin('fb');
+                          });
+                      } else {
+                          console.log('User cancelled login or did not fully authorize.');
+                      }
+                  });
               }
             });
         } else {
             this.router.navigate(['NotConnected']);
         }
+    }
+    getInfo() {
+        var info = { name: '' };
+        if (this.FB) {
+            this.FB.api('/me', function(response: any) {
+                console.log(response);
+                console.log('You are logged in as: ', response.name);
+                info.name = response.name;
+            });
+        } else {
+            this.router.navigate(['NotConnected']);
+        }
+        return info;
     }
     logoutOfFacebook() {
         if (this.FB) {

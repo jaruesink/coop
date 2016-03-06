@@ -17,7 +17,4 @@ export class Register {
     constructor(public loginService:LoginService, private router:Router) {
         console.log("Register component loaded");
     }
-    userLogin() {
-        this.loginService.registerAccount();
-    }
 }

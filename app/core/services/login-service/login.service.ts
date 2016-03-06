@@ -8,6 +8,8 @@ import {AccountService} from "../account-service/account.service";
 @Injectable()
 export class LoginService {
     isLoggedIn: boolean = false;
+    accountExists: boolean = false;
+    loginType: string;
     userNumber: string;
     username: string;
     fullName: string;
@@ -21,12 +23,14 @@ export class LoginService {
             this.userEmail = 'jaruesink@gmail.com';
         }
     }
-    registerAccount() {
-        //to do
-    }
-    userLogin() {
-        this.isLoggedIn = true;
-        this.router.navigate(['Home']);
+    userLogin(type:string) {
+        this.loginType = type;
+        if ( this.accountExists ) {
+            this.isLoggedIn = true;
+            this.router.navigate(['Home']);
+        } else {
+            this.router.navigate(['CreateAccount']);
+        }
     }
     userLogout() {
         this.isLoggedIn = false;
