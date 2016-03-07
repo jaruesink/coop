@@ -18,15 +18,15 @@ export class CreateAccount {
     userNumber: string;
     email: string;
     constructor(public accountService: AccountService, public loginService: LoginService, private router: Router, public facebookLoginService: FacebookLoginService) {
-        this.facebookLoginService.getInfo(function (info: any) {
+        this.facebookLoginService.getInfo( (info: any) => {
             console.log("Create account component loaded");
-            console.log(info);
+            this.fullName = info.name;
         });
     }
     saveProfile() {
         this.accountService.username   = this.username;
         this.accountService.fullName   = this.fullName;
-        this.accountService.userEmail = this.email;
+        this.accountService.userEmail  = this.email;
         this.accountService.userNumber = this.userNumber;
         this.router.navigate(['/Home']);
     }

@@ -8,6 +8,7 @@ import {LoginService} from "../login-service/login.service";
 @Injectable()
 export class FacebookLoginService {
     FB: any = window.FB;
+    public userInfo: any;
     constructor(private router:Router, public loginService:LoginService) {
         console.log('Facebook login service is loaded.');
     }
@@ -21,14 +22,11 @@ export class FacebookLoginService {
               } else {
                   this.FB.login(function(response: any) {
                       if (response.authResponse) {
-                          this.FB.api('/me', function(response: any) {
-                              console.log('You are logged in as: ', response.name);
-                              loginService.userLogin('fb');
-                          });
+                          loginService.userLogin('fb');
                       } else {
                           console.log('User cancelled login or did not fully authorize.');
                       }
-                  });
+                  }, {scope: 'public_profile, email'});
               }
             });
         } else {
@@ -36,13 +34,12 @@ export class FacebookLoginService {
         }
     }
     getInfo(sendInfo: any) {
-        var info = { name: '' };
         if (this.FB) {
-            this.FB.api('/me', function(response: any) {
-                console.log(response);
-                console.log('You are logged in as: ', response.name);
-                info.name = response.name;
-                sendInfo(info);
+            this.FB.api('/me', (response: any) => {
+                console.log('You are logged in as: ');
+                console.log(JSON.stringify(response));
+                this.userInfo = response;
+                sendInfo(this.userInfo);
             });
         } else {
             this.router.navigate(['NotConnected']);
