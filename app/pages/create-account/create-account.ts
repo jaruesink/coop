@@ -21,6 +21,8 @@ export class CreateAccount {
         this.facebookLoginService.getInfo( (info: any) => {
             console.log("Create account component loaded");
             this.fullName = info.name;
+            // How do I get the email to come in through info?
+            // In facebookLoginService, I should be calling the correct scope. 
         });
     }
     saveProfile() {
