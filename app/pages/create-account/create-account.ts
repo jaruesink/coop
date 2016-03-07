@@ -18,10 +18,10 @@ export class CreateAccount {
     userNumber: string;
     email: string;
     constructor(public accountService: AccountService, public loginService: LoginService, private router: Router, public facebookLoginService: FacebookLoginService) {
-        console.log("Create account component loaded");
-        var info = this.facebookLoginService.getInfo();
-        console.log(info);
-        //how do I get info to be an object returned by this.facebookLoginService.getInfo();
+        this.facebookLoginService.getInfo(function (info: any) {
+            console.log("Create account component loaded");
+            console.log(info);
+        });
     }
     saveProfile() {
         this.accountService.username   = this.username;
