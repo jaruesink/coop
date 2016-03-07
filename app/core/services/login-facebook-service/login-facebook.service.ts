@@ -35,18 +35,18 @@ export class FacebookLoginService {
             this.router.navigate(['NotConnected']);
         }
     }
-    getInfo() {
+    getInfo(sendInfo: any) {
         var info = { name: '' };
         if (this.FB) {
             this.FB.api('/me', function(response: any) {
                 console.log(response);
                 console.log('You are logged in as: ', response.name);
                 info.name = response.name;
+                sendInfo(info);
             });
         } else {
             this.router.navigate(['NotConnected']);
         }
-        return info;
     }
     logoutOfFacebook() {
         if (this.FB) {
