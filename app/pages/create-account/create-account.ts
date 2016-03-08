@@ -5,11 +5,12 @@ import {ROUTER_DIRECTIVES, Router} from "angular2/router";
 import {LoginService} from "../../core/services/login-service/login.service";
 import {AccountService} from "../../core/services/account-service/account.service";
 import {FacebookLoginService} from "../../core/services/login-facebook-service/login-facebook.service";
+import {PhoneInput} from "../../core/commons/phone-input/phone-input";
 
 @Component({
     selector: "page-create-account",
     templateUrl: "pages/create-account/create-account.template.html",
-    directives: [ROUTER_DIRECTIVES]
+    directives: [ROUTER_DIRECTIVES, PhoneInput]
 })
 export class CreateAccount {
     FB: any = window.FB;
@@ -22,8 +23,9 @@ export class CreateAccount {
             console.log("Create account component loaded");
             this.fullName = info.name;
             // How do I get the email to come in through info?
-            // In facebookLoginService, I should be calling the correct scope. 
+            // In facebookLoginService, I should be calling the correct scope.
         });
+        // To Do: When we get phone numbers we need to sanitize them to (###) ###-#### and set them to this.userNumber
     }
     saveProfile() {
         this.accountService.username   = this.username;

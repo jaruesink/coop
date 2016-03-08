@@ -4,22 +4,22 @@ import {Component, Input, Output, EventEmitter} from "angular2/core";
 import {FORM_DIRECTIVES} from "angular2/common";
 
 @Component({
-	selector: "phone-input",
-	templateUrl: "../core/commons/phone-input/phone-input.template.html",
-	directives: [FORM_DIRECTIVES]
+    selector: "phone-input",
+    templateUrl: "../core/commons/phone-input/phone-input.template.html",
+    directives: [FORM_DIRECTIVES]
 })
 export class PhoneInput {
   @Input() focusFirst:boolean;
   @Input() userNumber:string;
   @Input() disabled:boolean;
   @Output() phoneNumberChanged = new EventEmitter<string>();
-  userAreaCode: number;
-  userFirstThree: number;
-  userLastFour: number;
-  phoneNumber: string;
-	constructor() {
-		console.log("Phone input component loaded");
-	}
+    userAreaCode: number;
+    userFirstThree: number;
+    userLastFour: number;
+    phoneNumber: string;
+    constructor() {
+        console.log("Phone input component loaded");
+    }
   ngOnInit() {
     if(this.userNumber) {
       this.userAreaCode   = parseInt(this.userNumber.slice(1,4));
