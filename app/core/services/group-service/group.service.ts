@@ -32,8 +32,9 @@ export class GroupService {
         this.groupInfo = {
             "sampleGroupID1": {
                 "name": "NeteGreek",
+                "admins": [{"id": "1", "username": "jaruesink", "name": "Jake Ruesink", "photo_url": "http://photourl.com"}],
                 "description": "This is just a test group, I'm trying to figure out how things will look.",
-                "members": ["Jake Ruesink", "Derek Wene"],
+                "members": [{"username": "jaruesink", "name": "Jake Ruesink"}, {"username": "djrobotfreak", "name": "Derek Wene"}],
                 "posts": [
                     {
                         "id": "samplePostID1",

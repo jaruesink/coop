@@ -10,12 +10,20 @@ import {GroupService} from "../../core/services/group-service/group.service";
     directives: [ROUTER_DIRECTIVES]
 })
 export class EditGroup {
-    username: string;
+    name: string;
+    description: string;
     constructor(public groupService:GroupService, private router:Router) {
-      console.log("Edit group component loaded");
-
+        console.log("Edit group component loaded");
+        if (this.groupService.currentGroupID) {
+            this.name = this.groupService.groupInfo[this.groupService.currentGroupID].name;
+            this.description = this.groupService.groupInfo[this.groupService.currentGroupID].description;
+        } else {
+            this.router.navigate(['Home']);
+        }
     }
     saveGroup() {
-      return;
+        this.groupService.groupInfo[this.groupService.currentGroupID].name = this.name;
+        this.groupService.groupInfo[this.groupService.currentGroupID].description = this.description;
+        this.router.navigate(['Group', {group_id: this.groupService.currentGroupID}]);
     }
 }

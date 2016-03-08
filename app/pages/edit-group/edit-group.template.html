@@ -5,13 +5,13 @@
     <div class="row">
     <fieldset class="form-group col-sm-9 ">
         <label for="groupName">Group Name</label>
-        <input type="text" class="form-control" id="groupName" [(ngModel)]="groupName">
+        <input type="text" class="form-control" id="groupName" [(ngModel)]="name">
     </fieldset>
     </div>
     <div class="row">
     <fieldset class="form-group col-sm-9 ">
         <label for="groupDescription">Description</label>
-        <textarea type="text" class="form-control" id="groupDescription" [(ngModel)]="groupDescription"></textarea>
+        <textarea type="text" class="form-control" id="groupDescription" [(ngModel)]="description"></textarea>
     </fieldset>
     </div>
     <div class="row">
@@ -19,7 +19,7 @@
             <button class="btn btn-success btn-block m-t-1" type="submit">Save</button>
         </div>
         <div class="col-xs-6 col-sm-3">
-            <a class="btn btn-danger btn-block m-t-1" [routerLink]="['/Home']">Cancel</a>
+            <a class="btn btn-danger btn-block m-t-1" [routerLink]="['/Group', {group_id: groupService.currentGroupID}]">Cancel</a>
         </div>
     </div>
 </form>
