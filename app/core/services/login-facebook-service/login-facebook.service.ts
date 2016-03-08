@@ -36,7 +36,7 @@ export class FacebookLoginService {
             });
             // Store info in service
             this.token = this.response.authResponse.accessToken;
-            this.FB.api('/me', (response: any) => {
+            this.FB.api('/me?fields=name,email,id', (response: any) => {
                 console.log('You are logged in as: ');
                 this.name = response.name;
                 this.id = response.id;
