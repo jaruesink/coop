@@ -35,7 +35,7 @@ export class FacebookLoginService {
     }
     getInfo(sendInfo: any) {
         if (this.FB) {
-            this.FB.api('/me', (response: any) => {
+            this.FB.api('/me?fields=name,email,id', (response: any) => {
                 console.log('You are logged in as: ');
                 console.log(JSON.stringify(response));
                 this.userInfo = response;
