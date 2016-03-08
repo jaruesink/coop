@@ -1,7 +1,7 @@
 <div class="container create-profile">
 <div class="card card-block">
 <h1 class="card-title">Create  Account</h1>
-<form (ngSubmit)="saveProfile()" >
+<form (ngSubmit)="createProfile()" >
     <div class="row">
     <fieldset class="form-group col-sm-9">
         <label for="fullName">Full Name</label>
@@ -11,7 +11,7 @@
     <div class="row">
     <fieldset class="form-group col-sm-9">
         <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" [(ngModel)]="username" required>
+        <input type="text" class="form-control" id="username" [(ngModel)]="username" pattern="^[a-zA-Z0-9\_\-\.]{4,16}$" required>
     </fieldset>
     </div>
     <div class="row">

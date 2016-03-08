@@ -19,19 +19,13 @@ export class CreateAccount {
     userNumber: string;
     email: string;
     constructor(public accountService: AccountService, public loginService: LoginService, private router: Router, public facebookLoginService: FacebookLoginService) {
-        this.facebookLoginService.getInfo( (info: any) => {
-            console.log("Create account component loaded");
-            this.fullName = info.name;
-            // How do I get the email to come in through info?
-            // In facebookLoginService, I should be calling the correct scope.
-        });
-        // To Do: When we get phone numbers we need to sanitize them to (###) ###-#### and set them to this.userNumber
+        console.log("Create account component loaded");
+        // To Do: Figure out the best way to load user info into the fields here.
+        // Future: When we get phone numbers we need to sanitize them to (###) ###-#### and set them to this.userNumber
     }
-    saveProfile() {
-        this.accountService.username   = this.username;
-        this.accountService.fullName   = this.fullName;
-        this.accountService.userEmail  = this.email;
-        this.accountService.userNumber = this.userNumber;
-        this.router.navigate(['/Home']);
+    createProfile() {
+        if (this.loginService.loginType === 'facebook') {
+
+        }
     }
 }

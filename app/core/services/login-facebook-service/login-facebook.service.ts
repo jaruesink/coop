@@ -8,38 +8,39 @@ import {LoginService} from "../login-service/login.service";
 @Injectable()
 export class FacebookLoginService {
     FB: any = window.FB;
-    public userInfo: any;
+    response: any;
+    token: string;
+    name: string;
+    id: string;
     constructor(private router:Router, public loginService:LoginService) {
         console.log('Facebook login service is loaded.');
     }
     loginWithFacebook() {
         if (this.FB) {
-        var loginService = this.loginService;
-          this.FB.getLoginStatus(function(response: any) {
-              if (response.status === 'connected') {
-                console.log('You are already logged in.');
-                loginService.userLogin('fb');
-              } else {
-                  this.FB.login(function(response: any) {
-                      if (response.authResponse) {
-                          loginService.userLogin('fb');
-                      } else {
-                          console.log('User cancelled login or did not fully authorize.');
-                      }
-                  }, {scope: 'public_profile, email'});
-              }
+            var loginService = this.loginService;
+            this.FB.getLoginStatus( (response: any) => {
+                if (response.status === 'connected') {
+                    console.log('You are already logged in.');
+                    loginService.userLogin('facebook');
+                    this.response = response;
+                } else {
+                    this.FB.login( (response: any) => {
+                        if (response.authResponse) {
+                            loginService.userLogin('facebook');
+                            this.response = response;
+                        } else {
+                            console.log('User cancelled login or did not fully authorize.');
+                        }
+                    }, {scope: 'public_profile, email'});
+                }
             });
-        } else {
-            this.router.navigate(['NotConnected']);
-        }
-    }
-    getInfo(sendInfo: any) {
-        if (this.FB) {
+            // Store info in service
+            this.token = this.response.authResponse.accessToken;
             this.FB.api('/me', (response: any) => {
                 console.log('You are logged in as: ');
+                this.name = response.name;
+                this.id = response.id;
                 console.log(JSON.stringify(response));
-                this.userInfo = response;
-                sendInfo(this.userInfo);
             });
         } else {
             this.router.navigate(['NotConnected']);
