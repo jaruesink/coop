@@ -25,7 +25,7 @@ export class CreateAccount {
     }
     createProfile() {
         if (this.loginService.loginType === 'facebook') {
-
+            this.facebookLoginService.createAccountWithFacebook(this.fullName, this.username, this.email, this.userNumber);
         }
     }
 }

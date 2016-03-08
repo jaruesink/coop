@@ -6,7 +6,7 @@ import {App} from "./app";
 // import Angular 2
 import {bootstrap} from "angular2/bootstrap";
 import {provide, enableProdMode} from "angular2/core";
-import {HTTP_PROVIDERS} from "angular2/http";
+import {HTTP_PROVIDERS, HTTP_BINDINGS} from "angular2/http";
 import {ELEMENT_PROBE_PROVIDERS} from "angular2/platform/common_dom";
 import {appServicesInjectables} from "./services/services";
 
@@ -25,6 +25,7 @@ bootstrap(App, [
 	appServicesInjectables, // alternative way of filling the injector with all the classes we want to be able to inject
 	ROUTER_PROVIDERS,
 	HTTP_PROVIDERS,
+    HTTP_BINDINGS,
 	ELEMENT_PROBE_PROVIDERS, // remove in production
 	provide(LocationStrategy, { useClass: PathLocationStrategy }) // can be switched to HashLocationStrategy if you cannot configure your server appropriately for URL rewriting
 

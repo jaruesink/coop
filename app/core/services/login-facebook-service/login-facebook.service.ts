@@ -4,6 +4,8 @@
 import {Injectable, Inject} from "angular2/core";
 import {RouteConfig, Route, RouterOutlet, RouterLink, Router} from "angular2/router";
 import {LoginService} from "../login-service/login.service";
+import {Http, HTTP_PROVIDERS, Headers} from 'angular2/http';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class FacebookLoginService {
@@ -11,8 +13,12 @@ export class FacebookLoginService {
     response: any;
     token: string;
     name: string;
+    email: string;
     id: string;
-    constructor(private router:Router, public loginService:LoginService) {
+    accountRequest: any;
+    _postUrl: string = 'http://3cf40ea9.ngrok.com/api/auth/register';
+    error: any;
+    constructor(private router:Router, public loginService:LoginService, public http: Http) {
         console.log('Facebook login service is loaded.');
     }
     loginWithFacebook() {
@@ -39,6 +45,7 @@ export class FacebookLoginService {
             this.FB.api('/me?fields=name,email,id', (response: any) => {
                 console.log('You are logged in as: ');
                 this.name = response.name;
+                this.email = response.email;
                 this.id = response.id;
                 console.log(JSON.stringify(response));
             });
@@ -59,7 +66,32 @@ export class FacebookLoginService {
             this.router.navigate(['NotConnected']);
         }
     }
-    registerWithFacebook() {
-        //to do
+    createAccountWithFacebook(name:string, username:string, email:string, phone:string) {
+        console.log(this.loginService.loginType);
+        var accountRequest:any = {};
+        accountRequest['name']        = name;
+        accountRequest['username']    = username;
+        accountRequest['email']       = email;
+        accountRequest['phone']       = phone;
+        accountRequest['photo_url']    = '';
+        accountRequest['credentials'] = {};
+        accountRequest['credentials'].type  = this.loginService.loginType;
+        accountRequest['credentials'].id    = this.id;
+        accountRequest['credentials'].token = this.token;
+        console.log('Account Request Object: ', accountRequest);
+        accountRequest = JSON.stringify(accountRequest);
+        console.log('Account Request String: ', accountRequest);
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        this.http.post(this._postUrl, accountRequest, {
+                    headers: headers
+                    })
+                    .map(response => response.json())
+                    .subscribe(
+                        // To Do: point this data to a login function and set loginService.isLoggedIn = data.auth_token
+                        data => console.log(data),
+                        err => console.log(err),
+                        () => console.log('Account Creation Request Complete')
+                    );
     }
 }
