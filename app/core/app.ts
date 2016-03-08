@@ -35,7 +35,7 @@ import {LoginService} from "../core/services/login-service/login.service";
     directives: [RouterOutlet, RouterLink, AppHeader]
 })
 @RouteConfig([
-    { path: "/register", component: Register, as: "Register", data: undefined },
+    { path: "/get-started", component: Register, as: "Register", data: undefined },
     { path: "/login", component: Login, as: "Login", data: undefined, useAsDefault: true },
     { path: "/not-connected", component: NotConnected, as: "NotConnected", data: undefined},
     { path: "/verify-registration", component: VerifyRegistration, as: "VerifyRegistration", data: undefined },
