@@ -6,8 +6,8 @@
 
         <a id="go_back" *ngIf="loginService.isLoggedIn && groupService.currentGroupID" class="btn btn-primary" (click)="goBack()"><i class="fa fa-arrow-left fa-lg"></i></a>
 
-        <div id="user_name" *ngIf="loginService.isLoggedIn && groupService.currentGroupID">{{groupService.groupInfo[groupService.currentGroupID].name}}</div>
-        <div id="group_name" *ngIf="loginService.isLoggedIn && !groupService.currentGroupID">{{accountService.fullName}}</div>
+        <div id="username" *ngIf="loginService.isLoggedIn && groupService.currentGroupID">{{groupService.groupInfo[groupService.currentGroupID].name}}</div>
+        <div id="groupname" *ngIf="loginService.isLoggedIn && !groupService.currentGroupID">{{accountService.fullName}}</div>
 
         <settings-menu *ngIf="loginService.isLoggedIn"></settings-menu>
     </div>
