@@ -28,7 +28,7 @@ export class CreateAccount {
         } else {
             this.router.navigate(['Login']);
         }
-        // To Do: Figure out the best way to load user info into the fields here.
+        // To Do: Figure why logging in with facebook (when you are logged out of facebook) causes the data to get hung up
         // Future: When we get phone numbers we need to sanitize them to (###) ###-#### and set them to this.userNumber
     }
     setInfo(info:any) {
