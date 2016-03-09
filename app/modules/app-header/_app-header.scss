@@ -8,7 +8,6 @@
 
     }
     #brand{
-        font-family: "Museo",serif;
         font-weight: bold;
         font-size: 1.2rem;
         line-height: 24px;
@@ -18,12 +17,12 @@
         .btn:not(.navbar-brand){ font-weight: normal; }
     }
     #go_back{position: absolute;}
-    #user_name, #group_name{
-        font-size:18px;
+    #username, #groupname{
+        font-size:20px;
         display: inline-block;
         color: white;
         line-height: 24px;
-        padding: .375rem;
+        padding: .375rem 80px;
         width: 100%;
         text-align: center;
     }
