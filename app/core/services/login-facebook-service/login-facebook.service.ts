@@ -5,11 +5,15 @@ import {Injectable, Inject} from "angular2/core";
 import {RouteConfig, Route, RouterOutlet, RouterLink, Router} from "angular2/router";
 import {LoginService} from "../login-service/login.service";
 import {Http, HTTP_PROVIDERS, Headers} from 'angular2/http';
+import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class FacebookLoginService {
     FB: any = window.FB;
+    status$: Observable<any>;
+    login$: Observable<any>;
+    info$: Observable<any>;
     response: any;
     token: string;
     name: string;
@@ -21,37 +25,60 @@ export class FacebookLoginService {
     constructor(private router:Router, public loginService:LoginService, public http: Http) {
         console.log('Facebook login service is loaded.');
     }
-    loginWithFacebook() {
+    checkFacebookLoginStatus() {
         if (this.FB) {
             var loginService = this.loginService;
-            this.FB.getLoginStatus( (response: any) => {
-                if (response.status === 'connected') {
-                    console.log('You are already logged in.');
-                    loginService.userLogin('facebook');
-                    this.response = response;
-                } else {
-                    this.FB.login( (response: any) => {
-                        if (response.authResponse) {
-                            loginService.userLogin('facebook');
-                            this.response = response;
-                        } else {
-                            console.log('User cancelled login or did not fully authorize.');
-                        }
-                    }, {scope: 'public_profile, email'});
-                }
-            });
-            // Store info in service
-            this.token = this.response.authResponse.accessToken;
-            this.FB.api('/me?fields=name,email,id', (response: any) => {
-                console.log('You are logged in as: ');
-                this.name = response.name;
-                this.email = response.email;
-                this.id = response.id;
-                console.log(JSON.stringify(response));
+            this.FB.getLoginStatus( (response:any) => {
+                this.status$ = new Observable( (observer:any) => {
+                    observer.next( response );
+                });
+                this.status$.subscribe(value => console.log(value));
             });
         } else {
             this.router.navigate(['NotConnected']);
         }
+    }
+    loginWithFacebook() {
+        if (this.FB) {
+            this.FB.login( (response:any) => {
+                this.login$ = new Observable( (observer:any) => {
+                    observer.next( response.authResponse.accessToken );
+                });
+                this.login$.subscribe(value => {
+                    this.loginService.loginType = 'facebook';
+                    this.storeFacebookLoginInfo(value);
+                    this.getInfo();
+                });
+            });
+        } else {
+            this.router.navigate(['NotConnected']);
+        }
+    }
+    storeFacebookLoginInfo(login_response:any) {
+        console.log('login_response', login_response);
+        this.token = login_response;
+    }
+    getInfo() {
+        this.FB.api('/me?fields=name,email,id', (response: any) => {
+            this.info$ = new Observable( (observer:any) => {
+                observer.next( response );
+            });
+            this.info$.subscribe(value => {
+                this.storeFacebookApiInfo(value);
+                if (this.loginService.accountExists) {
+                    this.router.navigate(['Home']);
+                } else {
+                    this.router.navigate(['CreateAccount']);
+                }
+            });
+        });
+
+    }
+    storeFacebookApiInfo(api_response:any) {
+        console.log('api_response', api_response);
+        this.name = api_response.name;
+        this.email = api_response.email;
+        this.id = api_response.id;
     }
     logoutOfFacebook() {
         if (this.FB) {

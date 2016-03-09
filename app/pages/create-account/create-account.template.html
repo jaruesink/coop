@@ -5,7 +5,7 @@
     <div class="row">
     <fieldset class="form-group col-sm-9">
         <label for="fullName">Full Name</label>
-        <input type="text" class="form-control" id="fullName" [(ngModel)]="fullName" required>
+        <input type="text" class="form-control" id="fullName" [(ngModel)]="name" required>
     </fieldset>
     </div>
     <div class="row">
@@ -23,7 +23,7 @@
     <div class="row">
     <fieldset class="form-group col-sm-9">
         <label for="username">Phone Number</label>
-        <phone-input [userNumber]="userNumber" (phoneNumberChanged)="userNumber = $event"></phone-input>
+        <phone-input [userNumber]="phonenumber" (phoneNumberChanged)="phonenumber = $event"></phone-input>
     </fieldset>
     </div>
     <div class="row">
