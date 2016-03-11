@@ -10,20 +10,20 @@
     </div>
     <div class="row">
     <fieldset class="form-group col-sm-9">
-        <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" [(ngModel)]="username" pattern="^[a-zA-Z0-9\_\-\.]{4,16}$" required>
-    </fieldset>
-    </div>
-    <div class="row">
-    <fieldset class="form-group col-sm-9">
         <label for="email">Email</label>
         <input type="email" class="form-control" id="email" [(ngModel)]="email" required>
     </fieldset>
     </div>
     <div class="row">
     <fieldset class="form-group col-sm-9">
-        <label for="username">Phone Number</label>
+        <label for="phonenumber">Phone Number</label>
         <phone-input [userNumber]="phonenumber" (phoneNumberChanged)="phonenumber = $event"></phone-input>
+    </fieldset>
+    </div>
+    <div class="row">
+    <fieldset class="form-group col-sm-9">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" [(ngModel)]="username" pattern="^[a-zA-Z0-9\_\-\.]{4,16}$" required>
     </fieldset>
     </div>
     <div class="row">

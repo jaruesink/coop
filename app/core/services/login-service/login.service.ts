@@ -7,20 +7,20 @@ import {AccountService} from "../account-service/account.service";
 
 @Injectable()
 export class LoginService {
-    isLoggedIn: boolean = false;
+    isLoggedIn: boolean = true;
     accountExists: boolean = false;
     loginType: string;
-    userNumber: string;
+    phonenumber: string;
     username: string;
-    fullName: string;
-    userEmail: string;
+    name: string;
+    email: string;
     constructor(public router: Router) {
         console.log('Login service is loaded.');
         if (this.isLoggedIn) {
-            this.userNumber = '(512) 450-8236';
-            this.fullName = 'Jake Ruesink';
+            this.phonenumber = '(512) 450-8236';
+            this.name = 'Jake Ruesink';
             this.username = 'jaruesink';
-            this.userEmail = 'jaruesink@gmail.com';
+            this.email = 'jaruesink@gmail.com';
         }
     }
     userLogin(type:string) {

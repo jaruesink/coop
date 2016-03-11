@@ -14,6 +14,7 @@ export class FacebookLoginService {
     status$: Observable<any>;
     login$: Observable<any>;
     info$: Observable<any>;
+    promise$: any;
     response: any;
     token: string;
     name: string;
@@ -40,45 +41,29 @@ export class FacebookLoginService {
     }
     loginWithFacebook() {
         if (this.FB) {
+            this.loginService.loginType = 'facebook';
             this.FB.login( (response:any) => {
-                this.login$ = new Observable( (observer:any) => {
-                    observer.next( response.authResponse.accessToken );
-                });
-                this.login$.subscribe(value => {
-                    this.loginService.loginType = 'facebook';
-                    this.storeFacebookLoginInfo(value);
-                    this.getInfo();
-                });
+                this.token = response.authResponse.accessToken;
+                console.log(response);
+                this.id = response.authResponse.userID;
+                if (this.loginService.accountExists) {
+                    this.router.navigate(['Home']);
+                } else {
+                    this.FB.api('/me?fields=name,email,id', (response: any) => {
+                        // this.promise$ = new Promise( (resolve:any) => {
+                        //     resolve(response);
+                        // });
+                        this.info$ = new Observable( (observer:any) => {
+                            observer.next( response );
+                        });
+                        console.log('api info', response);
+                        this.router.navigate(['CreateAccount']);
+                    });
+                }
             });
         } else {
             this.router.navigate(['NotConnected']);
         }
-    }
-    storeFacebookLoginInfo(login_response:any) {
-        console.log('login_response', login_response);
-        this.token = login_response;
-    }
-    getInfo() {
-        this.FB.api('/me?fields=name,email,id', (response: any) => {
-            this.info$ = new Observable( (observer:any) => {
-                observer.next( response );
-            });
-            this.info$.subscribe(value => {
-                this.storeFacebookApiInfo(value);
-                if (this.loginService.accountExists) {
-                    this.router.navigate(['Home']);
-                } else {
-                    this.router.navigate(['CreateAccount']);
-                }
-            });
-        });
-
-    }
-    storeFacebookApiInfo(api_response:any) {
-        console.log('api_response', api_response);
-        this.name = api_response.name;
-        this.email = api_response.email;
-        this.id = api_response.id;
     }
     logoutOfFacebook() {
         if (this.FB) {
