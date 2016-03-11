@@ -64,9 +64,9 @@ export class FacebookLoginService {
                     }
                 });
             });
-            this.facebookLogin.then(function(login_success:any){
+            this.facebookLogin.then((login_success:any) => {
                 console.log(login_success);
-                this.getFacebookInfo.then(function(get_info_success:any){
+                this.getFacebookInfo.then((get_info_success:any) => {
                     console.log(get_info_success);
                     this.router.navigate(['CreateAccount']);
                 }, function(get_info_error:any){
