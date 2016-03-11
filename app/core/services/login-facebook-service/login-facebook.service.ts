@@ -12,9 +12,9 @@ import 'rxjs/add/operator/map';
 export class FacebookLoginService {
     FB: any = window.FB;
     status$: Observable<any>;
-    login$: Observable<any>;
     info$: Observable<any>;
-    promise$: any;
+    facebookLogin: Promise<any>;
+    getFacebookInfo: Promise<any>;
     response: any;
     token: string;
     name: string;
@@ -42,25 +42,39 @@ export class FacebookLoginService {
     loginWithFacebook() {
         if (this.FB) {
             this.loginService.loginType = 'facebook';
-            this.FB.login( (response:any) => {
-                this.token = response.authResponse.accessToken;
-                console.log(response);
-                this.id = response.authResponse.userID;
-                if (this.loginService.accountExists) {
-                    this.router.navigate(['Home']);
-                } else {
-                    this.FB.api('/me?fields=name,email,id', (response: any) => {
-                        // this.promise$ = new Promise( (resolve:any) => {
-                        //     resolve(response);
-                        // });
-                        this.info$ = new Observable( (observer:any) => {
-                            observer.next( response );
-                        });
-                        console.log('api info', response);
-                        this.router.navigate(['CreateAccount']);
-                    });
-                }
+            this.facebookLogin = new Promise((resolve:any, reject:any) => {
+                this.FB.login( (response:any) => {
+                    this.token = response.authResponse.accessToken;
+                    this.id = response.authResponse.userID;
+                    if ( this.token && this.id ) {
+                        resolve('You are logged in, your id is: '+ this.id);
+                    } else {
+                        reject(Error('Logging in with Facebook failed.'));
+                    }
+                });
+            })
+            this.getFacebookInfo = new Promise((resolve:any, reject:any) => {
+                this.FB.api('/me?fields=name,email,id', (response:any) => {
+                    this.name = response.name;
+                    this.email = response.email;
+                    if ( this.name && this.email ) {
+                        resolve('Facebook info retrieved.');
+                    } else {
+                        reject(Error('Failed to retrieve the facebook info.'));
+                    }
+                });
             });
+            this.facebookLogin.then(function(login_success:any){
+                console.log(login_success);
+                this.getFacebookInfo.then(function(get_info_success:any){
+                    console.log(get_info_success);
+                    this.router.navigate(['CreateAccount']);
+                }, function(get_info_error:any){
+                    console.log(get_info_error);
+                })
+            }, function(login_error:any){
+                console.log(login_error);
+            })
         } else {
             this.router.navigate(['NotConnected']);
         }

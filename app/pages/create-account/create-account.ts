@@ -20,23 +20,13 @@ export class CreateAccount {
     email: string;
     constructor(public accountService: AccountService, public loginService: LoginService, private router: Router, public facebookLoginService: FacebookLoginService) {
         console.log("Create account component loaded");
-            // this.facebookLoginService.promise$.then( (info:any) => console.log(info));
-            // if ( this.loginService.loginType === 'facebook' ) {
-            //     this.name = this.facebookLoginService.name;
-            //     this.email = this.facebookLoginService.email;
-            //     console.log('data on create account component', this.name, this.email);
-            // } else {
-            //     this.router.navigate(['Login']);
-            // }
-            if ( this.loginService.loginType === 'facebook' ) {
-                this.facebookLoginService.info$.subscribe(info => {
-                    this.name = info.name;
-                    this.email = info.email;
-                });
-                console.log('data on create account component', this.name, this.email);
-            } else {
-                this.router.navigate(['Login']);
-            }
+        if ( this.loginService.loginType === 'facebook' ) {
+            this.name  = this.loginService.name;
+            this.email = this.loginService.email;
+            console.log('data on create account component', this.name, this.email);
+        } else {
+            this.router.navigate(['Login']);
+        }
         // To Do: Figure why logging in with facebook (when you are logged out of facebook) causes the data to get hung up
         // Future: When we get phone numbers we need to sanitize them to (###) ###-#### and set them to this.userNumber
     }
