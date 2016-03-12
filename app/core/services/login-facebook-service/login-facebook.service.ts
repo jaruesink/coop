@@ -64,16 +64,14 @@ export class FacebookLoginService {
             });
             this.facebookLogin.then((login_success:any) => {
                 console.log(login_success);
-                this.getFacebookStatus.then((get_login_status:any) => {
-                    console.log(get_login_status);
+                this.FB.getLoginStatus( (response:any) => {
+                    console.log('login status response', response);
                     this.getFacebookInfo.then((get_info_success:any) => {
                         console.log(get_info_success);
                         this.router.navigate(['CreateAccount']);
                     }, function(get_info_error:any){
                         console.log(get_info_error);
                     })
-                }, function(login_status_error:any) {
-                    console.log(login_status_error);
                 });
             }, function(login_error:any){
                 console.log(login_error);
