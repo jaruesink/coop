@@ -11,10 +11,10 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class FacebookLoginService {
     FB: any = window.FB;
-    status$: Observable<any>;
-    info$: Observable<any>;
+    status: any;
     facebookLogin: Promise<any>;
     getFacebookInfo: Promise<any>;
+    getFacebookStatus: Promise<any>;
     response: any;
     token: string;
     name: string;
@@ -25,19 +25,6 @@ export class FacebookLoginService {
     error: any;
     constructor(private router:Router, public loginService:LoginService, public http: Http) {
         console.log('Facebook login service is loaded.');
-    }
-    checkFacebookLoginStatus() {
-        if (this.FB) {
-            var loginService = this.loginService;
-            this.FB.getLoginStatus( (response:any) => {
-                this.status$ = new Observable( (observer:any) => {
-                    observer.next( response );
-                });
-                this.status$.subscribe(value => console.log(value));
-            });
-        } else {
-            this.router.navigate(['NotConnected']);
-        }
     }
     loginWithFacebook() {
         if (this.FB) {
@@ -53,8 +40,19 @@ export class FacebookLoginService {
                     }
                 });
             })
+            this.getFacebookStatus = new Promise((resolve:any, reject:any) => {
+                this.FB.getLoginStatus( (response:any) => {
+                    this.status = response.status;
+                    if (response.status === 'connected') {
+                        resolve('You are now connected.');
+                    } else {
+                        reject(Error('You are not connected.'));
+                    }
+                });
+            });
             this.getFacebookInfo = new Promise((resolve:any, reject:any) => {
                 this.FB.api('/me?fields=name,email,id', (response:any) => {
+                    console.log('response from FB api ', response);
                     this.name = response.name;
                     this.email = response.email;
                     if ( this.name && this.email ) {
@@ -66,12 +64,17 @@ export class FacebookLoginService {
             });
             this.facebookLogin.then((login_success:any) => {
                 console.log(login_success);
-                this.getFacebookInfo.then((get_info_success:any) => {
-                    console.log(get_info_success);
-                    this.router.navigate(['CreateAccount']);
-                }, function(get_info_error:any){
-                    console.log(get_info_error);
-                })
+                this.getFacebookStatus.then((get_login_status:any) => {
+                    console.log(get_login_status);
+                    this.getFacebookInfo.then((get_info_success:any) => {
+                        console.log(get_info_success);
+                        this.router.navigate(['CreateAccount']);
+                    }, function(get_info_error:any){
+                        console.log(get_info_error);
+                    })
+                }, function(login_status_error:any) {
+                    console.log(login_status_error);
+                });
             }, function(login_error:any){
                 console.log(login_error);
             })
