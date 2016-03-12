@@ -18,9 +18,11 @@ export class FacebookLoginService {
     accountRequest: any;
     _postUrl: string = 'http://3cf40ea9.ngrok.com/api/auth/register';
     error: any;
+
     constructor(private router:Router, public loginService:LoginService, public http: Http) {
         console.log('Facebook login service is loaded.');
     }
+
     getStatus(doNext:any) {
         var status = new Promise((resolve:any, reject:any) => {
             this.FB.getLoginStatus((response:any) => {
@@ -39,6 +41,7 @@ export class FacebookLoginService {
             console.log(connected_error);
         });
     }
+
     getInfo(doNext:any) {
         var info = new Promise((resolve:any, reject:any) =>  {
             this.FB.api('/me?fields=name,email,id', (response:any) => {
@@ -59,6 +62,7 @@ export class FacebookLoginService {
             console.log(get_info_error);
         });
     }
+
     loginWithFacebook() {
         if (this.FB) {
             this.loginService.loginType = 'facebook';
@@ -67,12 +71,12 @@ export class FacebookLoginService {
                     this.token = response.authResponse.accessToken;
                     this.id = response.authResponse.userID;
                     if ( this.token && this.id ) {
-                        resolve('You are logged in, your id is: '+ this.id);
+                      resolve('You are logged in, your id is: '+ this.id);
                     } else {
-                        reject(Error('Logging in with Facebook failed.'));
+                      reject(Error('Logging in with Facebook failed.'));
                     }
                 });
-            })
+            });
             facebookLogin.then((login_success:any) => {
                 console.log(login_success);
                 this.getStatus( () => {
@@ -87,6 +91,7 @@ export class FacebookLoginService {
             this.router.navigate(['NotConnected']);
         }
     }
+
     logoutOfFacebook() {
         if (this.FB) {
             if (this.FB.getAccessToken()) {
@@ -100,6 +105,7 @@ export class FacebookLoginService {
             this.router.navigate(['NotConnected']);
         }
     }
+
     createAccountWithFacebook(name:string, username:string, email:string, phone:string) {
         console.log(this.loginService.loginType);
         var accountRequest:any = {};
