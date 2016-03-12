@@ -27,55 +27,47 @@ export class FacebookLoginService {
     loginWithFacebook() {
         if (this.FB) {
             this.loginService.loginType = 'facebook';
-            this.facebookLogin = new Promise((resolve:any, reject:any) => {
-                this.FB.login( (response:any) => {
-                    this.token = response.authResponse.accessToken;
-                    this.id = response.authResponse.userID;
+            var facebookLogin = function(respone: any) {
+                this.FB.login(function(fbResponse: any) {
+                    this.token = fbResponse.authResponse.accessToken;
+                    this.id = fbResponse.authResponse.userID;
                     if ( this.token && this.id ) {
-                        resolve('You are logged in, your id is: '+ this.id);
+                      respone();
+                      console.log('You are logged in, your id is: '+ this.id);
                     } else {
-                        reject(Error('Logging in with Facebook failed.'));
+                      console.log('Logging in with Facebook failed.');
                     }
-                });
-            })
-            this.facebookLogin.then((login_success:any) => {
-                console.log(login_success);
-                this.getFacebookStatus = new Promise((resolve:any, reject:any) => {
-                    this.FB.getLoginStatus((response:any) => {
-                        this.status = response.status;
-                        if ( this.status === 'connected' ) {
-                            resolve('I am connected.');
-                        } else {
-                            reject(Error('I am not connected.'));
-                        }
-                    });
-                });
-                this.getFacebookStatus.then((connected_success) => {
-                    console.log(connected_success);
-                    this.getFacebookInfo = new Promise((resolve:any, reject:any) =>  {
-                        this.FB.api('/me?fields=name,email,id', (response:any) => {
-                            this.loginService.name = response.name;
-                            this.loginService.email = response.email;
-                            console.log('info received: ', response);
-                            if (this.loginService.name && this.loginService.email ) {
-                                resolve('I have received info.');
-                            } else {
-                                reject(Error('I have not received info.'));
-                            }
-                        });
-                    });
-                    this.getFacebookInfo.then((get_info_success) => {
-                        console.log(get_info_success);
-                        this.router.navigate(['CreateAccount']);
-                    }, function(get_info_error){
-                        console.log(get_info_error);
-                    });
-                }, function(connected_error){
-                    console.log(connected_error);
-                });
-            }, function(login_error:any){
-                console.log(login_error);
-            })
+                }.bind(this));
+            }.bind(this);
+            facebookLogin(function() {
+              var getFacebookStatus = function(response: any) {
+                  this.FB.getLoginStatus(function(fbResponse: any) {
+                      this.status = fbResponse.status;
+                      if ( this.status === 'connected' ) {
+                        response();
+                        console.log('I am connected.');
+                      } else {
+                        console.log('I am not connected.');
+                      }
+                  }.bind(this));
+              }.bind(this);
+                getFacebookStatus(function() {
+                  var getFacebookInfo = function() {
+                      this.FB.api('/me?fields=name,email,id', function(fbResponse: any) {
+                          this.loginService.name = fbResponse.name;
+                          this.loginService.email = fbResponse.email;
+                          console.log('info received: ', fbResponse);
+                          if (this.loginService.name && this.loginService.email ) {
+                            this.router.navigate(['CreateAccount']);
+                            console.log('I have received info.');
+                          } else {
+                            console.log('I have not received info.');
+                          }
+                      }.bind(this));
+                  }.bind(this);
+                  getFacebookInfo();
+                }.bind(this));
+            }.bind(this));
         } else {
             this.router.navigate(['NotConnected']);
         }
