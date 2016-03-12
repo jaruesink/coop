@@ -17,8 +17,6 @@ export class FacebookLoginService {
     getFacebookStatus: Promise<any>;
     response: any;
     token: string;
-    name: string;
-    email: string;
     id: string;
     accountRequest: any;
     _postUrl: string = 'http://3cf40ea9.ngrok.com/api/auth/register';
@@ -40,38 +38,40 @@ export class FacebookLoginService {
                     }
                 });
             })
-            this.getFacebookStatus = new Promise((resolve:any, reject:any) => {
-                this.FB.getLoginStatus( (response:any) => {
-                    this.status = response.status;
-                    if (response.status === 'connected') {
-                        resolve('You are now connected.');
-                    } else {
-                        reject(Error('You are not connected.'));
-                    }
-                });
-            });
-            this.getFacebookInfo = new Promise((resolve:any, reject:any) => {
-                this.FB.api('/me?fields=name,email,id', (response:any) => {
-                    console.log('response from FB api ', response);
-                    this.name = response.name;
-                    this.email = response.email;
-                    if ( this.name && this.email ) {
-                        resolve('Facebook info retrieved.');
-                    } else {
-                        reject(Error('Failed to retrieve the facebook info.'));
-                    }
-                });
-            });
             this.facebookLogin.then((login_success:any) => {
                 console.log(login_success);
-                this.FB.getLoginStatus( (response:any) => {
-                    console.log('login status response', response);
-                    this.getFacebookInfo.then((get_info_success:any) => {
+                this.getFacebookStatus = new Promise((resolve:any, reject:any) => {
+                    this.FB.getLoginStatus((response:any) => {
+                        this.status = response.status;
+                        if ( this.status === 'connected' ) {
+                            resolve('I am connected.');
+                        } else {
+                            reject(Error('I am not connected.'));
+                        }
+                    });
+                });
+                this.getFacebookStatus.then((connected_success) => {
+                    console.log(connected_success);
+                    this.getFacebookInfo = new Promise((resolve:any, reject:any) =>  {
+                        this.FB.api('/me?fields=name,email,id', (response:any) => {
+                            this.loginService.name = response.name;
+                            this.loginService.email = response.email;
+                            console.log('info received: ', response);
+                            if (this.loginService.name && this.loginService.email ) {
+                                resolve('I have received info.');
+                            } else {
+                                reject(Error('I have not received info.'));
+                            }
+                        });
+                    });
+                    this.getFacebookInfo.then((get_info_success) => {
                         console.log(get_info_success);
                         this.router.navigate(['CreateAccount']);
-                    }, function(get_info_error:any){
+                    }, function(get_info_error){
                         console.log(get_info_error);
-                    })
+                    });
+                }, function(connected_error){
+                    console.log(connected_error);
                 });
             }, function(login_error:any){
                 console.log(login_error);
