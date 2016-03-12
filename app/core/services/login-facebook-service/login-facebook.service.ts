@@ -12,66 +12,86 @@ import 'rxjs/add/operator/map';
 export class FacebookLoginService {
     FB: any = window.FB;
     status: any;
-    facebookLogin: Promise<any>;
-    getFacebookInfo: Promise<any>;
-    getFacebookStatus: Promise<any>;
     response: any;
     token: string;
     id: string;
     accountRequest: any;
     _postUrl: string = 'http://3cf40ea9.ngrok.com/api/auth/register';
     error: any;
+
     constructor(private router:Router, public loginService:LoginService, public http: Http) {
         console.log('Facebook login service is loaded.');
     }
+
+    getStatus(doNext:any) {
+        var status = new Promise((resolve:any, reject:any) => {
+            this.FB.getLoginStatus((response:any) => {
+                this.status = response.status;
+                if ( this.status === 'connected' ) {
+                    resolve('I am connected.');
+                } else {
+                    reject(Error('I am not connected.'));
+                }
+            });
+        });
+        status.then((connected_success:any) => {
+            console.log(connected_success);
+            doNext();
+        }, function(connected_error:any){
+            console.log(connected_error);
+        });
+    }
+
+    getInfo(doNext:any) {
+        var info = new Promise((resolve:any, reject:any) =>  {
+            this.FB.api('/me?fields=name,email,id', (response:any) => {
+                this.loginService.name = response.name;
+                this.loginService.email = response.email;
+                console.log('info received: ', response);
+                if (this.loginService.name && this.loginService.email ) {
+                    resolve('I have received info.');
+                } else {
+                    reject(Error('I have not received info.'));
+                }
+            });
+        });
+        info.then((get_info_success) => {
+            console.log(get_info_success);
+            doNext();
+        }, function(get_info_error){
+            console.log(get_info_error);
+        });
+    }
+
     loginWithFacebook() {
         if (this.FB) {
             this.loginService.loginType = 'facebook';
-            var facebookLogin = function(respone: any) {
-                this.FB.login(function(fbResponse: any) {
-                    this.token = fbResponse.authResponse.accessToken;
-                    this.id = fbResponse.authResponse.userID;
+            var facebookLogin = new Promise((resolve:any, reject:any) => {
+                this.FB.login( (response:any) => {
+                    this.token = response.authResponse.accessToken;
+                    this.id = response.authResponse.userID;
                     if ( this.token && this.id ) {
-                      respone();
-                      console.log('You are logged in, your id is: '+ this.id);
+                      resolve('You are logged in, your id is: '+ this.id);
                     } else {
-                      console.log('Logging in with Facebook failed.');
+                      reject(Error('Logging in with Facebook failed.'));
                     }
-                }.bind(this));
-            }.bind(this);
-            facebookLogin(function() {
-              var getFacebookStatus = function(response: any) {
-                  this.FB.getLoginStatus(function(fbResponse: any) {
-                      this.status = fbResponse.status;
-                      if ( this.status === 'connected' ) {
-                        response();
-                        console.log('I am connected.');
-                      } else {
-                        console.log('I am not connected.');
-                      }
-                  }.bind(this));
-              }.bind(this);
-                getFacebookStatus(function() {
-                  var getFacebookInfo = function() {
-                      this.FB.api('/me?fields=name,email,id', function(fbResponse: any) {
-                          this.loginService.name = fbResponse.name;
-                          this.loginService.email = fbResponse.email;
-                          console.log('info received: ', fbResponse);
-                          if (this.loginService.name && this.loginService.email ) {
-                            this.router.navigate(['CreateAccount']);
-                            console.log('I have received info.');
-                          } else {
-                            console.log('I have not received info.');
-                          }
-                      }.bind(this));
-                  }.bind(this);
-                  getFacebookInfo();
-                }.bind(this));
-            }.bind(this));
+                });
+            });
+            facebookLogin.then((login_success:any) => {
+                console.log(login_success);
+                this.getStatus( () => {
+                    this.getInfo( () => {
+                        this.router.navigate(['CreateAccount']);
+                    });
+                });
+            }, function(login_error:any){
+                console.log(login_error);
+            })
         } else {
             this.router.navigate(['NotConnected']);
         }
     }
+
     logoutOfFacebook() {
         if (this.FB) {
             if (this.FB.getAccessToken()) {
@@ -85,6 +105,7 @@ export class FacebookLoginService {
             this.router.navigate(['NotConnected']);
         }
     }
+
     createAccountWithFacebook(name:string, username:string, email:string, phone:string) {
         console.log(this.loginService.loginType);
         var accountRequest:any = {};
