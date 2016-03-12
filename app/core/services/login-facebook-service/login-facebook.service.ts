@@ -65,7 +65,6 @@ export class FacebookLoginService {
 
     loginWithFacebook() {
         if (this.FB) {
-            this.loginService.loginType = 'facebook';
             var facebookLogin = new Promise((resolve:any, reject:any) => {
                 this.FB.login( (response:any) => {
                     this.token = response.authResponse.accessToken;
@@ -81,7 +80,7 @@ export class FacebookLoginService {
                 console.log(login_success);
                 this.getStatus( () => {
                     this.getInfo( () => {
-                        this.router.navigate(['CreateAccount']);
+                        this.loginService.userLogin('facebook');
                     });
                 });
             }, function(login_error:any){
