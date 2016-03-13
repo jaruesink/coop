@@ -7,7 +7,7 @@ import {AccountService} from "../account-service/account.service";
 
 @Injectable()
 export class LoginService {
-    isLoggedIn: boolean = false;
+    isLoggedIn: boolean = true;
     accountExists: boolean = true;
     loginType: string;
     phonenumber: string;

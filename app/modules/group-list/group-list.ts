@@ -16,4 +16,7 @@ export class GroupList {
         console.log(this.groupService);
         // for some reason when logging in with facebook, the group list isn't populate with the data, but the log works still?
     }
+    favoriteGroup(event:any, group_id:string) {
+        event.preventDefault();
+    }
 }
