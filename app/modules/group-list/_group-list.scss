@@ -18,7 +18,7 @@
         top: 0;
         width: 40px;
         height: 100%;
-        & > button{
+        & button{
             position: absolute;
             left: 0;
             height:50%;
@@ -29,9 +29,18 @@
             border: 0;
             border-radius: 0;
         }
+        .group-actions{
+            height: 100%;
+            position: static;;
+        }
         button.action-top{
             top: 0;
             color: #FCC21B;
+        }
+        .dropdown-toggle{
+            &:after{
+                content: none;
+            }
         }
         button.action-bottom{
             top:50%;

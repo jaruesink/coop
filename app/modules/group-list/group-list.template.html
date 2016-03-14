@@ -1,5 +1,5 @@
 <section class="group-list">
-<div id="{{group.id}}" class="card" *ngFor="#group of groupService.groups">
+<div id="{{group.id}}" class="card" *ngFor="#group of groupService.groups; #i = index">
     <span [routerLink]="['/Group', {group_id: group.id}]">
     <div class="card-header m-b-0">
     <h3 class="m-b-0">{{group.name}}</h3>
@@ -12,8 +12,13 @@
     </div>
     </span>
     <div class="card-actions">
-        <button type="button" name="button" class="action-top btn btn-secondary" (click)="favoriteGroup($event, group.id)"><i class="fa fa-star-o"></i></button>
-        <button type="button" name="button" class="action-bottom btn btn-secondary"><i class="fa fa-ellipsis-v"></i></button>
+        <button type="button" name="button" class="action-top btn btn-secondary" (click)="favoriteGroup($event, group.id, i)"><i class="fa" [ngClass]="{'fa-star': group.starred, 'fa-star-o': !group.starred}"></i></button>
+        <div class="group-actions btn-group" [ngClass]="{open: group.actionsOpen}">
+            <button type="button" name="button" class="action-bottom btn btn-secondary dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+            <div class="dropdown-menu dropdown-menu-right animated" [ngClass]="{fadeInDown: isOpen}">
+              <a class="dropdown-item">Test</a>
+            </div>
+        </div>
     </div>
 </div>
 </section>

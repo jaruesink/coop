@@ -19,12 +19,14 @@ export class GroupService {
         {
             "id": "sampleGroupID1",
             "name":"NeteGreek",
+            "starred": true,
             "description":"This is just a test group, I'm trying to figure out how things will look.",
             "members": 2
         },
         {
             "id": "sampleGroupID2",
             "name": "Wells Branch Renegades Softball",
+            "starred": false,
             "description": "This is just a test group, I'm trying to figure out how things will look.",
             "members": 12
         }

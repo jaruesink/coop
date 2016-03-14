@@ -85,7 +85,7 @@ export class FacebookLoginService {
                 });
             }, function(login_error:any){
                 console.log(login_error);
-            })
+            });
         } else {
             this.router.navigate(['NotConnected']);
         }
