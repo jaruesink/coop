@@ -91,20 +91,6 @@ export class FacebookLoginService {
         }
     }
 
-    logoutOfFacebook() {
-        if (this.FB) {
-            if (this.FB.getAccessToken()) {
-                this.FB.logout(function(response:any) {
-                    console.log('You are now logged out.');
-                });
-            } else {
-                console.log('You are already logged out.');
-            }
-        } else {
-            this.router.navigate(['NotConnected']);
-        }
-    }
-
     createAccountWithFacebook(name:string, username:string, email:string, phone:string) {
         console.log(this.loginService.loginType);
         var accountRequest:any = {};

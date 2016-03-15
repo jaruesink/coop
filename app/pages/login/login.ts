@@ -20,23 +20,15 @@ export class Login {
     constructor(private loginService: LoginService, public accountService: AccountService, private router: Router, public facebookLoginService: FacebookLoginService) {
         console.log("Login component loaded");
         // Check if logged in
-        if (this.FB && this.loginService.isLoggedIn) {
-            this.FB.getLoginStatus(function(response: any) {
-                if (response.status === 'connected') {
-                    console.log(response.authResponse.accessToken);
-                }
-            });
+        if (this.loginService.isLoggedIn) {
+            this.router.navigate(['Home']);
         }
     }
     facebookLogin() {
         if ( this.FB ) {
             this.facebookLoginService.loginWithFacebook();
         } else {
-          // not connected to internet
           this.router.navigate(['/NotConnected']);
         }
-    }
-    facebookLogout() {
-        this.facebookLoginService.logoutOfFacebook();
     }
 }
