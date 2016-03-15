@@ -16,7 +16,19 @@ main .btn, #logout .btn{
 }
 
 .group-list, .post-list, .comment-list{
-    .card{border-radius: 0; background: white;}
+    .card{
+      border-radius: 2px;
+      border: 0;
+      background: white;
+      box-shadow: $shadow1;
+      transition: box-shadow 0.2s ease-in-out;
+      &:hover{
+        box-shadow: $shadow3;
+      }
+      &:active{
+        box-shadow: $shadow2;
+      }
+    }
     .card-header{
       border-bottom: 0;
       padding-bottom: 0;

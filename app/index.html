@@ -38,14 +38,20 @@
 	<link rel="stylesheet" href="/styles/main.css">
 	<!-- endbuild -->
 
-	<!-- These need to be downloaded and replaced. -->
 	<link rel="stylesheet" href="../../node_modules/font-awesome/css/font-awesome.min.css">
+
+  <!-- Google Sign in -->
+  <meta name="google-signin-scope" content="profile email">
+  <meta name="google-signin-client_id" content="460438236970-uecf0olbtirtp55r10a4cuev2ntiuep7.apps.googleusercontent.com">
 
 	<base href="/">
 </head>
 
 <body>
+  <!-- Social Sign On -->
 	<div id="fb-root"></div>
+  <!-- Secret: VrwbbrmJR968kXX-YeEIVBQ3 -->
+
 	<app>
 		<div class="cs-loader">
 			<div class="cs-loader-inner">
@@ -59,8 +65,31 @@
 		</div>
 	</app>
 
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
 
-	<!-- Polyfills: must all be loaded before SystemJS -->
+	<script type="text/javascript">
+		// Facebook SDK
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s);
+			js.id = id;
+			js.src = "//connect.facebook.net/en_US/sdk.js";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+
+		window['fbAsyncInit'] = function() {
+			window.FB.init({
+				appId: '228671707475003',
+				status: true,
+				cookie: true,
+				xfbml: true,
+				version: 'v2.5'
+			});
+		};
+	</script>
+  
+  <!-- Polyfills: must all be loaded before SystemJS -->
 
 	<!-- ES6 Shim (ES2015 support) -->
 	<!-- inline node_modules/es6-shim/es6-shim.js -->
@@ -85,28 +114,6 @@
 				async: true
 			});
 		} catch (e) {}
-	</script>
-
-	<script type="text/javascript">
-		// Facebook SDK
-		(function(d, s, id) {
-			var js, fjs = d.getElementsByTagName(s)[0];
-			if (d.getElementById(id)) return;
-			js = d.createElement(s);
-			js.id = id;
-			js.src = "//connect.facebook.net/en_US/sdk.js";
-			fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));
-
-		window['fbAsyncInit'] = function() {
-			window.FB.init({
-				appId: '228671707475003',
-				status: true,
-				cookie: true,
-				xfbml: true,
-				version: 'v2.5'
-			});
-		};
 	</script>
 </body>
 
