@@ -24,99 +24,95 @@ export class FacebookLoginService {
     }
 
     getStatus(doNext:any) {
-        var status = new Promise((resolve:any, reject:any) => {
-            this.FB.getLoginStatus((response:any) => {
-                this.status = response.status;
-                if ( this.status === 'connected' ) {
-                    resolve('I am connected.');
-                } else {
-                    reject(Error('I am not connected.'));
-                }
-            });
-        });
-        status.then((connected_success:any) => {
-            console.log(connected_success);
-            doNext();
-        }, function(connected_error:any){
-            console.log(connected_error);
-        });
+      var status = new Promise((resolve:any, reject:any) => {
+          this.FB.getLoginStatus((response:any) => {
+              this.status = response.status;
+              if ( this.status === 'connected' ) {
+                  resolve('I am connected.');
+              } else {
+                  reject(Error('I am not connected.'));
+              }
+          });
+      });
+      status.then((connected_success:any) => {
+          console.log(connected_success);
+          doNext();
+      }, function(connected_error:any){
+          console.log(connected_error);
+      });
     }
 
     getInfo(doNext:any) {
-        var info = new Promise((resolve:any, reject:any) =>  {
-            this.FB.api('/me?fields=name,email,id', (response:any) => {
-                this.loginService.name = response.name;
-                this.loginService.email = response.email;
-                console.log('info received: ', response);
-                if (this.loginService.name && this.loginService.email ) {
-                    resolve('I have received info.');
-                } else {
-                    reject(Error('I have not received info.'));
-                }
-            });
-        });
-        info.then((get_info_success) => {
-            console.log(get_info_success);
-            doNext();
-        }, function(get_info_error){
-            console.log(get_info_error);
-        });
+      var info = new Promise((resolve:any, reject:any) =>  {
+          this.FB.api('/me?fields=name,email,id', (response:any) => {
+              this.loginService.name = response.name;
+              this.loginService.email = response.email;
+              console.log('info received: ', response);
+              if (this.loginService.name && this.loginService.email ) {
+                  resolve('I have received info.');
+              } else {
+                  reject(Error('I have not received info.'));
+              }
+          });
+      });
+      info.then((get_info_success) => {
+          console.log(get_info_success);
+          doNext();
+      }, function(get_info_error){
+          console.log(get_info_error);
+      });
     }
 
     loginWithFacebook() {
-        if (this.FB) {
-            var facebookLogin = new Promise((resolve:any, reject:any) => {
-                this.FB.login( (response:any) => {
-                    this.token = response.authResponse.accessToken;
-                    this.id = response.authResponse.userID;
-                    if ( this.token && this.id ) {
-                      resolve('You are logged in, your id is: '+ this.id);
-                    } else {
-                      reject(Error('Logging in with Facebook failed.'));
-                    }
-                });
-            });
-            facebookLogin.then((login_success:any) => {
-                console.log(login_success);
-                this.getStatus( () => {
-                    this.getInfo( () => {
-                        this.loginService.userLogin('facebook');
-                    });
-                });
-            }, function(login_error:any){
-                console.log(login_error);
-            });
-        } else {
-            this.router.navigate(['NotConnected']);
-        }
+      var facebookLogin = new Promise((resolve:any, reject:any) => {
+          this.FB.login( (response:any) => {
+              this.token = response.authResponse.accessToken;
+              this.id = response.authResponse.userID;
+              if ( this.token && this.id ) {
+                resolve('You are logged in, your id is: '+ this.id);
+              } else {
+                reject(Error('Logging in with Facebook failed.'));
+              }
+          });
+      });
+      facebookLogin.then((login_success:any) => {
+          console.log(login_success);
+          this.getStatus( () => {
+              this.getInfo( () => {
+                  this.loginService.userLogin('facebook');
+              });
+          });
+      }, function(login_error:any){
+          console.log(login_error);
+      });
     }
 
     createAccountWithFacebook(name:string, username:string, email:string, phone:string) {
-        console.log(this.loginService.loginType);
-        var accountRequest:any = {};
-        accountRequest['name']        = name;
-        accountRequest['username']    = username;
-        accountRequest['email']       = email;
-        accountRequest['phone']       = phone;
-        accountRequest['photo_url']    = '';
-        accountRequest['credentials'] = {};
-        accountRequest['credentials'].type  = this.loginService.loginType;
-        accountRequest['credentials'].id    = this.id;
-        accountRequest['credentials'].token = this.token;
-        console.log('Account Request Object: ', accountRequest);
-        accountRequest = JSON.stringify(accountRequest);
-        console.log('Account Request String: ', accountRequest);
-        var headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-        this.http.post(this._postUrl, accountRequest, {
-                    headers: headers
-                    })
-                    .map(response => response.json())
-                    .subscribe(
-                        // To Do: point this data to a login function and set loginService.isLoggedIn = data.auth_token
-                        data => console.log(data),
-                        err => console.log(err),
-                        () => console.log('Account Creation Request Complete')
-                    );
-    }
+      console.log(this.loginService.loginType);
+      var accountRequest:any = {};
+      accountRequest['name']        = name;
+      accountRequest['username']    = username;
+      accountRequest['email']       = email;
+      accountRequest['phone']       = phone;
+      accountRequest['photo_url']    = '';
+      accountRequest['credentials'] = {};
+      accountRequest['credentials'].type  = this.loginService.loginType;
+      accountRequest['credentials'].id    = this.id;
+      accountRequest['credentials'].token = this.token;
+      console.log('Account Request Object: ', accountRequest);
+      accountRequest = JSON.stringify(accountRequest);
+      console.log('Account Request String: ', accountRequest);
+      var headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      this.http.post(this._postUrl, accountRequest, {
+                  headers: headers
+                  })
+                  .map(response => response.json())
+                  .subscribe(
+                      // To Do: point this data to a login function and set loginService.isLoggedIn = data.auth_token
+                      data => console.log(data),
+                      err => console.log(err),
+                      () => console.log('Account Creation Request Complete')
+                  );
+  }
 }

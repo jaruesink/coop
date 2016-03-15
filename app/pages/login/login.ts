@@ -8,6 +8,7 @@ import {LoginService} from "../../core/services/login-service/login.service";
 import {AccountService} from "../../core/services/account-service/account.service";
 import {ROUTER_DIRECTIVES, RouteConfig, Route, RouterOutlet, RouterLink, Router} from "angular2/router";
 import {FacebookLoginService} from "../../core/services/login-facebook-service/login-facebook.service";
+import {GoogleLoginService} from "../../core/services/login-google-service/login-google.service";
 
 
 @Component({
@@ -17,7 +18,8 @@ import {FacebookLoginService} from "../../core/services/login-facebook-service/l
 })
 export class Login {
     FB: any = window.FB;
-    constructor(private loginService: LoginService, public accountService: AccountService, private router: Router, public facebookLoginService: FacebookLoginService) {
+    goog: any = window.gapi;
+    constructor(private loginService: LoginService, public accountService: AccountService, private router: Router, public facebookLoginService: FacebookLoginService, public googleLoginService: GoogleLoginService) {
         console.log("Login component loaded");
         // Check if logged in
         if (this.loginService.isLoggedIn) {
@@ -30,5 +32,13 @@ export class Login {
         } else {
           this.router.navigate(['/NotConnected']);
         }
+    }
+    googleLogin() {
+      if ( this.goog ) {
+          this.googleLoginService.getToken();
+          
+      } else {
+        this.router.navigate(['/NotConnected']);
+      }
     }
 }
