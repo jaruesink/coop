@@ -13,7 +13,7 @@ import {GroupService} from "../../core/services/group-service/group.service";
 })
 export class ActionsMenu {
     @Input() group:any;
-    @Input() index:number;
+    @Input() index:number ;
     isOpen: boolean;
     localEvent: any;
     listener: any;

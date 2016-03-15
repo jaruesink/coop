@@ -1,3 +1,22 @@
 .actions-menu{
-    
+    .action-top, .action-bottom{
+        width: 40px; height: 40px;
+        position: absolute;
+        right: 0px;
+    }
+    .action-top{
+        top: 0;
+        color: #FCC21B;
+    }
+    .action-bottom{
+        bottom: 0;
+        &.open{
+            background: #ccc;
+        }
+    }
+    .action-menu{
+        height: 40px;
+        width: 100%;
+        padding: .375rem;
+    }
 }
