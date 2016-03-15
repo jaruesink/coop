@@ -10,9 +10,29 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class GoogleLoginService {
-    Goog: any = window.gapi;
+    goog: any = window.gapi;
+    user: any;
     constructor(private router:Router, public loginService:LoginService, public http: Http) {
         console.log('Google login service is loaded.');
+    }
+    getUser(doNext:any) {
+      if (this.goog) {
+        this.goog.signIn().then(() => {
+          this.user = this.goog.currentUser;
+          doNext();
+        });
+      } else {
+        this.router.navigate(['NotConnected']);
+      }
+    }
+    getToken() {
+      if (this.user) {
+        this.user.getAuthResponse().id_token;
+      } else {
+        this.getUser(() => {
+          this.getToken();
+        })
+      }
     }
 
 }
