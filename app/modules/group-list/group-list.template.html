@@ -1,24 +1,16 @@
 <section class="group-list">
-<div id="{{group.id}}" class="card" *ngFor="#group of groupService.groups; #i = index">
+<div id="{{group.id}}" class="card" *ngFor="#group of groupService.groups; #index = index">
     <span [routerLink]="['/Group', {group_id: group.id}]">
-    <div class="card-header m-b-0">
-    <h3 class="m-b-0">{{group.name}}</h3>
-     </div>
-    <div class="card-block">
-        <p class="card-text">{{group.description}}</p>
-    </div>
-    <div class="card-footer">
-        <p class="m-b-0 text-xs-right text-muted">1 new post | 2 new comments | {{group.members}} members</p>
-    </div>
-    </span>
-    <div class="card-actions">
-        <button type="button" name="button" class="action-top" (click)="favoriteGroup($event, group.id, i)"><i class="fa" [ngClass]="{'fa-star': group.starred, 'fa-star-o': !group.starred}"></i></button>
-        <div class="group-actions btn-group" [ngClass]="{open: group.actionsOpen}">
-            <button type="button" name="button" class="action-bottom dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-            <div class="dropdown-menu dropdown-menu-right animated" [ngClass]="{fadeInDown: isOpen}">
-              <a class="dropdown-item">Test</a>
-            </div>
+        <div class="card-header m-b-0">
+            <h3 class="m-b-0">{{group.name}}</h3>
+         </div>
+        <div class="card-block">
+            <p class="card-text">{{group.description}}</p>
         </div>
-    </div>
+        <div class="card-footer">
+            <p class="m-b-0 text-xs-right text-muted">1 new post | 2 new comments | {{group.members}} members</p>
+        </div>
+    </span>
+    <actions-menu [group]="group" [index]="index"></actions-menu>
 </div>
 </section>

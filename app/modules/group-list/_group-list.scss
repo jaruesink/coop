@@ -12,47 +12,4 @@
         h3{font-size: 22px; line-height:.9; font-weight: 600;}
         p{line-height: 8px;}
     }
-    .card-actions{
-        position: absolute;
-        right: 0;
-        top: 0;
-        width: 40px;
-        height: 100%;
-        & button{
-            position: absolute;
-            left: 0;
-            height:50%;
-            width: 100%;
-            padding: .375rem 0;
-            text-align: center;
-            border-color: #e5e5e5;
-            border: 0;
-            border-radius: 0;
-        }
-        .group-actions{
-            height: 100%;
-            position: static;;
-        }
-        button.action-top{
-            top: 0;
-            color: #FCC21B;
-        }
-        .dropdown-toggle{
-            &:after{
-                content: none;
-            }
-        }
-        button.action-bottom{
-            top:50%;
-            border-bottom: 0;
-            &:before{
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 20%;
-                border-top: 1px solid #e5e5e5;
-                width: 60%;
-            }
-        }
-    }
 }

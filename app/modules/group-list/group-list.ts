@@ -3,21 +3,17 @@
 import {Component, Input, Output, EventEmitter} from "angular2/core";
 import {ROUTER_DIRECTIVES, Router, RouterLink} from "angular2/router";
 import {GroupService} from "../../core/services/group-service/group.service";
+import {ActionsMenu} from "../actions-menu/actions-menu";
 
 @Component({
     selector: "group-list",
     templateUrl: "../modules/group-list/group-list.template.html",
-    directives: [RouterLink]
+    directives: [RouterLink, ActionsMenu]
 })
 export class GroupList {
 
     constructor(private groupService: GroupService) {
         console.log("Group list component loaded");
         console.log(this.groupService);
-        // for some reason when logging in with facebook, the group list isn't populate with the data, but the log works still?
-    }
-    favoriteGroup(event:any, group_id:string, index:number) {
-        console.log(index);
-        this.groupService.groups[index].starred = !this.groupService.groups[index].starred;
     }
 }
