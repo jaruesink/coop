@@ -15,8 +15,13 @@
         }
     }
     .action-menu{
-        height: 40px;
+        height: 0px;
+        transition: height .3s;
         width: 100%;
-        padding: .375rem;
+        visibility: hidden;
+        &.open {
+            height: 40px;
+            visibility: visible;
+        }
     }
 }

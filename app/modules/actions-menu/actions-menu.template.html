@@ -1,7 +1,7 @@
 <div class="actions-menu">
     <button type="button" name="button" class="action-top" (click)="favoriteGroup(index)"><i class="fa" [ngClass]="{'fa-star': group.starred, 'fa-star-o': !group.starred}"></i></button>
     <button type="button" id="toggle-actions-{{$index}}" name="button" class="action-bottom" [ngClass]="{open: isOpen}" (click)="toggleActions(index)"><i class="fa fa-ellipsis-v"></i></button>
-    <div *ngIf="isOpen" class="action-menu animated slideInDown bg-primary">
+    <div [ngClass]="{open: isOpen}" class="action-menu bg-primary">
       <a class="action-item">Test</a>
     </div>
 </div>

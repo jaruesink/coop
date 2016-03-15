@@ -36,36 +36,3 @@
   animation-name: fadeInDown;
 }
 }
-
-.actions-menu{
-.animated.slideInDown {
-  -webkit-animation-duration: .2s;
-  animation-duration: .2s;
-}
-@-webkit-keyframes slideInDown {
-  from {
-    visibility: visible;
-    height: 0px;
-  }
-
-  to {
-    height: 40px;
-  }
-}
-
-@keyframes slideInDown {
-  from {
-    visibility: visible;
-    height: 0px;
-  }
-
-  to {
-    height: 40px;
-  }
-}
-
-.slideInDown {
-  -webkit-animation-name: slideInDown;
-  animation-name: slideInDown;
-}
-}
