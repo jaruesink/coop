@@ -12,9 +12,9 @@
     </div>
     </span>
     <div class="card-actions">
-        <button type="button" name="button" class="action-top btn btn-secondary" (click)="favoriteGroup($event, group.id, i)"><i class="fa" [ngClass]="{'fa-star': group.starred, 'fa-star-o': !group.starred}"></i></button>
+        <button type="button" name="button" class="action-top" (click)="favoriteGroup($event, group.id, i)"><i class="fa" [ngClass]="{'fa-star': group.starred, 'fa-star-o': !group.starred}"></i></button>
         <div class="group-actions btn-group" [ngClass]="{open: group.actionsOpen}">
-            <button type="button" name="button" class="action-bottom btn btn-secondary dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+            <button type="button" name="button" class="action-bottom dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
             <div class="dropdown-menu dropdown-menu-right animated" [ngClass]="{fadeInDown: isOpen}">
               <a class="dropdown-item">Test</a>
             </div>
