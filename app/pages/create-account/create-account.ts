@@ -20,14 +20,12 @@ export class CreateAccount {
     email: string;
     constructor(public accountService: AccountService, public loginService: LoginService, private router: Router, public facebookLoginService: FacebookLoginService) {
         console.log("Create account component loaded");
-        if ( this.loginService.loginType === 'facebook' ) {
+        if ( this.loginService.loginType ) {
             this.name  = this.loginService.name;
             this.email = this.loginService.email;
-            console.log('data on create account component', this.name, this.email);
         } else {
             this.router.navigate(['Login']);
         }
-        // To Do: Figure why logging in with facebook (when you are logged out of facebook) causes the data to get hung up
         // Future: When we get phone numbers we need to sanitize them to (###) ###-#### and set them to this.userNumber
     }
     ngOnInit() {

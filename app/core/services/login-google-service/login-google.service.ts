@@ -19,17 +19,21 @@ export class GoogleLoginService {
     }
     loadAuth(doNext:any) {
         var load = new Promise((resolve:any, reject:any) =>  {
-            this.goog.load('auth2', () => {
-                this.gAuth = this.goog.auth2.init({
-                    client_id: '460438236970-uecf0olbtirtp55r10a4cuev2ntiuep7.apps.googleusercontent.com',
-                    scope: 'profile email'
+            if (this.gAuth) {
+                this.gAuth = this.goog.auth2.getAuthInstance();
+            } else {
+                this.goog.load('auth2', () => {
+                    this.gAuth = this.goog.auth2.init({
+                        client_id: '460438236970-uecf0olbtirtp55r10a4cuev2ntiuep7.apps.googleusercontent.com',
+                        scope: 'profile email'
+                    });
+                    if (this.gAuth) {
+                        resolve('I have received info.');
+                    } else {
+                        reject(Error('I have not received info.'));
+                    }
                 });
-                if (this.gAuth) {
-                    resolve('I have received info.');
-                } else {
-                    reject(Error('I have not received info.'));
-                }
-            });
+            }
         });
         load.then((get_load_success) => {
             console.log(get_load_success);
@@ -38,17 +42,43 @@ export class GoogleLoginService {
             console.log(get_load_error);
         });
     }
-    getUser() {
-        this.loadAuth(() => {
-            this.gAuth.signIn().then((response:any) => {
-              this.user  = response.getBasicProfile();
-              this.token = response.getAuthResponse().id_token;;
-              console.log(this.user);
-              console.log(this.token);
-            });
+    getUser(doNext:any) {
+        var user = new Promise((resolve:any, reject:any) =>  {
+            if (this.gAuth) {
+                console.log('Already logged into Google');
+                if (this.user && this.token) {
+                    resolve('I have logged into Google.');
+                } else {
+                    reject(Error('I have not logged into Google.'));
+                }
+            } else {
+                this.loadAuth(() => {
+                    this.gAuth.signIn().then((response:any) => {
+                        console.log('logged into Google, ', response);
+                        this.user  = response.getBasicProfile();
+                        this.token = response.getAuthResponse().id_token;;
+                        this.loginService.name = this.user.getName();
+                        this.loginService.email = this.user.getEmail();
+                        if (this.user && this.token) {
+                            resolve('I have logged into Google.');
+                        } else {
+                            reject(Error('I have not logged into Google.'));
+                        }
+                    });
+                });
+            }
+
+        });
+        user.then((get_user_success:any) => {
+            console.log(get_user_success);
+            doNext();
+        }, function(get_user_error:any){
+            console.log(get_user_error);
         });
     }
     loginWithGoogle() {
-        this.getUser();
+        this.getUser(() => {
+            this.loginService.userLogin('google');
+        });
     }
 }
