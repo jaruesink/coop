@@ -16,11 +16,12 @@
     }
     .action-menu{
         height: 0px;
-        transition: height .3s;
         width: 100%;
         visibility: hidden;
+        cursor: default;
         &.open {
             height: 40px;
+            transition: height .3s;
             visibility: visible;
         }
     }

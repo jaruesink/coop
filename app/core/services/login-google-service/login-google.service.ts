@@ -11,38 +11,42 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class GoogleLoginService {
     goog: any = window.gapi;
+    gAuth: any;
     user: any;
     token: string;
     constructor(private router:Router, public loginService:LoginService, public http: Http) {
         console.log('Google login service is loaded.');
     }
-
-    getUser(doNext:any) {
-      if (this.goog) {
-        this.goog.load('auth2', () => {
-          this.goog.auth2.init({
-            client_id: '460438236970-uecf0olbtirtp55r10a4cuev2ntiuep7.apps.googleusercontent.com',
-            scope: 'profile email'
-          }).then(() => {
-            this.goog.signIn().then(() => {
-              this.user = this.goog.currentUser;
-              doNext();
+    loadAuth(doNext:any) {
+        var load = new Promise((resolve:any, reject:any) =>  {
+            this.goog.load('auth2', () => {
+                this.gAuth = this.goog.auth2.init({
+                    client_id: '460438236970-uecf0olbtirtp55r10a4cuev2ntiuep7.apps.googleusercontent.com',
+                    scope: 'profile email'
+                });
+                if (this.gAuth) {
+                    resolve('I have received info.');
+                } else {
+                    reject(Error('I have not received info.'));
+                }
             });
-          });
         });
-      } else {
-        this.router.navigate(['NotConnected']);
-      }
-    }
-    getToken() {
-      if (this.user) {
-        this.token = this.user.getAuthResponse().id_token;
-        console.log('Your Google token is: ', this.token);
-      } else {
-        this.getUser(() => {
-          this.getToken();
+        load.then((get_load_success) => {
+            console.log(get_load_success);
+            doNext();
+        }, function(get_load_error){
+            console.log(get_load_error);
         });
-      }
     }
-
+    getUser() {
+        this.loadAuth(() => {
+            this.gAuth.signIn().then(() => {
+              this.user = this.gAuth.currentUser.get().getBasicProfile();
+              console.log(this.user);
+            });
+        });
+    }
+    loginWithGoogle() {
+        this.getUser();
+    }
 }

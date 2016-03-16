@@ -35,8 +35,8 @@ export class Login {
     }
     googleLogin() {
       if ( this.goog ) {
-          this.googleLoginService.getToken();
-          
+          this.googleLoginService.loginWithGoogle();
+
       } else {
         this.router.navigate(['/NotConnected']);
       }
