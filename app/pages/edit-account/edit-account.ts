@@ -3,12 +3,11 @@
 import {Component} from "angular2/core";
 import {ROUTER_DIRECTIVES, Router} from "angular2/router";
 import {AccountService} from "../../core/services/account-service/account.service";
-import {PhoneInput} from "../../core/commons/phone-input/phone-input";
 
 @Component({
     selector: "page-edit-account",
     templateUrl: "pages/edit-account/edit-account.template.html",
-    directives: [ROUTER_DIRECTIVES, PhoneInput]
+    directives: [ROUTER_DIRECTIVES]
 })
 export class EditAccount {
     username: string;
