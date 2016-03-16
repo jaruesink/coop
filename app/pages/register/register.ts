@@ -5,6 +5,7 @@ import {Component} from "angular2/core";
 import {FORM_DIRECTIVES} from "angular2/common";
 import {LoginService} from "../../core/services/login-service/login.service";
 import {FacebookLoginService} from "../../core/services/login-facebook-service/login-facebook.service";
+import {GoogleLoginService} from "../../core/services/login-google-service/login-google.service";
 import {ROUTER_DIRECTIVES, RouteConfig, Route, RouterOutlet, RouterLink, Router} from "angular2/router";
 
 @Component({
@@ -14,16 +15,22 @@ import {ROUTER_DIRECTIVES, RouteConfig, Route, RouterOutlet, RouterLink, Router}
 })
 export class Register {
     FB: any = window.FB;
-    userNumber: string;
-    constructor(public loginService:LoginService, private router:Router, public facebookLoginService: FacebookLoginService) {
+    goog: any = window.gapi;
+    constructor(public loginService:LoginService, private router:Router, public facebookLoginService: FacebookLoginService, public googleLoginService: GoogleLoginService) {
         console.log("Register component loaded");
     }
     facebookLogin() {
         if ( this.FB ) {
             this.facebookLoginService.loginWithFacebook();
         } else {
-          // not connected to internet
           this.router.navigate(['/NotConnected']);
         }
+    }
+    googleLogin() {
+      if ( this.goog ) {
+          this.googleLoginService.loginWithGoogle();
+      } else {
+        this.router.navigate(['/NotConnected']);
+      }
     }
 }

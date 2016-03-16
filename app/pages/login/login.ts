@@ -19,7 +19,7 @@ import {GoogleLoginService} from "../../core/services/login-google-service/login
 export class Login {
     FB: any = window.FB;
     goog: any = window.gapi;
-    constructor(private loginService: LoginService, public accountService: AccountService, private router: Router, public facebookLoginService: FacebookLoginService, public googleLoginService: GoogleLoginService) {
+    constructor(public loginService: LoginService, public accountService: AccountService, private router: Router, public facebookLoginService: FacebookLoginService, public googleLoginService: GoogleLoginService) {
         console.log("Login component loaded");
         // Check if logged in
         if (this.loginService.isLoggedIn) {
@@ -28,6 +28,8 @@ export class Login {
     }
     facebookLogin() {
         if ( this.FB ) {
+            this.loginService.fb_loading = true;
+            console.log('loading', this.loginService.fb_loading);
             this.facebookLoginService.loginWithFacebook();
         } else {
           this.router.navigate(['/NotConnected']);
@@ -35,9 +37,13 @@ export class Login {
     }
     googleLogin() {
       if ( this.goog ) {
+          this.loginService.goog_loading = true;
           this.googleLoginService.loginWithGoogle();
       } else {
         this.router.navigate(['/NotConnected']);
       }
+    }
+    ngOnDestroy() {
+      this.loginService.fb_loading = false;
     }
 }

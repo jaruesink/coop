@@ -15,7 +15,7 @@ export class FacebookLoginService {
     response: any;
     token: string;
     id: string;
-    accountRequest: any;
+    account_request: any;
     _postUrl: string = 'http://3cf40ea9.ngrok.com/api/auth/register';
     error: any;
 
@@ -31,15 +31,17 @@ export class FacebookLoginService {
                   resolve('I am connected.');
               } else {
                   reject(Error('I am not connected.'));
+                  this.loginService.fb_loading = false;
               }
           });
       });
       status.then((connected_success:any) => {
           console.log(connected_success);
           doNext();
-      }, function(connected_error:any){
+      }, (connected_error:any) => {
           onFail();
           console.log(connected_error);
+          this.loginService.fb_loading = false;
       });
     }
 
@@ -53,14 +55,16 @@ export class FacebookLoginService {
                   resolve('I have received info.');
               } else {
                   reject(Error('I have not received info.'));
+                  this.loginService.fb_loading = false;
               }
           });
       });
       info.then((get_info_success) => {
           console.log(get_info_success);
           doNext();
-      }, function(get_info_error){
+      }, (get_info_error) => {
           console.log(get_info_error);
+          this.loginService.fb_loading = false;
       });
     }
 
@@ -74,9 +78,9 @@ export class FacebookLoginService {
         // Not Connected
         var facebookLogin = new Promise((resolve:any, reject:any) => {
             this.FB.login( (response:any) => {
-                this.token = response.authResponse.accessToken;
-                this.id = response.authResponse.userID;
-                if ( this.token && this.id ) {
+                if ( response.authResponse.accessToken && response.authResponse.userID ) {
+                  this.token = response.authResponse.accessToken;
+                  this.id = response.authResponse.userID;
                   resolve('You are logged in, your id is: '+ this.id);
                 } else {
                   reject(Error('Logging in with Facebook failed.'));
@@ -86,7 +90,7 @@ export class FacebookLoginService {
         facebookLogin.then((login_success:any) => {
             console.log(login_success);
             this.loginWithFacebook();
-        }, function(login_error:any){
+        }, (login_error:any) => {
             console.log(login_error);
         });
       });
@@ -94,22 +98,22 @@ export class FacebookLoginService {
 
     createAccountWithFacebook(name:string, username:string, email:string, phone:string) {
       console.log(this.loginService.loginType);
-      var accountRequest:any = {};
-      accountRequest['name']        = name;
-      accountRequest['username']    = username;
-      accountRequest['email']       = email;
-      accountRequest['phone']       = phone;
-      accountRequest['photo_url']    = '';
-      accountRequest['credentials'] = {};
-      accountRequest['credentials'].type  = this.loginService.loginType;
-      accountRequest['credentials'].id    = this.id;
-      accountRequest['credentials'].token = this.token;
-      console.log('Account Request Object: ', accountRequest);
-      accountRequest = JSON.stringify(accountRequest);
-      console.log('Account Request String: ', accountRequest);
+      var account_request:any = {};
+      account_request['name']        = name;
+      account_request['username']    = username;
+      account_request['email']       = email;
+      account_request['phone']       = phone;
+      account_request['photo_url']    = '';
+      account_request['credentials'] = {};
+      account_request['credentials'].type  = this.loginService.loginType;
+      account_request['credentials'].id    = this.id;
+      account_request['credentials'].token = this.token;
+      console.log('Account Request Object: ', account_request);
+      account_request = JSON.stringify(account_request);
+      console.log('Account Request String: ', account_request);
       var headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      this.http.post(this._postUrl, accountRequest, {
+      this.http.post(this._postUrl, account_request, {
                   headers: headers
                   })
                   .map(response => response.json())
