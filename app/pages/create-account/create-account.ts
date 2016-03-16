@@ -5,12 +5,11 @@ import {ROUTER_DIRECTIVES, Router} from "angular2/router";
 import {LoginService} from "../../core/services/login-service/login.service";
 import {AccountService} from "../../core/services/account-service/account.service";
 import {FacebookLoginService} from "../../core/services/login-facebook-service/login-facebook.service";
-import {PhoneInput} from "../../core/commons/phone-input/phone-input";
 
 @Component({
     selector: "page-create-account",
     templateUrl: "pages/create-account/create-account.template.html",
-    directives: [ROUTER_DIRECTIVES, PhoneInput]
+    directives: [ROUTER_DIRECTIVES]
 })
 export class CreateAccount {
     FB: any = window.FB;

@@ -17,7 +17,7 @@
     <div class="row">
     <fieldset class="form-group col-sm-9">
         <label for="phonenumber">Phone Number</label>
-        <phone-input [userNumber]="phonenumber" (phoneNumberChanged)="phonenumber = $event"></phone-input>
+        <input type="tel" class="form-control" id="phonenumber" [(ngModel)]="phonenumber" pattern="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$">
     </fieldset>
     </div>
     <div class="row">
