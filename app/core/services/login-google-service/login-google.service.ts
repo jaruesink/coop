@@ -40,9 +40,11 @@ export class GoogleLoginService {
     }
     getUser() {
         this.loadAuth(() => {
-            this.gAuth.signIn().then(() => {
-              this.user = this.gAuth.currentUser.get().getBasicProfile();
+            this.gAuth.signIn().then((response:any) => {
+              this.user  = response.getBasicProfile();
+              this.token = response.getAuthResponse().id_token;;
               console.log(this.user);
+              console.log(this.token);
             });
         });
     }
