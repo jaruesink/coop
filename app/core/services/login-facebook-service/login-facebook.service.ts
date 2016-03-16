@@ -23,7 +23,7 @@ export class FacebookLoginService {
         console.log('Facebook login service is loaded.');
     }
 
-    getStatus(doNext:any) {
+    getStatus(doNext:any, onFail?:any) {
       var status = new Promise((resolve:any, reject:any) => {
           this.FB.getLoginStatus((response:any) => {
               this.status = response.status;
@@ -38,6 +38,7 @@ export class FacebookLoginService {
           console.log(connected_success);
           doNext();
       }, function(connected_error:any){
+          onFail();
           console.log(connected_error);
       });
     }
@@ -64,26 +65,30 @@ export class FacebookLoginService {
     }
 
     loginWithFacebook() {
-      var facebookLogin = new Promise((resolve:any, reject:any) => {
-          this.FB.login( (response:any) => {
-              this.token = response.authResponse.accessToken;
-              this.id = response.authResponse.userID;
-              if ( this.token && this.id ) {
-                resolve('You are logged in, your id is: '+ this.id);
-              } else {
-                reject(Error('Logging in with Facebook failed.'));
-              }
-          });
-      });
-      facebookLogin.then((login_success:any) => {
-          console.log(login_success);
-          this.getStatus( () => {
-              this.getInfo( () => {
-                  this.loginService.userLogin('facebook');
-              });
-          });
-      }, function(login_error:any){
-          console.log(login_error);
+      this.getStatus(() => {
+        // Connected
+        this.getInfo( () => {
+            this.loginService.userLogin('facebook');
+        });
+      }, () => {
+        // Not Connected
+        var facebookLogin = new Promise((resolve:any, reject:any) => {
+            this.FB.login( (response:any) => {
+                this.token = response.authResponse.accessToken;
+                this.id = response.authResponse.userID;
+                if ( this.token && this.id ) {
+                  resolve('You are logged in, your id is: '+ this.id);
+                } else {
+                  reject(Error('Logging in with Facebook failed.'));
+                }
+            });
+        });
+        facebookLogin.then((login_success:any) => {
+            console.log(login_success);
+            this.loginWithFacebook();
+        }, function(login_error:any){
+            console.log(login_error);
+        });
       });
     }
 
