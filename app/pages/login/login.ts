@@ -36,7 +36,6 @@ export class Login {
     googleLogin() {
       if ( this.goog ) {
           this.googleLoginService.loginWithGoogle();
-
       } else {
         this.router.navigate(['/NotConnected']);
       }
