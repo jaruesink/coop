@@ -13,6 +13,7 @@ export class GoogleLoginService {
     goog: any = window.gapi;
     gAuth: any;
     user: any;
+    id: string;
     token: string;
     constructor(private router:Router, public loginService:LoginService, public http: Http) {
         console.log('Google login service is loaded.');
@@ -57,6 +58,7 @@ export class GoogleLoginService {
                         console.log('logged into Google, ', response);
                         this.user  = response.getBasicProfile();
                         this.token = response.getAuthResponse().id_token;;
+                        this.id    = this.user.getId();
                         this.loginService.name = this.user.getName();
                         this.loginService.email = this.user.getEmail();
                         if (this.user && this.token) {
@@ -81,4 +83,33 @@ export class GoogleLoginService {
             this.loginService.userLogin('google');
         });
     }
+
+    createAccountWithGoogle(name:string, username:string, email:string, phone:string) {
+      console.log(this.loginService.loginType);
+      var accountRequest:any = {};
+      accountRequest['name']        = name;
+      accountRequest['username']    = username;
+      accountRequest['email']       = email;
+      accountRequest['phone']       = phone;
+      accountRequest['photo_url']   = '';
+      accountRequest['credentials'] = {};
+      accountRequest['credentials'].type  = this.loginService.loginType;
+      accountRequest['credentials'].id    = this.id;
+      accountRequest['credentials'].token = this.token;
+      console.log('Account Request Object: ', accountRequest);
+      accountRequest = JSON.stringify(accountRequest);
+      console.log('Account Request String: ', accountRequest);
+      var headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      this.http.post(this.loginService._postUrl, accountRequest, {
+                  headers: headers
+                  })
+                  .map(response => response.json())
+                  .subscribe(
+                      // To Do: point this data to a login function and set loginService.isLoggedIn = data.auth_token
+                      data => console.log(data),
+                      err => console.log(err),
+                      () => console.log('Account Creation Request Complete')
+                  );
+  }
 }

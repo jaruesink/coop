@@ -9,6 +9,7 @@ import {AccountService} from "../account-service/account.service";
 export class LoginService {
     isLoggedIn: boolean = false;
     accountExists: boolean = false;
+    _postUrl: string = 'http://a9f668a0.ngrok.io/api/auth/register';
     loginType: string;
     phonenumber: string;
     username: string;

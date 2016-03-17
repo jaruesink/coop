@@ -5,6 +5,7 @@ import {ROUTER_DIRECTIVES, Router} from "angular2/router";
 import {LoginService} from "../../core/services/login-service/login.service";
 import {AccountService} from "../../core/services/account-service/account.service";
 import {FacebookLoginService} from "../../core/services/login-facebook-service/login-facebook.service";
+import {GoogleLoginService} from "../../core/services/login-google-service/login-google.service";
 
 @Component({
     selector: "page-create-account",
@@ -17,7 +18,7 @@ export class CreateAccount {
     name: string;
     phonenumber: string;
     email: string;
-    constructor(public accountService: AccountService, public loginService: LoginService, private router: Router, public facebookLoginService: FacebookLoginService) {
+    constructor(public accountService: AccountService, public loginService: LoginService, private router: Router, public facebookLoginService: FacebookLoginService, public googleLoginService: GoogleLoginService) {
         console.log("Create account component loaded");
         if ( this.loginService.loginType ) {
             this.name  = this.loginService.name;
@@ -33,6 +34,9 @@ export class CreateAccount {
     createProfile() {
         if (this.loginService.loginType === 'facebook') {
             this.facebookLoginService.createAccountWithFacebook(this.name, this.username, this.email, this.phonenumber);
+        }
+        if (this.loginService.loginType === 'google') {
+            this.googleLoginService.createAccountWithGoogle(this.name, this.username, this.email, this.phonenumber);
         }
     }
 }

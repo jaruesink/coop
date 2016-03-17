@@ -16,7 +16,6 @@ export class FacebookLoginService {
     token: string;
     id: string;
     accountRequest: any;
-    _postUrl: string = 'http://3cf40ea9.ngrok.com/api/auth/register';
     error: any;
 
     constructor(private router:Router, public loginService:LoginService, public http: Http) {
@@ -99,7 +98,7 @@ export class FacebookLoginService {
       accountRequest['username']    = username;
       accountRequest['email']       = email;
       accountRequest['phone']       = phone;
-      accountRequest['photo_url']    = '';
+      accountRequest['photo_url']   = '';
       accountRequest['credentials'] = {};
       accountRequest['credentials'].type  = this.loginService.loginType;
       accountRequest['credentials'].id    = this.id;
@@ -109,7 +108,7 @@ export class FacebookLoginService {
       console.log('Account Request String: ', accountRequest);
       var headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      this.http.post(this._postUrl, accountRequest, {
+      this.http.post(this.loginService._postUrl, accountRequest, {
                   headers: headers
                   })
                   .map(response => response.json())
