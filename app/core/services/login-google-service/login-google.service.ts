@@ -64,6 +64,7 @@ export class GoogleLoginService {
                         if (this.user && this.token) {
                             resolve('I have logged into Google.');
                         } else {
+                            this.loginService.goog_loading.emit(false);
                             reject(Error('I have not logged into Google.'));
                         }
                     });
@@ -79,6 +80,7 @@ export class GoogleLoginService {
         });
     }
     loginWithGoogle() {
+        this.loginService.goog_loading.emit(true);
         this.getUser(() => {
             this.loginService.userLogin('google');
         });

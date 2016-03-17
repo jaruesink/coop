@@ -15,7 +15,8 @@ export class FacebookLoginService {
     response: any;
     token: string;
     id: string;
-    accountRequest: any;
+    account_request: any;
+    _postUrl: string = 'http://3cf40ea9.ngrok.com/api/auth/register';
     error: any;
 
     constructor(private router:Router, public loginService:LoginService, public http: Http) {
@@ -36,7 +37,7 @@ export class FacebookLoginService {
       status.then((connected_success:any) => {
           console.log(connected_success);
           doNext();
-      }, function(connected_error:any){
+      }, (connected_error:any) => {
           onFail();
           console.log(connected_error);
       });
@@ -58,12 +59,13 @@ export class FacebookLoginService {
       info.then((get_info_success) => {
           console.log(get_info_success);
           doNext();
-      }, function(get_info_error){
+      }, (get_info_error) => {
           console.log(get_info_error);
       });
     }
 
     loginWithFacebook() {
+      this.loginService.fb_loading.emit(true);
       this.getStatus(() => {
         // Connected
         this.getInfo( () => {
@@ -73,9 +75,10 @@ export class FacebookLoginService {
         // Not Connected
         var facebookLogin = new Promise((resolve:any, reject:any) => {
             this.FB.login( (response:any) => {
-                this.token = response.authResponse.accessToken;
-                this.id = response.authResponse.userID;
-                if ( this.token && this.id ) {
+                console.log(response);
+                if ( response.authResponse ) {
+                  this.token = response.authResponse.accessToken;
+                  this.id = response.authResponse.userID;
                   resolve('You are logged in, your id is: '+ this.id);
                 } else {
                   reject(Error('Logging in with Facebook failed.'));
@@ -85,7 +88,8 @@ export class FacebookLoginService {
         facebookLogin.then((login_success:any) => {
             console.log(login_success);
             this.loginWithFacebook();
-        }, function(login_error:any){
+        }, (login_error:any) => {
+            this.loginService.fb_loading.emit(false);
             console.log(login_error);
         });
       });

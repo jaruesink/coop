@@ -1,7 +1,7 @@
 "use strict";
 
 // import Angular 2
-import {Injectable} from "angular2/core";
+import {Injectable, EventEmitter} from "angular2/core";
 import {RouteConfig, Route, RouterOutlet, RouterLink, Router} from "angular2/router";
 import {AccountService} from "../account-service/account.service";
 
@@ -9,6 +9,8 @@ import {AccountService} from "../account-service/account.service";
 export class LoginService {
     isLoggedIn: boolean = false;
     accountExists: boolean = false;
+    fb_loading:  EventEmitter<any> = new EventEmitter();
+    goog_loading: EventEmitter<any> = new EventEmitter();
     _postUrl: string = 'http://a9f668a0.ngrok.io/api/auth/register';
     loginType: string;
     phonenumber: string;
