@@ -17,12 +17,6 @@ export class LoginService {
     email: string;
     constructor(public router: Router) {
         console.log('Login service is loaded.');
-        if (this.isLoggedIn) {
-            this.phonenumber = '(512) 450-8236';
-            this.name = 'Jake Ruesink';
-            this.username = 'jaruesink';
-            this.email = 'jaruesink@gmail.com';
-        }
     }
     userLogin(type:string) {
         this.loginType = type;
