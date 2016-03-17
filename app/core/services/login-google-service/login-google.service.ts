@@ -94,7 +94,6 @@ export class GoogleLoginService {
       accountRequest['photo_url']   = '';
       accountRequest['credentials'] = {};
       accountRequest['credentials'].type  = this.loginService.loginType;
-      accountRequest['credentials'].id    = this.id;
       accountRequest['credentials'].token = this.token;
       console.log('Account Request Object: ', accountRequest);
       accountRequest = JSON.stringify(accountRequest);
