@@ -30,12 +30,12 @@
 
 <hr class="or m-t-2 m-b-1">
 
-<form (ngSubmit)="userRegister()">
+<form [ngFormModel]="username_form" (ngSubmit)="checkUsername()">
     <fieldset class="form-group">
         <label for="username">Username</label>
-        <input type="username" class="form-control" id="username" [(ngModel)]="username" autofocus="true" autocomplete="off" required>
+        <input type="username" class="form-control" id="username" minlength="4" maxlength="16" ngControl="username" autofocus="true" autocomplete="off" required>
     </fieldset>
-    <button class="btn btn-lg btn-success btn-block m-t-1" type="submit">Next</button>
+    <button [disabled]="!username_form.valid" class="btn btn-lg btn-success btn-block m-t-1" type="submit">Next</button>
 </form>
 
 

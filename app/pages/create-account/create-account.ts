@@ -1,6 +1,7 @@
 "use strict";
 
 import {Component}  from "angular2/core";
+import {FORM_DIRECTIVES, Control, ControlGroup, Validators, FormBuilder} from "angular2/common";
 import {ROUTER_DIRECTIVES, Router} from "angular2/router";
 import {LoginService} from "../../core/services/login-service/login.service";
 import {AccountService} from "../../core/services/account-service/account.service";
@@ -14,15 +15,32 @@ import {GoogleLoginService} from "../../core/services/login-google-service/login
 })
 export class CreateAccount {
     FB: any = window.FB;
-    username: string;
-    name: string;
-    phonenumber: string;
-    email: string;
-    constructor(public accountService: AccountService, public loginService: LoginService, private router: Router, public facebookLoginService: FacebookLoginService, public googleLoginService: GoogleLoginService) {
+    create_account_form: ControlGroup;
+    username: Control;
+    name: Control;
+    phonenumber: Control;
+    email: Control;
+    password: Control;
+    password_verification: Control;
+    constructor(public accountService: AccountService, public loginService: LoginService, private router: Router, private builder: FormBuilder, public facebookLoginService: FacebookLoginService, public googleLoginService: GoogleLoginService) {
         console.log("Create account component loaded");
         if ( this.loginService.loginType ) {
-            this.name  = this.loginService.name;
-            this.email = this.loginService.email;
+          this.name = new Control(this.loginService.name, Validators.compose([Validators.required]));
+          this.email = new Control(this.loginService.email, Validators.compose([Validators.required]));
+          this.phonenumber = new Control(this.loginService.phonenumber, Validators.compose([Validators.required]));
+          this.username = new Control(this.loginService.username, Validators.compose([Validators.required]));
+          if ( this.loginService.loginType === 'password' ) {
+            this.password = new Control('', Validators.compose([Validators.required]));
+            this.password_verification = new Control('', Validators.compose([Validators.required]));
+          }
+          this.create_account_form = builder.group({
+            name:        this.name,
+            email:       this.email,
+            phonenumber: this.phonenumber,
+            username:    this.username,
+            password:    this.password,
+            password_verification: this.password_verification
+          });
         } else {
             this.router.navigate(['Login']);
         }
@@ -31,12 +49,12 @@ export class CreateAccount {
     ngOnInit() {
         console.log('testing');
     }
-    createProfile() {
+    createAccount() {
         if (this.loginService.loginType === 'facebook') {
-            this.facebookLoginService.createAccountWithFacebook(this.name, this.username, this.email, this.phonenumber);
+            this.facebookLoginService.createAccountWithFacebook(this.create_account_form.value.name, this.create_account_form.value.username, this.create_account_form.value.email, this.create_account_form.value.phonenumber);
         }
         if (this.loginService.loginType === 'google') {
-            this.googleLoginService.createAccountWithGoogle(this.name, this.username, this.email, this.phonenumber);
+            this.googleLoginService.createAccountWithGoogle(this.create_account_form.value.name, this.create_account_form.value.username, this.create_account_form.value.email, this.create_account_form.value.phonenumber);
         }
     }
 }

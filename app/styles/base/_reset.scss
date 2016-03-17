@@ -77,9 +77,9 @@ html {
 // make sure that headings inherit the same size as the surrounding text by default
 // rather than having an arbitrary larger size. There'll be less to override that way
 // http://jaydenseric.com/blog/forget-normalize-or-resets-lay-your-own-css-foundation
-h1, h2, h3, h4, h5, h6{
-	font-size: inherit;
-}
+// h1, h2, h3, h4, h5, h6{
+// 	font-size: inherit;
+// }
 
 // less surprises when linking to things
 // links are styled many different ways on the same page (e.g., menus, sidebars, footers, buttons and within text).

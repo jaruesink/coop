@@ -1,34 +1,44 @@
 <div class="container create-profile">
 <div class="card card-block">
 <h1 class="card-title">Create  Account</h1>
-<form (ngSubmit)="createProfile()" >
+<form [ngFormModel]="create_account_form" (ngSubmit)="createAccount()" >
+    <div class="row">
+    <fieldset class="form-group col-sm-9">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" ngControl="username" minlength="4" maxlength="16" required>
+    </fieldset>
+    </div>
     <div class="row">
     <fieldset class="form-group col-sm-9">
         <label for="fullName">Full Name</label>
-        <input type="text" class="form-control" id="fullName" [(ngModel)]="name" required>
+        <input type="text" class="form-control" id="fullName" ngControl="name" required>
     </fieldset>
     </div>
     <div class="row">
     <fieldset class="form-group col-sm-9">
         <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" [(ngModel)]="email" required>
+        <input type="email" class="form-control" id="email" ngControl="email" required>
     </fieldset>
     </div>
     <div class="row">
     <fieldset class="form-group col-sm-9">
         <label for="phonenumber">Phone Number</label>
-        <input type="tel" class="form-control" id="phonenumber" [(ngModel)]="phonenumber" pattern="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$">
+        <input type="tel" class="form-control" id="phonenumber" minlength="10" ngControl="phonenumber" pattern="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$" required>
     </fieldset>
     </div>
-    <div class="row">
+    <div *ngIf="loginService.loginType === 'password'" class="row">
     <fieldset class="form-group col-sm-9">
-        <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" [(ngModel)]="username" pattern="^[a-zA-Z0-9\_\-\.]{4,16}$" required>
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" ngControl="password" minlength="6" maxlength="32" required>
+    </fieldset>
+    <fieldset class="form-group col-sm-9">
+        <label for="password_verification">Password Verification</label>
+        <input type="password" class="form-control" id="password_verification" ngControl="password_verification" minlength="6" maxlength="32" required>
     </fieldset>
     </div>
     <div class="row">
         <div class="col-xs-6 col-sm-3 col-sm-offset-3">
-            <button class="btn btn-success btn-block m-t-1" type="submit">Continue</button>
+            <button [disabled]="!create_account_form.valid" class="btn btn-success btn-block m-t-1" type="submit">Continue</button>
         </div>
         <div class="col-xs-6 col-sm-3">
             <a class="btn btn-danger btn-block m-t-1" [routerLink]="['/Login']">Cancel</a>

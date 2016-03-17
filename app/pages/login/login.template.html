@@ -13,16 +13,16 @@
   </li>
 </ul>
 
-<form (ngSubmit)="passwordLogin()">
+<form [ngFormModel]="login_form" (ngSubmit)="passwordLogin()">
     <fieldset class="form-group">
         <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" [(ngModel)]="username" required>
+        <input type="text" class="form-control" id="username" ngControl="username" minlength="4" maxlength="16" required>
     </fieldset>
     <fieldset class="form-group">
         <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" [(ngModel)]="password" required>
+        <input type="password" class="form-control" id="password" ngControl="password" minlength="6" maxlength="32" required>
     </fieldset>
-    <button class="btn btn-lg btn-success btn-block m-t-1" type="submit">Enter</button>
+    <button [disabled]="!login_form.valid" class="btn btn-lg btn-success btn-block m-t-1" type="submit">Enter</button>
 </form>
 
 <hr class="or m-y-2">
