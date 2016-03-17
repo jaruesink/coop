@@ -31,7 +31,6 @@ export class FacebookLoginService {
                   resolve('I am connected.');
               } else {
                   reject(Error('I am not connected.'));
-                  this.loginService.fb_loading = false;
               }
           });
       });
@@ -41,7 +40,6 @@ export class FacebookLoginService {
       }, (connected_error:any) => {
           onFail();
           console.log(connected_error);
-          this.loginService.fb_loading = false;
       });
     }
 
@@ -55,7 +53,6 @@ export class FacebookLoginService {
                   resolve('I have received info.');
               } else {
                   reject(Error('I have not received info.'));
-                  this.loginService.fb_loading = false;
               }
           });
       });
@@ -64,11 +61,11 @@ export class FacebookLoginService {
           doNext();
       }, (get_info_error) => {
           console.log(get_info_error);
-          this.loginService.fb_loading = false;
       });
     }
 
     loginWithFacebook() {
+      this.loginService.fb_loading.emit(true);
       this.getStatus(() => {
         // Connected
         this.getInfo( () => {
@@ -78,7 +75,8 @@ export class FacebookLoginService {
         // Not Connected
         var facebookLogin = new Promise((resolve:any, reject:any) => {
             this.FB.login( (response:any) => {
-                if ( response.authResponse.accessToken && response.authResponse.userID ) {
+                console.log(response);
+                if ( response.authResponse ) {
                   this.token = response.authResponse.accessToken;
                   this.id = response.authResponse.userID;
                   resolve('You are logged in, your id is: '+ this.id);
@@ -91,6 +89,7 @@ export class FacebookLoginService {
             console.log(login_success);
             this.loginWithFacebook();
         }, (login_error:any) => {
+            this.loginService.fb_loading.emit(false);
             console.log(login_error);
         });
       });
@@ -98,22 +97,22 @@ export class FacebookLoginService {
 
     createAccountWithFacebook(name:string, username:string, email:string, phone:string) {
       console.log(this.loginService.loginType);
-      var account_request:any = {};
-      account_request['name']        = name;
-      account_request['username']    = username;
-      account_request['email']       = email;
-      account_request['phone']       = phone;
-      account_request['photo_url']    = '';
-      account_request['credentials'] = {};
-      account_request['credentials'].type  = this.loginService.loginType;
-      account_request['credentials'].id    = this.id;
-      account_request['credentials'].token = this.token;
-      console.log('Account Request Object: ', account_request);
-      account_request = JSON.stringify(account_request);
-      console.log('Account Request String: ', account_request);
+      var accountRequest:any = {};
+      accountRequest['name']        = name;
+      accountRequest['username']    = username;
+      accountRequest['email']       = email;
+      accountRequest['phone']       = phone;
+      accountRequest['photo_url']   = '';
+      accountRequest['credentials'] = {};
+      accountRequest['credentials'].type  = this.loginService.loginType;
+      accountRequest['credentials'].id    = this.id;
+      accountRequest['credentials'].token = this.token;
+      console.log('Account Request Object: ', accountRequest);
+      accountRequest = JSON.stringify(accountRequest);
+      console.log('Account Request String: ', accountRequest);
       var headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      this.http.post(this._postUrl, account_request, {
+      this.http.post(this.loginService._postUrl, accountRequest, {
                   headers: headers
                   })
                   .map(response => response.json())

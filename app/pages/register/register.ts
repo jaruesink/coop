@@ -16,6 +16,10 @@ import {ROUTER_DIRECTIVES, RouteConfig, Route, RouterOutlet, RouterLink, Router}
 export class Register {
     FB: any = window.FB;
     goog: any = window.gapi;
+<<<<<<< HEAD
+=======
+    userNumber: string;
+>>>>>>> master
     constructor(public loginService:LoginService, private router:Router, public facebookLoginService: FacebookLoginService, public googleLoginService: GoogleLoginService) {
         console.log("Register component loaded");
     }

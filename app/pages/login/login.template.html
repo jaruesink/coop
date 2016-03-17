@@ -1,3 +1,7 @@
+<div class="header-img">
+  <img src="./images/coffeeshop.jpg" alt="coffeeshop">
+</div>
+
 <div class="container login-page">
 
 <ul class="nav nav-tabs nav-justified m-b-1">
@@ -26,9 +30,8 @@
 <div class="row">
     <div class="col-xs-6">
         <button class="btn btn-block btn-primary" (click)="facebookLogin()">
-            loading: {{loginService.fb_loading}}
-            <i *ngIf="!loginService.fb_loading" class="fa fa-lg fa-inverse fa-facebook"></i>
-            <i *ngIf="loginService.fb_loading" class="fa fa-lg fa-spinner fa-inverse fa-spin"></i>
+            <i *ngIf="!fb_loading" class="fa fa-lg fa-inverse fa-facebook"></i>
+            <i *ngIf="fb_loading" class="fa fa-lg fa-spinner fa-inverse fa-spin"></i>
         </button>
     </div>
     <div class="col-xs-6">

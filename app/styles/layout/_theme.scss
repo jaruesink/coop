@@ -15,6 +15,24 @@ main .btn, #logout .btn, .nav-tabs .nav-link{
   letter-spacing: .02rem;
 }
 
+.header-img{
+  margin: -16px 0px 16px 0px;
+  width: 100%;
+  max-height: 300px;
+  overflow: hidden;
+  position: relative;
+  img{
+    position: relative; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0; 
+    margin: auto; 
+    min-width: 50%;
+    min-height: 50%;
+  }
+}
+
 .group-list, .post-list, .comment-list{
     .card{
       border-radius: 2px;
