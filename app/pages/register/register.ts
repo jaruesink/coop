@@ -16,12 +16,25 @@ import {ROUTER_DIRECTIVES, RouteConfig, Route, RouterOutlet, RouterLink, Router}
 export class Register {
     FB: any = window.FB;
     goog: any = window.gapi;
-<<<<<<< HEAD
-=======
-    userNumber: string;
->>>>>>> master
+    fb_loading: boolean;
+    goog_loading: boolean;
+    username: string;
     constructor(public loginService:LoginService, private router:Router, public facebookLoginService: FacebookLoginService, public googleLoginService: GoogleLoginService) {
         console.log("Register component loaded");
+        this.loginService.fb_loading.subscribe((isLoading:any) => {
+          if(isLoading) {
+              this.fb_loading = true;
+          } else {
+              this.fb_loading = false;
+          }
+        });
+        this.loginService.goog_loading.subscribe((isLoading:any) => {
+          if(isLoading) {
+              this.goog_loading = true;
+          } else {
+              this.goog_loading = false;
+          }
+        });
     }
     facebookLogin() {
         if ( this.FB ) {

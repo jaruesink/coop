@@ -14,8 +14,18 @@
 </ul>
 
 <div class="row">
-    <div class="col-xs-6"><button class="btn btn-block btn-primary" (click)="facebookLogin()"><i class="fa fa-lg fa-inverse fa-facebook"></i></button></div>
-    <div class="col-xs-6"><button class="btn btn-block btn-danger" (click)="googleLogin()"><i class="fa fa-lg fa-inverse fa-google"></i></button></div>
+    <div class="col-xs-6">
+        <button class="btn btn-block btn-primary" (click)="facebookLogin()">
+            <i *ngIf="!fb_loading" class="fa fa-lg fa-inverse fa-facebook"></i>
+            <i *ngIf="fb_loading" class="fa fa-lg fa-spinner fa-inverse fa-spin"></i>
+        </button>
+    </div>
+    <div class="col-xs-6">
+        <button class="btn btn-block btn-danger" (click)="googleLogin()">
+            <i *ngIf="!goog_loading" class="fa fa-lg fa-inverse fa-google"></i>
+            <i *ngIf="goog_loading" class="fa fa-lg fa-spinner fa-inverse fa-spin"></i>
+        </button>
+    </div>
 </div>
 
 <hr class="or m-t-2 m-b-1">
