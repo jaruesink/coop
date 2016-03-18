@@ -10,6 +10,6 @@
     <div [ngClass]="{open: confirmDelete}" class="action-menu bg-danger">
       <h6>Confirm</h6> <!-- Hide on XS -->
       <a class="action-item btn btn-danger btn-sm" (click)="toggleConfirmDelete()">Cancel</a>
-      <a class="action-item btn btn-danger btn-sm">Delete</a>
+      <a class="action-item btn btn-danger btn-sm" (click)="delete()">Delete</a>
     </div>
 </div>

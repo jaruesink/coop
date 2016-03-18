@@ -55,6 +55,9 @@ export class ActionsMenu {
     favoriteGroup(index:number) {
         this.groupService.groups[index].starred = !this.groupService.groups[index].starred;
     }
+    delete() {
+      this.groupService.groups.splice(this.index, this.index+1);
+    }
     logOut() {
         this.toggleActions();
         this.loginService.userLogout();
