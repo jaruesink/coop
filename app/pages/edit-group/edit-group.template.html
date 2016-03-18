@@ -19,7 +19,7 @@
             <button class="btn btn-success btn-block m-t-1" type="submit">Save</button>
         </div>
         <div class="col-xs-6 col-sm-3">
-            <a class="btn btn-danger btn-block m-t-1" [routerLink]="['/Group', {group_id: groupService.currentGroupID}]">Cancel</a>
+            <a class="btn btn-danger btn-block m-t-1" onclick="window.history.back();">Cancel</a>
         </div>
     </div>
 </form>

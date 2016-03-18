@@ -45,15 +45,20 @@ export class ActionsMenu {
             this.listener();
         }
     }
-    toggleConfirmDelete() {
-        this.confirmDelete = !this.confirmDelete;
-        console.log('Toggling the confirm delete menu.');
-    }
     handleClick(event:any) {
         this.toggleActions();
     }
     favoriteGroup(index:number) {
         this.groupService.groups[index].starred = !this.groupService.groups[index].starred;
+    }
+    editGroup(){
+        var group_id = this.groupService.groups[this.index].id
+        this.groupService.currentGroupID = group_id;
+        this.router.navigate(['EditGroup']);
+    }
+    toggleConfirmDelete() {
+        this.confirmDelete = !this.confirmDelete;
+        console.log('Toggling the confirm delete menu.');
     }
     delete() {
       this.groupService.groups.splice(this.index, this.index+1);
