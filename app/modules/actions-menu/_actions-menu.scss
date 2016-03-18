@@ -11,7 +11,18 @@
     .action-bottom{
         bottom: 0;
         &.open{
-            background: #ccc;
+            background: darkgrey;
+            &.tall{
+              transition: padding-top .3s, height .3s;
+              padding-top: 40px;
+              height: 80px;
+            }
+        }
+        &:hover{
+            background: lightgrey;
+        }
+        &:active{
+            background: grey;
         }
     }
     .action-menu{
@@ -19,10 +30,18 @@
         width: 100%;
         visibility: hidden;
         cursor: default;
+        overflow: hidden;
+        padding: 0 20px;
         &.open {
             height: 40px;
             transition: height .3s;
             visibility: visible;
+        }
+        h6{width: auto; display: inline-block; line-height: 40px;
+        font-weight: bold; text-transform: uppercase; letter-spacing: .02em;}
+        .btn{
+          float:right;
+          margin-top: 3px;
         }
     }
 }

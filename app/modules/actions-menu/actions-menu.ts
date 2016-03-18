@@ -15,6 +15,7 @@ export class ActionsMenu {
     @Input() group:any;
     @Input() index:number ;
     isOpen: boolean;
+    confirmDelete: boolean;
     localEvent: any;
     listener: any;
 
@@ -28,6 +29,7 @@ export class ActionsMenu {
     }
     toggleActions() {
         this.isOpen = !this.isOpen;
+        this.confirmDelete = false;
         console.log('Toggling the actions menu.');
         if (this.isOpen) {
             this.listener = this.renderer.listenGlobal('document', 'click', (event: any) => {
@@ -42,6 +44,10 @@ export class ActionsMenu {
         } else {
             this.listener();
         }
+    }
+    toggleConfirmDelete() {
+        this.confirmDelete = !this.confirmDelete;
+        console.log('Toggling the confirm delete menu.');
     }
     handleClick(event:any) {
         this.toggleActions();

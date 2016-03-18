@@ -7,7 +7,7 @@ import {AccountService} from "../account-service/account.service";
 
 @Injectable()
 export class LoginService {
-    isLoggedIn: boolean = false;
+    isLoggedIn: boolean = true;
     accountExists: boolean = false;
     fb_loading:  EventEmitter<any> = new EventEmitter();
     goog_loading: EventEmitter<any> = new EventEmitter();

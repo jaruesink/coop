@@ -1,7 +1,15 @@
 <div class="actions-menu">
     <button type="button" name="button" class="action-top" (click)="favoriteGroup(index)"><i class="fa" [ngClass]="{'fa-star': group.starred, 'fa-star-o': !group.starred}"></i></button>
-    <button type="button" id="toggle-actions-{{$index}}" name="button" class="action-bottom" [ngClass]="{open: isOpen}" (click)="toggleActions(index)"><i class="fa fa-ellipsis-v"></i></button>
+    <button type="button" name="button" class="action-bottom" [ngClass]="{open: isOpen, tall: confirmDelete}" (click)="toggleActions()"><i class="fa fa-ellipsis-v"></i></button>
     <div [ngClass]="{open: isOpen}" class="action-menu bg-primary">
-      <a class="action-item">Test</a>
+      <h6>Actions</h6> <!-- Hide on XS -->
+      <a class="action-item btn btn-primary btn-sm" [ngClass]="{active: confirmDelete}" (click)="toggleConfirmDelete()">
+        <i class="fa fa-lg fa-trash"></i>
+      </a>
+    </div>
+    <div [ngClass]="{open: confirmDelete}" class="action-menu bg-danger">
+      <h6>Confirm</h6> <!-- Hide on XS -->
+      <a class="action-item btn btn-danger btn-sm" (click)="toggleConfirmDelete()">Cancel</a>
+      <a class="action-item btn btn-danger btn-sm">Delete</a>
     </div>
 </div>
