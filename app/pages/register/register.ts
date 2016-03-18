@@ -23,18 +23,18 @@ export class Register {
     form_submitted: boolean = false;
     constructor(public loginService:LoginService, private router:Router, private builder: FormBuilder, public facebookLoginService: FacebookLoginService, public googleLoginService: GoogleLoginService) {
         console.log("Register component loaded");
-        
+
         this.username = new Control('',
           Validators.compose([
-            Validators.required, 
-            Validators.minLength(4), 
+            Validators.required,
+            Validators.minLength(4),
             Validators.maxLength(16)
           ])
         );
         this.username_form = builder.group({
           username: this.username
         });
-        
+
         this.loginService.fb_loading.subscribe((isLoading:any) => {
           if(isLoading) {
               this.fb_loading = true;

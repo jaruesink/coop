@@ -33,15 +33,15 @@ export class Login {
 
         this.username = new Control('',
           Validators.compose([
-            Validators.required, 
-            Validators.minLength(4), 
+            Validators.required,
+            Validators.minLength(4),
             Validators.maxLength(16)
           ])
         );
         this.password = new Control('',
           Validators.compose([
             Validators.required,
-            Validators.minLength(6), 
+            Validators.minLength(6),
             Validators.maxLength(32)
           ])
         );
