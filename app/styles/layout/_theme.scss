@@ -22,12 +22,12 @@ main .btn, #logout .btn, .nav-tabs .nav-link{
   overflow: hidden;
   position: relative;
   img{
-    position: relative;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
+    position: relative; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0; 
+    margin: auto; 
     min-width: 50%;
     min-height: 50%;
   }
@@ -38,7 +38,6 @@ main .btn, #logout .btn, .nav-tabs .nav-link{
       border-radius: 2px;
       border: 0;
       background: white;
-      min-height: 80px;
       box-shadow: $shadow1;
       transition: box-shadow 0.2s ease-in-out;
       &:hover{
@@ -59,14 +58,9 @@ main .btn, #logout .btn, .nav-tabs .nav-link{
     .card-footer{
         border-top: 0;
         padding: .25rem .75rem;
-        font-size:11px;
+        font-size:12px;
         letter-spacing: .02rem;
         background: white;
-        position: absolute;
-        bottom: 0px;
-        min-height: 20px;
-        width: 100%;
-        padding-right: 44px;
     }
 }
 
