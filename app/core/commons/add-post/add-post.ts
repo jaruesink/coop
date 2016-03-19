@@ -40,7 +40,7 @@ export class AddPost {
         this.groupService.postInfo[randomID].author = this.accountService.fullName;
         this.groupService.groupInfo[this.groupService.currentGroupID].posts.unshift(new_post);
         input.focus();
-        input.value = '';
+        setTimeout(() => {input.value = '';}, 0)
         this.isImportant = false;
     }
 }
