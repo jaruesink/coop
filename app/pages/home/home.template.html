@@ -1,11 +1,11 @@
 <div class="container">
     <div *ngIf="!groupService.groups.length" class="card card-block">
-        <p>You are not in any groups yet. Create one by clicking the green button below.</p>
+        <p>You are not in any groups. Create one by clicking the green button below.</p>
     </div>
         <group-list></group-list>
     <div class="row">
         <div class="col-xs-offset-2 col-xs-8 col-md-offset-4 col-md-4">
-            <button class="btn btn-success btn-block m-t-1" type="button" [routerLink]="['/CreateGroup']">Create Group</button>
+            <button class="btn btn-success btn-block m-t-1" type="button" [routerLink]="['/CreateGroup']">New Group</button>
         </div>
     </div>
 </div>

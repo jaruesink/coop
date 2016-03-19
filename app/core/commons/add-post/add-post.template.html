@@ -1,11 +1,13 @@
 <div class="add-post m-b-1">
-<form (ngSubmit)="addPost(content)">
-<div class="input-group">
-  <input #content type="text" class="form-control">
-  <span class="input-group-btn">
-  <button class="btn btn-secondary" type="submit">Post</button>
-  </span>
-</div>
+<form [ngFormModel]="add_post_form" (ngSubmit)="addPost(content)">
+    <div class="row">
+        <div class="col-xs-12">
+            <textarea ngControl="content" #content type="text" class="form-control"></textarea>
+            <div class="add-post-actions">
+                <button class="btn btn-block" [ngClass]="{'btn-danger': isImportant, 'btn-warning': !isImportant}" type="button" (click)="makeImportant()" tabindex="-1"><i class="fa fa-lg fa-warning"></i> <i class="fa fa-lg" [ngClass]="{'fa-toggle-on': isImportant, 'fa-toggle-off': !isImportant}"></i></button>
+                <button [disabled]="!add_post_form.valid" class="btn btn-block btn-success" type="submit"><i class="fa fa-fw fa-lg fa-paper-plane-o"></i></button>
+            </div>
+        </div>
+    </div>
 </form>
 </div>
-

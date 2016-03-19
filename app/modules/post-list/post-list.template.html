@@ -1,7 +1,8 @@
 <section class="post-list">
 <div id="{{post.id}}" class="card" *ngFor="#post of posts" [routerLink]="['/Post', {group_id: currentGroupID, post_id: post.id}]">
+    <i *ngIf="post.isImportant" class="fa fa-sm fa-warning"></i>
     <div class="card-block">
-        <p class="card-text">{{post.content}}</p>
+        <p class="card-text">{{post.content}}, this is important {{post.isImportant}}</p>
     </div>
     <div class="card-footer text-muted">
         <div class="row">

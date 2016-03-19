@@ -7,15 +7,15 @@ import {LoginService} from "../../core/services/login-service/login.service";
 import {GroupService} from "../../core/services/group-service/group.service";
 
 @Component({
-    selector: "actions-menu",
-    templateUrl: "modules/actions-menu/actions-menu.template.html",
+    selector: "group-actions-menu",
+    templateUrl: "modules/actions-menu/group-actions-menu.template.html",
     directives: [ROUTER_DIRECTIVES]
 })
-export class ActionsMenu {
+export class GroupActionsMenu {
     @Input() group:any;
     @Input() index:number ;
     isOpen: boolean;
-    confirmDelete: boolean;
+    confirmLeave: boolean;
     localEvent: any;
     listener: any;
 
@@ -29,7 +29,7 @@ export class ActionsMenu {
     }
     toggleActions() {
         this.isOpen = !this.isOpen;
-        this.confirmDelete = false;
+        this.confirmLeave = false;
         console.log('Toggling the actions menu.');
         if (this.isOpen) {
             this.listener = this.renderer.listenGlobal('document', 'click', (event: any) => {
@@ -56,11 +56,11 @@ export class ActionsMenu {
         this.groupService.currentGroupID = group_id;
         this.router.navigate(['EditGroup']);
     }
-    toggleConfirmDelete() {
-        this.confirmDelete = !this.confirmDelete;
-        console.log('Toggling the confirm delete menu.');
+    toggleConfirmLeave() {
+        this.confirmLeave = !this.confirmLeave;
+        console.log('Toggling the confirm leave menu.');
     }
-    delete() {
+    leave() {
       this.groupService.groups.splice(this.index, this.index+1);
     }
     logOut() {

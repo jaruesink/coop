@@ -1,3 +1,11 @@
 .add-post{
+    .col-xs-12 {
+        display:flex;
+        justify-content: space-around;
+    }
+    textarea {
+        flex-grow:1;
+        margin-right: 5px;
+    }
 
 }

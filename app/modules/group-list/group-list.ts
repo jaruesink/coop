@@ -3,12 +3,12 @@
 import {Component, Input, Output, EventEmitter} from "angular2/core";
 import {ROUTER_DIRECTIVES, Router, RouterLink} from "angular2/router";
 import {GroupService} from "../../core/services/group-service/group.service";
-import {ActionsMenu} from "../actions-menu/actions-menu";
+import {GroupActionsMenu} from "../actions-menu/group-actions-menu";
 
 @Component({
     selector: "group-list",
     templateUrl: "../modules/group-list/group-list.template.html",
-    directives: [RouterLink, ActionsMenu]
+    directives: [RouterLink, GroupActionsMenu]
 })
 export class GroupList {
 

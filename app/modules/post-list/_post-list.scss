@@ -1,5 +1,18 @@
 .post-list{
-    .card{cursor: pointer;}
+    .card{
+        cursor: pointer;
+        position: relative;
+    }
+    .card-block{
+        padding-top: .325rem;
+        padding-right: 30px;
+    }
+    .fa-warning{
+        color: #d9534f;
+        position: absolute;
+        top: .325rem;
+        right: .75rem;
+    }
     .card:hover{
         border-color:#0275d8;
     }

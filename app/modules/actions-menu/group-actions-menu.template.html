@@ -1,0 +1,24 @@
+<div class="actions-menu">
+    <button type="button" name="button" class="action-top" (click)="favoriteGroup(index)"><i class="fa" [ngClass]="{'fa-star': group.starred, 'fa-star-o': !group.starred}"></i></button>
+    <button type="button" name="button" class="action-bottom" [ngClass]="{open: isOpen, tall: confirmLeave}" (click)="toggleActions()"><i class="fa fa-ellipsis-v"></i></button>
+    <div [ngClass]="{open: isOpen}" class="action-menu bg-primary">
+      <h6 class="hidden-xs-down">Actions</h6>
+      <a class="action-item btn btn-primary btn-sm" (click)="inviteMembers()">
+          <i class="fa fa-fw fa-lg fa-user-plus"></i>
+      </a>
+      <a class="action-item btn btn-primary btn-sm" (click)="shareGroup()">
+          <i class="fa fa-fw fa-lg fa-share-alt"></i>
+      </a>
+      <a class="action-item btn btn-primary btn-sm" (click)="editGroup()">
+          <i class="fa fa-fw fa-lg fa-pencil-square-o"></i>
+      </a>
+      <a class="action-item btn btn-primary btn-sm" [ngClass]="{active: confirmLeave}" (click)="toggleConfirmLeave()">
+        <i class="fa fa-fw fa-lg fa-sign-out"></i>
+      </a>
+    </div>
+    <div [ngClass]="{open: confirmLeave}" class="action-menu bg-danger">
+      <h6 class="hidden-xs-down">Confirm</h6>
+      <a class="action-item btn btn-danger btn-sm" (click)="toggleConfirmLeave()">Cancel</a>
+      <a class="action-item btn btn-danger btn-sm" (click)="leave()">Leave</a>
+  </div>
+</div>
