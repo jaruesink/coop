@@ -6,7 +6,12 @@
     }
     .action-top{
         top: 0;
-        color: #FCC21B;
+        .fa-star, .fa-star-o{
+            color: #FCC21B;
+        }
+        .fa-heart, .fa-heart-o{
+            color: #d9534f;
+        }
     }
     .action-bottom{
         bottom: 0;

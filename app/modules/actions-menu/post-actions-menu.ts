@@ -7,15 +7,14 @@ import {LoginService} from "../../core/services/login-service/login.service";
 import {GroupService} from "../../core/services/group-service/group.service";
 
 @Component({
-    selector: "group-actions-menu",
-    templateUrl: "modules/actions-menu/group-actions-menu.template.html",
+    selector: "post-actions-menu",
+    templateUrl: "modules/actions-menu/post-actions-menu.template.html",
     directives: [ROUTER_DIRECTIVES]
 })
-export class GroupActionsMenu {
-    @Input() group:any;
+export class PostActionsMenu {
+    @Input() post:any;
     @Input() index:number ;
     isOpen: boolean;
-    confirmLeave: boolean;
     localEvent: any;
     listener: any;
 
@@ -29,7 +28,6 @@ export class GroupActionsMenu {
     }
     toggleActions() {
         this.isOpen = !this.isOpen;
-        this.confirmLeave = false;
         console.log('Toggling the actions menu.');
         if (this.isOpen) {
             this.listener = this.renderer.listenGlobal('document', 'click', (event: any) => {
@@ -51,16 +49,6 @@ export class GroupActionsMenu {
     favoriteGroup(index:number) {
         this.groupService.groups[index].starred = !this.groupService.groups[index].starred;
     }
-    editGroup(){
-        var group_id = this.groupService.groups[this.index].id
-        this.groupService.currentGroupID = group_id;
-        this.router.navigate(['EditGroup']);
-    }
-    toggleConfirmLeave() {
-        this.confirmLeave = !this.confirmLeave;
-        console.log('Toggling the confirm leave menu.');
-    }
-    leave() {
-      this.groupService.groups.splice(this.index, this.index+1);
+    editPost(){
     }
 }

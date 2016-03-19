@@ -11,7 +11,6 @@ import {GroupActionsMenu} from "../actions-menu/group-actions-menu";
     directives: [RouterLink, GroupActionsMenu]
 })
 export class GroupList {
-
     constructor(private groupService: GroupService) {
         console.log("Group list component loaded");
         console.log(this.groupService);
