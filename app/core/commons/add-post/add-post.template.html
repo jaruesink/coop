@@ -4,7 +4,7 @@
         <div class="col-xs-12">
             <textarea ngControl="content" #content type="text" class="form-control" (keydown.enter)="addPost(content)"></textarea>
             <div class="add-post-actions">
-                <button class="btn btn-block" [ngClass]="{'btn-danger': isImportant, 'btn-warning': !isImportant}" type="button" (click)="makeImportant()"><i class="fa fa-lg fa-bullhorn fa-flip-horizontal"></i> <i class="fa fa-lg" [ngClass]="{'fa-toggle-on': isImportant, 'fa-toggle-off': !isImportant}"></i></button>
+                <button class="btn btn-block" [ngClass]="{'btn-danger': isImportant, 'btn-warning': !isImportant}" type="button" (click)="makeImportant()"><i class="fa fa-lg fa-bullhorn"></i> <i class="fa fa-lg" [ngClass]="{'fa-toggle-on': isImportant, 'fa-toggle-off': !isImportant}"></i></button>
                 <button [disabled]="!add_post_form.valid" class="btn btn-block btn-success" type="submit"><i class="fa fa-fw fa-lg fa-paper-plane-o"></i></button>
             </div>
         </div>
