@@ -49,6 +49,7 @@ export class PostActionsMenu {
     favoriteGroup(index:number) {
         this.groupService.groups[index].starred = !this.groupService.groups[index].starred;
     }
-    editPost(){
+    editPost() {
+        return;
     }
 }

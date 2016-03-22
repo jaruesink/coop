@@ -51,8 +51,8 @@ export class GroupActionsMenu {
     favoriteGroup(index:number) {
         this.groupService.groups[index].starred = !this.groupService.groups[index].starred;
     }
-    editGroup(){
-        var group_id = this.groupService.groups[this.index].id
+    editGroup() {
+        var group_id = this.groupService.groups[this.index].id;
         this.groupService.currentGroupID = group_id;
         this.router.navigate(['EditGroup']);
     }
