@@ -69,7 +69,7 @@
     "typings": "typings",
     "clean": "gulp clean",
     "compile": "gulp",
-    "build": "npm run compile && npm run test",
+    "build": "npm run compile",
     "test": "gulp prepare-test-unit && gulp test-unit",
     "start": "npm run serve",
     "serve": "nodemon --watch gulpfile.js --watch gulpfile.babel.js --watch package.json --watch .jshintrc --watch .jscsrc --watch tsconfig.json --watch tslint.json --watch jspm.conf.js --exec gulp serve",

@@ -44,17 +44,35 @@ export class CreateAccount {
         } else {
             this.router.navigate(['Login']);
         }
-        // Future: When we get phone numbers we need to sanitize them to (###) ###-#### and set them to this.userNumber
     }
     ngOnInit() {
         console.log('testing');
     }
     createAccount() {
+        var phonenumber = this.sanitizePhonenumber(this.create_account_form.value.phonenumber);
         if (this.loginService.loginType === 'facebook') {
-            this.facebookLoginService.createAccountWithFacebook(this.create_account_form.value.name, this.create_account_form.value.username, this.create_account_form.value.email, this.create_account_form.value.phonenumber);
+            this.facebookLoginService.createAccountWithFacebook(this.create_account_form.value.name, this.create_account_form.value.username, this.create_account_form.value.email, phonenumber);
         }
         if (this.loginService.loginType === 'google') {
-            this.googleLoginService.createAccountWithGoogle(this.create_account_form.value.name, this.create_account_form.value.username, this.create_account_form.value.email, this.create_account_form.value.phonenumber);
+            this.googleLoginService.createAccountWithGoogle(this.create_account_form.value.name, this.create_account_form.value.username, this.create_account_form.value.email, phonenumber);
+        }
+    }
+    sanitizePhonenumber(phonenumber:any) {
+        phonenumber.replace(/[\D]/g, '');
+        if ( phonenumber.length === 10 ) {
+            return phonenumber.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3");
+        } else if ( phonenumber.length === 11 ) {
+            return phonenumber.replace(/(\d{1})(\d{3})(\d{3})(\d{4})/, "$1-$2-$3-$4");
+        } else if ( phonenumber.length === 12 ) {
+            return phonenumber.replace(/(\d{2})(\d{3})(\d{3})(\d{4})/, "$1-$2-$3-$4");
+        } else if ( phonenumber.length === 13 ) {
+            return phonenumber.replace(/(\d{3})(\d{3})(\d{3})(\d{4})/, "$1-$2-$3-$4");
+        } else if ( phonenumber.length === 14 ) {
+            return phonenumber.replace(/(\d{4})(\d{3})(\d{3})(\d{4})/, "$1-$2-$3-$4");
+        } else if ( phonenumber.length === 15 ) {
+            return phonenumber.replace(/(\d{5})(\d{3})(\d{3})(\d{4})/, "$1-$2-$3-$4");
+        } else {
+            return 'phonenumber error';
         }
     }
 }
