@@ -35,8 +35,8 @@ import {LoginService} from "../core/services/login-service/login.service";
     directives: [RouterOutlet, RouterLink, AppHeader]
 })
 @RouteConfig([
-    { path: "/get-started", component: Register, as: "Register", data: undefined },
-    { path: "/login", component: Login, as: "Login", data: undefined, useAsDefault: true },
+    { path: "/get-started", component: Register, as: "Register", data: undefined, useAsDefault: true },
+    { path: "/login", component: Login, as: "Login", data: undefined },
     { path: "/not-connected", component: NotConnected, as: "NotConnected", data: undefined},
     { path: "/verify-registration", component: VerifyRegistration, as: "VerifyRegistration", data: undefined },
     { path: "/create-account", component: CreateAccount, as: "CreateAccount", data: undefined },
@@ -52,9 +52,9 @@ export class App {
     constructor(public loginService:LoginService, public router:Router, private location:Location) {
         console.log("Application bootstrapped!");
         if (!loginService.isLoggedIn) {
-            router.navigate(['/Login']);
-        } else if ( this.location.path() === '/login') {
-            router.navigate(['/Home']);
+            router.navigate(['Register']);
+        } else if ( this.location.path() === '/login' || this.location.path() === '/register') {
+            router.navigate(['Home']);
         }
     }
 }

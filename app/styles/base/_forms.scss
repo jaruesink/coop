@@ -1,7 +1,11 @@
 .ng-valid {
-  border: 1px solid #42A948 !important; /* green */
+    border: 1px solid #42A948 !important;
 }
 
 .submitted .ng-invalid {
-  border: 1px solid #a94442; /* red */
+   border: 1px solid #a94442 !important;
+}
+
+.invalid{
+    border: 1px solid #a94442 !important;
 }

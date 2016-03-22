@@ -5,12 +5,12 @@
 <div class="container login-page">
 
 <ul class="nav nav-tabs nav-justified m-b-1">
-  <li class="nav-item">
-    <a class="nav-link active">Login</a>
-  </li>
-  <li class="nav-item" [routerLink]="['/Register']">
-    <a class="nav-link">Get Started</a>
-  </li>
+    <li class="nav-item" [routerLink]="['/Register']">
+        <a class="nav-link">Get Started</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active">Login</a>
+    </li>
 </ul>
 
 <form [ngFormModel]="login_form" (ngSubmit)="passwordLogin()">

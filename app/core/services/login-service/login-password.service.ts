@@ -15,7 +15,7 @@ export class PasswordLoginService {
         console.log('Password login service is loaded.');
     }
 
-    createAccountWithFacebook(name:string, username:string, email:string, phone:string) {
+    createAccount(name:string, username:string, email:string, phone:string) {
       console.log(this.loginService.loginType);
       var accountRequest:any = {};
       accountRequest['name']        = name;
