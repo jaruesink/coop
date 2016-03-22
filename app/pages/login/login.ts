@@ -7,8 +7,8 @@ import {FORM_DIRECTIVES, Control, ControlGroup, Validators, FormBuilder} from "a
 import {LoginService} from "../../core/services/login-service/login.service";
 import {AccountService} from "../../core/services/account-service/account.service";
 import {ROUTER_DIRECTIVES, RouteConfig, Route, RouterOutlet, RouterLink, Router} from "angular2/router";
-import {FacebookLoginService} from "../../core/services/login-facebook-service/login-facebook.service";
-import {GoogleLoginService} from "../../core/services/login-google-service/login-google.service";
+import {FacebookLoginService} from "../../core/services/login-service/login-facebook.service";
+import {GoogleLoginService} from "../../core/services/login-service/login-google.service";
 
 
 @Component({

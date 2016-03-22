@@ -5,8 +5,9 @@ import {FORM_DIRECTIVES, Control, ControlGroup, Validators, FormBuilder} from "a
 import {ROUTER_DIRECTIVES, Router} from "angular2/router";
 import {LoginService} from "../../core/services/login-service/login.service";
 import {AccountService} from "../../core/services/account-service/account.service";
-import {FacebookLoginService} from "../../core/services/login-facebook-service/login-facebook.service";
-import {GoogleLoginService} from "../../core/services/login-google-service/login-google.service";
+import {FacebookLoginService} from "../../core/services/login-service/login-facebook.service";
+import {GoogleLoginService} from "../../core/services/login-service/login-google.service";
+import {PasswordLoginService} from "../../core/services/login-service/login-password.service";
 
 @Component({
     selector: "page-create-account",
@@ -22,7 +23,7 @@ export class CreateAccount {
     email: Control;
     password: Control;
     password_verification: Control;
-    constructor(public accountService: AccountService, public loginService: LoginService, private router: Router, private builder: FormBuilder, public facebookLoginService: FacebookLoginService, public googleLoginService: GoogleLoginService) {
+    constructor(public accountService: AccountService, public loginService: LoginService, private router: Router, private builder: FormBuilder, public facebookLoginService: FacebookLoginService, public googleLoginService: GoogleLoginService, public passwordLoginService: PasswordLoginService) {
         console.log("Create account component loaded");
         if ( this.loginService.loginType ) {
           this.name = new Control(this.loginService.name, Validators.compose([Validators.required]));
@@ -55,6 +56,9 @@ export class CreateAccount {
         }
         if (this.loginService.loginType === 'google') {
             this.googleLoginService.createAccountWithGoogle(this.create_account_form.value.name, this.create_account_form.value.username, this.create_account_form.value.email, phonenumber);
+        }
+        if (this.loginService.loginType === 'password') {
+
         }
     }
     sanitizePhonenumber(phonenumber:any) {

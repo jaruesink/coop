@@ -4,8 +4,8 @@
 import {Component} from "angular2/core";
 import {FORM_DIRECTIVES, Control, ControlGroup, Validators, FormBuilder} from "angular2/common";
 import {LoginService} from "../../core/services/login-service/login.service";
-import {FacebookLoginService} from "../../core/services/login-facebook-service/login-facebook.service";
-import {GoogleLoginService} from "../../core/services/login-google-service/login-google.service";
+import {FacebookLoginService} from "../../core/services/login-service/login-facebook.service";
+import {GoogleLoginService} from "../../core/services/login-service/login-google.service";
 import {ROUTER_DIRECTIVES, RouteConfig, Route, RouterOutlet, RouterLink, Router} from "angular2/router";
 
 @Component({
