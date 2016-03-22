@@ -3,13 +3,13 @@
 <h1 class="card-title">Edit Group</h1>
 <form (ngSubmit)="saveGroup()">
     <div class="row">
-    <fieldset class="form-group col-sm-9 ">
+    <fieldset class="form-group col-xs-12 col-sm-9">
         <label for="groupName">Group Name</label>
         <input type="text" class="form-control" id="groupName" [(ngModel)]="name">
     </fieldset>
     </div>
     <div class="row">
-    <fieldset class="form-group col-sm-9 ">
+    <fieldset class="form-group col-xs-12 col-sm-9">
         <label for="groupDescription">Description</label>
         <textarea type="text" class="form-control" id="groupDescription" [(ngModel)]="description"></textarea>
     </fieldset>
