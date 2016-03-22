@@ -47,9 +47,6 @@ export class CreateAccount {
             this.router.navigate(['Login']);
         }
     }
-    ngOnInit() {
-        console.log('testing');
-    }
     createAccount() {
         var phonenumber = this.sanitizePhonenumber(this.create_account_form.value.phonenumber);
         if (this.loginService.loginType === 'facebook') {
