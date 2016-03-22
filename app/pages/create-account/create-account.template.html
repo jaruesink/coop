@@ -1,7 +1,7 @@
 <div class="container create-profile">
 <div class="card card-block">
-<h1 class="card-title">Create  Account</h1>
-<form [ngFormModel]="create_account_form" (ngSubmit)="createAccount()" >
+<h1 class="card-title">Create Account</h1>
+<form [ngFormModel]="create_account_form" (ngSubmit)="createAccount()">
     <div class="row">
     <fieldset class="form-group col-sm-9">
         <label for="username">Username</label>
@@ -33,12 +33,12 @@
     </fieldset>
     <fieldset class="form-group col-sm-9">
         <label for="password_verification">Password Verification</label>
-        <input type="password" class="form-control" id="password_verification" ngControl="password_verification" minlength="6" maxlength="32" required>
+        <input type="password" class="form-control" id="password_verification" [ngClass]="{'invalid':passwordMatchError}" ngControl="password_verification" minlength="6" maxlength="32" (keyup)="passwordsMatch()" required>
     </fieldset>
     </div>
     <div class="row">
         <div class="col-xs-6 col-sm-3 col-sm-offset-3">
-            <button [disabled]="!create_account_form.valid" class="btn btn-success btn-block m-t-1" type="submit">Continue</button>
+            <button [disabled]="!create_account_form.valid || passwordMatchError" class="btn btn-success btn-block m-t-1" type="submit">Continue</button>
         </div>
         <div class="col-xs-6 col-sm-3">
             <a class="btn btn-danger btn-block m-t-1" [routerLink]="['/Login']">Cancel</a>

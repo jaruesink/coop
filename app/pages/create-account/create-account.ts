@@ -23,6 +23,7 @@ export class CreateAccount {
     email: Control;
     password: Control;
     password_verification: Control;
+    passwordMatchError: boolean = false;
     constructor(public accountService: AccountService, public loginService: LoginService, private router: Router, private builder: FormBuilder, public facebookLoginService: FacebookLoginService, public googleLoginService: GoogleLoginService, public passwordLoginService: PasswordLoginService) {
         console.log("Create account component loaded");
         if ( this.loginService.loginType ) {
@@ -58,7 +59,11 @@ export class CreateAccount {
             this.googleLoginService.createAccountWithGoogle(this.create_account_form.value.name, this.create_account_form.value.username, this.create_account_form.value.email, phonenumber);
         }
         if (this.loginService.loginType === 'password') {
-
+            if (this.passwordsMatch()) {
+                this.passwordLoginService.createAccount(this.create_account_form.value.name, this.create_account_form.value.username, this.create_account_form.value.email, phonenumber);
+            } else {
+                this.passwordMatchError = true;
+            }
         }
     }
     sanitizePhonenumber(phonenumber:any) {
@@ -77,6 +82,15 @@ export class CreateAccount {
             return phonenumber.replace(/(\d{5})(\d{3})(\d{3})(\d{4})/, "$1-$2-$3-$4");
         } else {
             return 'phonenumber error';
+        }
+    }
+    passwordsMatch() {
+        if (this.create_account_form.value.password === this.create_account_form.value.password_verification) {
+            this.passwordMatchError = false;
+            return true;
+        } else {
+            this.passwordMatchError = true;
+            return false;
         }
     }
 }
