@@ -47,7 +47,7 @@ export class GroupService {
                         "comments": [
                             {
                                 "id": "sampleCommentID1",
-                                "content": "This is stupid.",
+                                "content": "This is a comment.",
                                 "author": "Derek Wene",
                                 "time_stamp": "Last Week",
                                 "photo_url": "../../../images/profile_placeholder.png"
