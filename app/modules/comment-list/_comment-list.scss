@@ -1,3 +1,13 @@
 .comment-list{
-
+    .comment{min-height: 80px; position: relative;
+        padding-top: .75rem;
+        border-top: 1px solid #ccc;
+        .comment-content{
+            min-height: 60px;
+        }
+        .comment-details{
+            min-height: 20px;
+            font-size: 12px;
+        }
+    }
 }

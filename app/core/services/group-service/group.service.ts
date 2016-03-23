@@ -43,7 +43,14 @@ export class GroupService {
                         "content": "This is a post.",
                         "author": "Jake Ruesink",
                         "time_stamp": "Two Weeks Ago",
-                        "comments": 1
+                        "comments": [
+                            {
+                                "id": "sampleCommentID1",
+                                "content": "This is stupid.",
+                                "author": "Derek Wene",
+                                "time_stamp": "Last Week"
+                            }
+                        ]
                     }
                 ]
             },
@@ -57,7 +64,14 @@ export class GroupService {
                         "content": "Our game is tomorrow!",
                         "author": "Jake Ruesink",
                         "time_stamp": "Yesterday",
-                        "comments": 1
+                        "comments": [
+                            {
+                                "id": "sampleCommentID2",
+                                "content": "Stop making errors.",
+                                "author": "Kenzie Muckway",
+                                "time_stamp": "5 Minutes Ago"
+                            }
+                        ]
                     }
                 ]
             }

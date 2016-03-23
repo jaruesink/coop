@@ -1,18 +1,21 @@
 <section class="post-list">
 <div id="{{post.id}}" class="card" *ngFor="#post of posts">
-    <span [routerLink]="['/Post', {group_id: currentGroupID, post_id: post.id}]">
+    <!-- <span [routerLink]="['/Post', {group_id: currentGroupID, post_id: post.id}]"> -->
         <div class="card-block">
-            <p class="card-text">{{post.content}}</p>
-        </div>
-        <div class="card-footer text-muted">
-            <div class="row">
-                <div class="col-sm-6">
-                    <p class="m-b-0"><i *ngIf="post.isImportant" class="fa fa-sm fa-bullhorn fa-flip-horizontal"></i> {{post.author}}, 1 day ago</p>
+            <div class="card-content">
+                <p class="card-text">{{post.content}}</p>
+                <div class="card-details row text-muted">
+                    <div class="col-sm-6">
+                        <p class="m-b-0"><i *ngIf="post.isImportant" class="fa fa-sm fa-bullhorn fa-flip-horizontal"></i> {{post.author}}, 1 day ago</p>
+                    </div>
+                    <div class="col-sm-6"><p class="m-b-0 text-sm-right">2 new comments</p></div>
                 </div>
-                <div class="col-sm-6"><p class="post-meta m-b-0 text-sm-right">2 new comments</p></div>
             </div>
+            <post-actions-menu [post]="post" [index]="index"></post-actions-menu>
         </div>
-    </span>
-    <post-actions-menu [post]="post" [index]="index"></post-actions-menu>
+        <div *ngIf="post.comments.length " class="card-footer">
+            <comment-list [commentList]="post.comments"></comment-list>
+        </div>
+    <!-- </span> -->
 </div>
 </section>

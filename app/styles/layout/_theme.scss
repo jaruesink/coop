@@ -33,21 +33,20 @@ main .btn, #logout .btn, .nav-tabs .nav-link{
   }
 }
 
-.group-list, .post-list, .comment-list{
+.card{
+    border-radius: 2px;
+    border: 0;
+    background: white;
+    box-shadow: $shadow1;
+    transition: box-shadow 0.2s ease-in-out;
+    .card-block{
+        padding: .75rem;
+    }
+}
+
+.group-list, .post-list{
     .card{
-      border-radius: 2px;
-      border: 0;
-      background: white;
-      box-shadow: $shadow1;
-      transition: box-shadow 0.2s ease-in-out;
       min-height: 80px;
-      padding-right: 40px;
-      &:hover{
-        box-shadow: $shadow3;
-      }
-      &:active{
-        box-shadow: $shadow2;
-      }
     }
     .card-header{
       border-bottom: 0;
@@ -55,8 +54,10 @@ main .btn, #logout .btn, .nav-tabs .nav-link{
       background: white;
     }
     .card-block{
-        padding: .25rem .75rem 0;
-        min-height: 60px;
+        padding: .25rem .75rem 0 0;
+        .card-content{
+            padding-left: .75rem;
+        }
     }
     .card-footer{
         border-top: 0;

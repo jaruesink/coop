@@ -4,11 +4,12 @@ import {Component, Input, Output, EventEmitter} from "angular2/core";
 import {ROUTER_DIRECTIVES, Router, RouterLink} from "angular2/router";
 import {GroupService} from "../../core/services/group-service/group.service";
 import {PostActionsMenu} from "../actions-menu/post-actions-menu";
+import {CommentList} from '../../modules/comment-list/comment-list';
 
 @Component({
     selector: "post-list",
     templateUrl: "../modules/post-list/post-list.template.html",
-    directives: [RouterLink, PostActionsMenu]
+    directives: [RouterLink, PostActionsMenu, CommentList]
 })
 export class PostList {
     posts: Array<any>;

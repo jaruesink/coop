@@ -4,6 +4,12 @@
         position: relative;
         padding-right: 40px;
         min-height: 80px;
+        &:hover{
+          box-shadow: $shadow3;
+        }
+        &:active{
+          box-shadow: $shadow2;
+        }
     }
     .card-block{
         min-height: 28px;

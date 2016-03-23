@@ -1,13 +1,17 @@
-<div class="add-post m-b-1">
-<form [ngFormModel]="add_post_form" (ngSubmit)="addPost(content)">
-    <div class="row">
-        <div class="col-xs-12">
-            <textarea ngControl="content" #content type="text" class="form-control" (keydown.enter)="addPost(content)"></textarea>
-            <div class="add-post-actions">
-                <button class="btn btn-block" [ngClass]="{'btn-danger': isImportant, 'btn-secondary': !isImportant}" type="button" (click)="makeImportant()"><i class="fa fa-lg fa-bullhorn fa-flip-horizontal"></i></button>
-                <button [disabled]="!add_post_form.valid" class="btn btn-block btn-success" type="submit"><i class="fa fa-fw fa-lg fa-paper-plane-o"></i></button>
+<section class="add-post m-b-1">
+<div class="card">
+    <div class="card-block">
+    <form [ngFormModel]="add_post_form" (ngSubmit)="addPost(content)">
+        <div class="row">
+            <div class="col-xs-12">
+                <textarea ngControl="content" #content type="text" class="form-control" (keydown.enter)="addPost(content)"></textarea>
+                <div class="add-post-actions">
+                    <button class="btn btn-block" [ngClass]="{'btn-danger': isImportant, 'btn-secondary': !isImportant}" type="button" (click)="makeImportant()"><i class="fa fa-lg fa-bullhorn fa-flip-horizontal"></i></button>
+                    <button [disabled]="!add_post_form.valid" class="btn btn-block btn-success" type="submit"><i class="fa fa-fw fa-lg fa-paper-plane-o"></i></button>
+                </div>
             </div>
         </div>
+    </form>
     </div>
-</form>
 </div>
+</section>

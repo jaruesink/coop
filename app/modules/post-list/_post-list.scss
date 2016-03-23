@@ -1,11 +1,23 @@
 .post-list{
     .card{
-        cursor: pointer;
         position: relative;
     }
     .card-block{
-        padding-top: .325rem;
-        padding-right: 30px;
+        padding-top: .75rem;
+        min-height: 80px;
+        position: relative;
+        padding-right: 40px;
+        .card-content{
+            min-height: 80px;
+            .card-text{
+                min-height: 60px;
+            }
+            .card-details{
+                min-height: 20px;
+                padding-right: 4px;
+                font-size: 12px;
+            }
+        }
     }
     .fa-bullhorn{
         color: #d9534f;

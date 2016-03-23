@@ -1,12 +1,8 @@
 <section class="comment-list">
-<div id="{{comment.id}}" class="card" *ngFor="#comment of commentList">
-    <div class="card-block">
-        <p class="card-text">{{comment.content}}</p>
-    </div>
-    <div class="card-footer text-muted">
-    <div class="row">
+<div id="{{comment.id}}" class="comment" *ngFor="#comment of commentList">
+    <p class="comment-content">{{comment.content}}</p>
+    <div class="comment-details" class="row text-muted">
         <div class="col-xs-12"><p class="m-b-0">{{comment.author}}, 2 minutes ago</p></div>
-    </div>
     </div>
 </div>
 </section>
