@@ -66,10 +66,11 @@ main .btn, #logout .btn, .nav-tabs .nav-link{
     }
     .card-footer{
         border-top: 0;
-        padding: .25rem .75rem;
+        padding: 0;
         background: white;
     }
     .action-menu{
+        &.open:first-of-type{margin-top: 4px;}
         h6{
             color: rgba(255, 255, 255, .6);
         }

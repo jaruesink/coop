@@ -1,9 +1,12 @@
 <section class="comment-list">
 <div id="{{comment.id}}" class="comment" *ngFor="#comment of commentList">
-    <img class="photo" [src]="comment.photo_url" />
-    <p class="comment-content">{{comment.content}}</p>
-    <p class="comment-details text-muted">
-        {{comment.author}}, 2 minutes ago
-    </p>
+    <div class="comment-content">
+        <img class="photo" [src]="comment.photo_url" />
+        <p class="comment-text">{{comment.content}}</p>
+        <p class="comment-details text-muted">
+            {{comment.author}}, 2 minutes ago
+        </p>
+    </div>
+    <comment-actions-menu [comment]="comment" [index]="index"></comment-actions-menu>
 </div>
 </section>

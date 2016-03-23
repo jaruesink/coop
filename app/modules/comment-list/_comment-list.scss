@@ -1,14 +1,18 @@
 .comment-list{
     .comment{min-height: 80px; position: relative;
-        padding-top: .75rem;
-        border-top: 1px solid #ccc;
         .comment-content{
-            min-height: 60px;
+            padding: .75rem 40px 0 .75rem;
+        }
+        .comment-text{
+          min-height: 60px;
         }
         .comment-details{
             min-height: 20px;
             font-size: 12px;
             letter-spacing: .02rem;
+        }
+        .actions-menu{
+          padding-right: 40px;
         }
     }
 }
