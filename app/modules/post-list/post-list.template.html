@@ -3,6 +3,7 @@
     <!-- <span [routerLink]="['/Post', {group_id: currentGroupID, post_id: post.id}]"> -->
         <div class="card-block">
             <div class="card-content">
+                <img class="photo" [src]="post.photo_url" />
                 <p class="card-text">{{post.content}}</p>
                 <div class="card-details row text-muted">
                     <div class="col-sm-6">

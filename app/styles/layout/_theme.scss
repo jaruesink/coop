@@ -44,9 +44,14 @@ main .btn, #logout .btn, .nav-tabs .nav-link{
     }
 }
 
-.group-list, .post-list{
+.group-list, .post-list, .comment-list{
     .card{
       min-height: 80px;
+    }
+    .photo{
+        height: 50px; width: 50px;
+        padding: 0 10px 10px 0;
+        float: left;
     }
     .card-header{
       border-bottom: 0;
@@ -62,10 +67,8 @@ main .btn, #logout .btn, .nav-tabs .nav-link{
     .card-footer{
         border-top: 0;
         padding: .25rem .75rem;
-        font-size:12px;
         letter-spacing: .02rem;
         background: white;
-        min-height: 20px;
     }
     .action-menu{
         h6{
