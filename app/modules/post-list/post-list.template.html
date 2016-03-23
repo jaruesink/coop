@@ -14,8 +14,9 @@
             <post-actions-menu [post]="post" [index]="index"></post-actions-menu>
         </div>
         <hr class="m-b-0 m-t-0">
-        <div *ngIf="post.comments.length " class="card-footer">
-            <comment-list [commentList]="post.comments"></comment-list>
+        <div class="card-footer">
+            <comment-list *ngIf="post.comments.length" [commentList]="post.comments"></comment-list>
+            <add-comment></add-comment>
         </div>
 </div>
 </section>

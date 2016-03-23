@@ -1,11 +1,10 @@
 <div class="add-comment">
 <form (ngSubmit)="addComment(content)">
 <div class="input-group">
-  <input #content type="text" class="form-control">
+  <input #content type="text" class="form-control" placeholder="Enter your comment">
   <span class="input-group-btn">
-  <button class="btn btn-secondary" type="submit">Comment</button>
+  <button [disabled]="content.value" class="btn btn-success" type="submit"><i class="fa fa-lg fa-comment-o"></i></button>
   </span>
 </div>
 </form>
 </div>
-
