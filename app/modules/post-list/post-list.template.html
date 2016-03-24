@@ -1,5 +1,5 @@
 <section class="post-list">
-<div id="{{post.id}}" class="card" *ngFor="#post of posts">
+<div id="{{post.id}}" class="card" *ngFor="#post of posts #index=index">
         <div class="card-block">
             <div class="card-content">
                 <img class="photo" [src]="post.photo_url" />
@@ -16,7 +16,7 @@
         <hr class="m-b-0 m-t-0">
         <div class="card-footer">
             <comment-list *ngIf="post.comments.length" [commentList]="post.comments"></comment-list>
-            <add-comment></add-comment>
+            <add-comment [index]="index"></add-comment>
         </div>
 </div>
 </section>

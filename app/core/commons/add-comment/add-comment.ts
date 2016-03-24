@@ -11,17 +11,20 @@ import {GroupService} from '../../services/group-service/group.service';
 	directives: [FORM_DIRECTIVES]
 })
 export class AddComment {
-  constructor(public groupService: GroupService, public accountService: AccountService) {
-		console.log("Add comment component loaded");
-	}
-  addComment(input:any) {
-      var new_comment = {};
-      var currentPostID = this.groupService.currentPostID;
-      var randomID = (Math.random() + 1).toString(36).slice(2, 9);
-      new_comment['id'] = randomID;
-      new_comment['content'] = input.value;
-      new_comment['author'] = this.accountService.fullName;
-      this.groupService.postInfo[currentPostID].comments.push(new_comment);
-      input.value = '';
-  }
+    @Input() index: number;
+    constructor(public groupService: GroupService, public accountService: AccountService) {
+        console.log("Add comment component loaded");
+    }
+    addComment(input:any) {
+        var new_comment = {};
+        // var currentPostID = this.groupService.currentPostID;
+        var currentGroupID = this.groupService.currentGroupID;
+        var randomID = (Math.random() + 1).toString(36).slice(2, 9);
+        new_comment['id'] = randomID;
+        new_comment['content'] = input.value;
+        new_comment['author'] = this.accountService.fullName;
+        // this.groupService.postInfo[currentPostID].comments.push(new_comment);
+        this.groupService.groupInfo[currentGroupID].posts[this.index].comments.push(new_comment);
+        input.value = '';
+    }
 }
