@@ -22,7 +22,9 @@ export class AddComment {
         var randomID = (Math.random() + 1).toString(36).slice(2, 9);
         new_comment['id'] = randomID;
         new_comment['content'] = input.value;
-        new_comment['author'] = this.accountService.fullName;
+        new_comment['author'] = {};
+        new_comment['author']['name'] = this.accountService.me.fullName;
+        new_comment['author']['photo_url'] = this.accountService.me.photo_url;
         // this.groupService.postInfo[currentPostID].comments.push(new_comment);
         this.groupService.groupInfo[currentGroupID].posts[this.index].comments.push(new_comment);
         input.value = '';

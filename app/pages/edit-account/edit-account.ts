@@ -16,15 +16,15 @@ export class EditAccount {
     email: string;
     constructor(public accountService:AccountService, private router:Router) {
         console.log("Edit account component loaded");
-        this.username = accountService.username;
-        this.fullName = accountService.fullName;
-        this.userNumber = accountService.userNumber;
-        this.email = accountService.userEmail;
+        this.username = accountService.me.username;
+        this.fullName = accountService.me.fullName;
+        this.userNumber = accountService.me.userNumber;
+        this.email = accountService.me.userEmail;
         }
     saveProfile() {
-        this.accountService.username   = this.username;
-        this.accountService.fullName   = this.fullName;
-        this.accountService.userNumber = this.userNumber;
+        this.accountService.me.username   = this.username;
+        this.accountService.me.fullName   = this.fullName;
+        this.accountService.me.userNumber = this.userNumber;
         this.router.navigate(['/Home']);
     }
 }

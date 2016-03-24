@@ -6,15 +6,13 @@ import {LoginService} from "../login-service/login.service";
 
 @Injectable()
 export class AccountService {
-    userNumber: string;
-    username: string;
-    fullName: string;
-    userEmail: string;
+    me: any = {};
     constructor() {
         console.log('Account service is loaded.');
-        this.userNumber = '(512) 450-8236';
-        this.fullName = 'Jake Ruesink';
-        this.username = 'jaruesink';
-        this.userEmail = 'jaruesink@gmail.com';
+        this.me.userNumber = '(512) 450-8236';
+        this.me.fullName = 'Jake Ruesink';
+        this.me.username = 'jaruesink';
+        this.me.userEmail = 'jaruesink@gmail.com';
+        this.me.photo_url = './images/profile_placeholder.png';
     }
 }

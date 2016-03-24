@@ -11,7 +11,7 @@ export class LoginService {
     accountExists: boolean = false;
     fb_loading:  EventEmitter<any> = new EventEmitter();
     goog_loading: EventEmitter<any> = new EventEmitter();
-    _postUrl: string = 'http://a9f668a0.ngrok.io/api/auth/register';
+    _postUrl: string = 'https://neural-cortex-125102.appspot.com/api/auth/register';
     loginType: string;
     phonenumber: string;
     username: string;

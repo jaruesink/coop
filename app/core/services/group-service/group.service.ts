@@ -41,16 +41,15 @@ export class GroupService {
                     {
                         "id": "samplePostID1",
                         "content": "This is a post.",
-                        "author": "Jake Ruesink",
+                        "author": {"name": "Jake Ruesink","photo_url":"./images/profile_placeholder.png"},
                         "time_stamp": "Two Weeks Ago",
-                        "photo_url": "../../../images/profile_placeholder.png",
+                        "photo_url": "./images/profile_placeholder.png",
                         "comments": [
                             {
                                 "id": "sampleCommentID1",
                                 "content": "This is a comment.",
-                                "author": "Derek Wene",
-                                "time_stamp": "Last Week",
-                                "photo_url": "../../../images/profile_placeholder.png"
+                                "author": {"name": "Derek Wene","photo_url":"./images/profile_placeholder.png"},
+                                "time_stamp": "Last Week"
                             }
                         ]
                     }
@@ -64,16 +63,14 @@ export class GroupService {
                     {
                         "id": "samplePostID2",
                         "content": "Our game is tomorrow!",
-                        "author": "Jake Ruesink",
+                        "author": {"name": "Jake Ruesink","photo_url":"./images/profile_placeholder.png"},
                         "time_stamp": "Yesterday",
-                        "photo_url": "../../../images/profile_placeholder.png",
                         "comments": [
                             {
                                 "id": "sampleCommentID2",
                                 "content": "Stop making errors.",
-                                "author": "Kenzie Muckway",
-                                "time_stamp": "5 Minutes Ago",
-                                "photo_url": "../../../images/profile_placeholder.png"
+                                "author": {"name": "Kenzie Muckway","photo_url":"./images/profile_placeholder.png"},
+                                "time_stamp": "5 Minutes Ago"
                             }
                         ]
                     }
@@ -83,13 +80,13 @@ export class GroupService {
         this.postInfo = {
             "samplePostID1": {
                 "content": "This is a post.",
-                "author": "Jake Ruesink",
+                "author": {"name": "Jake Ruesink","photo_url":"./images/profile_placeholder.png"},
                 "time_stamp": "Two Weeks Ago",
                 "comments": [
                     {
                         "id": "sampleCommentID1",
                         "content": "This is stupid.",
-                        "author": "Derek Wene",
+                        "author": {"name": "Derek Wene","photo_url":"./images/profile_placeholder.png"},
                         "time_stamp": "Last Week"
                     }
                 ]
@@ -97,13 +94,13 @@ export class GroupService {
             "samplePostID2": {
                 "id": "samplePostID2",
                 "content": "Our game is tomorrow!",
-                "author": "Jake Ruesink",
+                "author": {"name": "Jake Ruesink","photo_url":"./images/profile_placeholder.png"},
                 "time_stamp": "Yesterday",
                 "comments": [
                     {
                         "id": "sampleCommentID2",
                         "content": "Stop making errors.",
-                        "author": "Kenzie Muckway",
+                        "author": {"name": "Kenzie Muckway","photo_url":"./images/profile_placeholder.png"},
                         "time_stamp": "5 Minutes Ago"
                     }
                 ]
