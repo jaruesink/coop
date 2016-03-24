@@ -47,6 +47,22 @@
         .btn{
           float:right;
           margin-top: 3px;
+          margin-left: 5px;
+          position: relative;
+          .fa{
+              position: relative;
+              top: -6px;
+              font-size: 14px;
+          }
+          span{
+              position: absolute;
+              width: 100%;
+              font-size: 8px;
+              line-height: 8px;
+              text-align: center;
+              left: 0px;
+              bottom: 2px;
+          }
         }
     }
 }
