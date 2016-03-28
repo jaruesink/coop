@@ -1,7 +1,7 @@
 "use strict";
 
 import {Component, Input, Output, EventEmitter} from "angular2/core";
-import {FORM_DIRECTIVES} from "angular2/common";
+import {FORM_DIRECTIVES, Control, ControlGroup, Validators, FormBuilder} from "angular2/common";
 import {AccountService} from '../../services/account-service/account.service';
 import {GroupService} from '../../services/group-service/group.service';
 
@@ -12,8 +12,14 @@ import {GroupService} from '../../services/group-service/group.service';
 })
 export class AddComment {
     @Input() index: number;
-    constructor(public groupService: GroupService, public accountService: AccountService) {
+    add_comment_form: ControlGroup;
+    content: Control;
+    constructor(public groupService: GroupService, public accountService: AccountService, private builder: FormBuilder) {
         console.log("Add comment component loaded");
+        this.content = new Control('', Validators.compose([Validators.required]));
+        this.add_comment_form = builder.group({
+          content: this.content
+        });
     }
     addComment(input:any) {
         var new_comment = {};

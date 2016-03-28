@@ -24,6 +24,6 @@ export class EditGroup {
     saveGroup() {
         this.groupService.groupInfo[this.groupService.currentGroupID].name = this.name;
         this.groupService.groupInfo[this.groupService.currentGroupID].description = this.description;
-        this.router.navigate(['Group', {group_id: this.groupService.currentGroupID}]);
+        window.history.back();
     }
 }
