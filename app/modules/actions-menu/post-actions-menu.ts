@@ -46,8 +46,8 @@ export class PostActionsMenu {
     handleClick(event:any) {
         this.toggleActions();
     }
-    favoriteGroup(index:number) {
-        this.groupService.groups[index].starred = !this.groupService.groups[index].starred;
+    heartPost(index:number) {
+        this.groupService.groupInfo[this.groupService.currentGroupID].posts[index].hearted = !this.groupService.groupInfo[this.groupService.currentGroupID].posts[index].hearted;
     }
     editPost() {
         return;

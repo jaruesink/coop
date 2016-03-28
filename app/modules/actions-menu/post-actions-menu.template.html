@@ -1,6 +1,6 @@
 <div class="actions-menu">
-    <button type="button" name="button" class="action-top" (click)="favoriteGroup(index)"><i class="fa fa-heart"></i></button>
-    <button type="button" name="button" class="action-bottom" [ngClass]="{open: isOpen, tall: confirmLeave}" (click)="toggleActions()"><i class="fa fa-ellipsis-v"></i></button>
+    <button type="button" name="button" class="action-top" (click)="heartPost(index)"><i class="fa" [ngClass]="{'fa-heart': post.hearted, 'fa-heart-o': !post.hearted}"></i></button>
+    <button type="button" name="button" class="action-bottom" [ngClass]="{'open': isOpen, 'tall': confirmLeave}" (click)="toggleActions()"><i class="fa fa-ellipsis-v"></i></button>
     <div [ngClass]="{open: isOpen}" class="action-menu bg-primary">
       <h6 class="hidden-xs-down">Actions</h6>
       <a class="action-item btn btn-primary btn-sm" (click)="inviteMembers()">
