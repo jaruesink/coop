@@ -57,7 +57,7 @@ export class CreateAccount {
         }
         if (this.loginService.loginType === 'password') {
             if (this.passwordsMatch()) {
-                this.passwordLoginService.createAccount(this.create_account_form.value.name, this.create_account_form.value.username, this.create_account_form.value.email, phonenumber);
+                this.passwordLoginService.createAccount(this.create_account_form.value.name, this.create_account_form.value.username, this.create_account_form.value.email, phonenumber, this.create_account_form.value.password);
             } else {
                 this.passwordMatchError = true;
             }

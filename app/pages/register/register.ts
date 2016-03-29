@@ -52,12 +52,15 @@ export class Register {
     }
     checkUsername(username:string) {
       this.form_submitted = true;
-      var username_exists = true;
-      if ( username_exists ) {
+      var username_exists = false;
+      if ( !username_exists ) {
         this.loginService.username = this.username_form.value.username;
         this.loginService.loginType = 'password';
         this.router.navigate(['CreateAccount']);
-      }
+    } else {
+        // To Do: Create validation for if username already exists.
+        return;
+    }
     }
     facebookLogin() {
         if ( this.FB ) {

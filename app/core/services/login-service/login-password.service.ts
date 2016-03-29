@@ -20,7 +20,7 @@ export class PasswordLoginService {
         console.log('loginRequest', loginRequest);
         this.connect.post(this.loginService.login_url, loginRequest);
     }
-    createAccount(name:string, username:string, email:string, phone:string) {
+    createAccount(name:string, username:string, email:string, phone:string, password?:string) {
         console.log(this.loginService.loginType);
         var accountRequest:any = {};
         accountRequest['name']        = name;
@@ -30,6 +30,8 @@ export class PasswordLoginService {
         accountRequest['photo_url']   = '';
         accountRequest['credentials'] = {};
         accountRequest['credentials'].type  = this.loginService.loginType;
+        accountRequest['credentials'].username = username;
+        accountRequest['credentials'].password = password;
         console.log('accountRequest: ', accountRequest);
         this.connect.post(this.loginService.register_url, accountRequest);
   }
