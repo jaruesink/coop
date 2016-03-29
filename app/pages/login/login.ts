@@ -9,6 +9,7 @@ import {AccountService} from "../../core/services/account-service/account.servic
 import {ROUTER_DIRECTIVES, RouteConfig, Route, RouterOutlet, RouterLink, Router} from "angular2/router";
 import {FacebookLoginService} from "../../core/services/login-service/login-facebook.service";
 import {GoogleLoginService} from "../../core/services/login-service/login-google.service";
+import {PasswordLoginService} from "../../core/services/login-service/login-password.service";
 
 
 @Component({
@@ -24,7 +25,7 @@ export class Login {
     login_form: ControlGroup;
     username: Control;
     password: Control;
-    constructor(public loginService: LoginService, public accountService: AccountService, private router: Router, private builder: FormBuilder, public facebookLoginService: FacebookLoginService, public googleLoginService: GoogleLoginService) {
+    constructor(public loginService: LoginService, public accountService: AccountService, private router: Router, private builder: FormBuilder, public passwordLoginService: PasswordLoginService, public facebookLoginService: FacebookLoginService, public googleLoginService: GoogleLoginService) {
         console.log("Login component loaded");
         // Check if logged in
         if (this.loginService.isLoggedIn) {
@@ -64,6 +65,9 @@ export class Login {
               this.goog_loading = false;
           }
         });
+    }
+    passwordLogin() {
+        this.passwordLoginService.login(this.username.value, this.password.value);
     }
     facebookLogin() {
         if ( this.FB ) {

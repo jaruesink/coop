@@ -122,5 +122,5 @@ export class FacebookLoginService {
                       err => console.log(err),
                       () => console.log('Account Creation Request Complete')
                   );
-  }
+    }
 }

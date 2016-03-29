@@ -7,11 +7,12 @@ import {AccountService} from "../account-service/account.service";
 
 @Injectable()
 export class LoginService {
-    isLoggedIn: boolean = true;
+    isLoggedIn: boolean = false;
     accountExists: boolean = false;
     fb_loading:  EventEmitter<any> = new EventEmitter();
     goog_loading: EventEmitter<any> = new EventEmitter();
-    _postUrl: string = 'https://neural-cortex-125102.appspot.com/api/auth/register';
+    _registerUrl: string = 'https://neural-cortex-125102.appspot.com/api/auth/register';
+    _loginUrl: string = 'https://neural-cortex-125102.appspot.com/api/auth/login';
     loginType: string;
     phonenumber: string;
     username: string;
