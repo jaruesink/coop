@@ -33,7 +33,7 @@
 <form [ngFormModel]="username_form" (ngSubmit)="checkUsername()">
     <fieldset class="form-group">
         <label for="username">Username</label>
-        <input type="username" class="form-control" id="username" minlength="4" maxlength="16" ngControl="username" autofocus="true" autocomplete="off" required>
+        <input type="username" class="form-control" id="username" minlength="5" maxlength="16" ngControl="username" autofocus="true" autocomplete="off" required>
     </fieldset>
     <button [disabled]="!username_form.valid" class="btn btn-lg btn-success btn-block m-t-1" type="submit">Next</button>
 </form>

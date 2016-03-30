@@ -18,7 +18,16 @@ export class PasswordLoginService {
         loginRequest['username'] = username;
         loginRequest['password'] = password;
         console.log('loginRequest', loginRequest);
-        this.connect.post(this.loginService.login_url, loginRequest);
+        this.connect.post(this.loginService.login_url, loginRequest,
+            (response:any) => {
+                if (response.auth_token) {
+                    this.loginService.bad_login = false;
+                }
+            },
+            (fail:any) => {
+                this.loginService.bad_login = true;
+            }
+        );
     }
     createAccount(name:string, username:string, email:string, phone:string, password?:string) {
         console.log(this.loginService.loginType);
@@ -33,6 +42,13 @@ export class PasswordLoginService {
         accountRequest['credentials'].username = username;
         accountRequest['credentials'].password = password;
         console.log('accountRequest: ', accountRequest);
-        this.connect.post(this.loginService.register_url, accountRequest);
+        this.connect.post(this.loginService.register_url, accountRequest,
+            (response:any) => {
+                console.log(response);
+                if (response.auth_token) {
+                    this.login(username, password);
+                }
+            }
+        );
   }
 }

@@ -14,11 +14,14 @@
 </ul>
 
 <form [ngFormModel]="login_form" (ngSubmit)="passwordLogin()">
-    <fieldset class="form-group">
+    <small *ngIf="loginService.bad_login" class="text-muted">
+        Either your username or password is incorrect, please try again.
+    </small>
+    <fieldset class="form-group" [ngClass]="{'has-danger': loginService.bad_login}">
         <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" ngControl="username" minlength="4" maxlength="16" required>
+        <input type="text" class="form-control" id="username" ngControl="username" minlength="5" maxlength="16" required>
     </fieldset>
-    <fieldset class="form-group">
+    <fieldset class="form-group" [ngClass]="{'has-danger': loginService.bad_login}">
         <label for="password">Password</label>
         <input type="password" class="form-control" id="password" ngControl="password" minlength="6" maxlength="32" required>
     </fieldset>

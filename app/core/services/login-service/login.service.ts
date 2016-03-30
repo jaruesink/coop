@@ -18,6 +18,7 @@ export class LoginService {
     username: string;
     name: string;
     email: string;
+    bad_login: boolean = false;
     constructor(public router: Router) {
         console.log('Login service is loaded.');
     }

@@ -35,7 +35,7 @@ export class Login {
         this.username = new Control('',
           Validators.compose([
             Validators.required,
-            Validators.minLength(4),
+            Validators.minLength(5),
             Validators.maxLength(16)
           ])
         );
