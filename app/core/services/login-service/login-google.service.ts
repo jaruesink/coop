@@ -100,17 +100,18 @@ export class GoogleLoginService {
       console.log('Account Request Object: ', accountRequest);
       accountRequest = JSON.stringify(accountRequest);
       console.log('Account Request String: ', accountRequest);
-      var headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      this.http.post(this.loginService._postUrl, accountRequest, {
-                  headers: headers
-                  })
-                  .map(response => response.json())
-                  .subscribe(
-                      // To Do: point this data to a login function and set loginService.isLoggedIn = data.auth_token
-                      data => console.log(data),
-                      err => console.log(err),
-                      () => console.log('Account Creation Request Complete')
-                  );
+    //   To Do: change this to use connect service
+    //   var headers = new Headers();
+    //   headers.append('Content-Type', 'application/json');
+    //   this.http.post(this.loginService.g, accountRequest, {
+    //               headers: headers
+    //               })
+    //               .map(response => response.json())
+    //               .subscribe(
+    //                   // To Do: point this data to a login function and set loginService.isLoggedIn = data.auth_token
+    //                   data => console.log(data),
+    //                   err => console.log(err),
+    //                   () => console.log('Account Creation Request Complete')
+    //               );
   }
 }
