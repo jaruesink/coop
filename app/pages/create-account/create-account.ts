@@ -50,10 +50,10 @@ export class CreateAccount {
     createAccount() {
         var phone = this.sanitizePhonenumber(this.create_account_form.value.phone);
         if (this.loginService.loginType === 'facebook') {
-            this.facebookLoginService.createAccountWithFacebook(this.create_account_form.value.name, this.create_account_form.value.username, this.create_account_form.value.email, phone);
+            this.facebookLoginService.createAccountWithFacebook(this.create_account_form.value.name, this.create_account_form.value.username, this.create_account_form.value.email, phone, 'photo_url');
         }
         if (this.loginService.loginType === 'google') {
-            this.googleLoginService.createAccountWithGoogle(this.create_account_form.value.name, this.create_account_form.value.username, this.create_account_form.value.email, phone);
+            this.googleLoginService.createAccountWithGoogle(this.create_account_form.value.name, this.create_account_form.value.username, this.create_account_form.value.email, phone, 'photo_url');
         }
         if (this.loginService.loginType === 'password') {
             if (this.passwordsMatch()) {

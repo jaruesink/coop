@@ -5,6 +5,7 @@ import {Injectable, Inject} from "angular2/core";
 import {RouteConfig, Route, RouterOutlet, RouterLink, Router} from "angular2/router";
 import {LoginService} from "../login-service/login.service";
 import {ConnectService} from "../connect-service/connect.service";
+import {AccountService} from "../account-service/account.service";
 
 @Injectable()
 export class FacebookLoginService {
@@ -16,7 +17,7 @@ export class FacebookLoginService {
     account_request: any;
     error: any;
 
-    constructor(private router:Router, public loginService:LoginService, private connect: ConnectService) {
+    constructor(private router:Router, public loginService:LoginService, private connect:ConnectService, public accountService:AccountService) {
         console.log('Facebook login service is loaded.');
     }
 
@@ -92,19 +93,34 @@ export class FacebookLoginService {
       });
     }
 
-    createAccountWithFacebook(name:string, username:string, email:string, phone:string) {
+    createAccountWithFacebook(name:string, username:string, email:string, phone:string, photo_url:string) {
       console.log(this.loginService.loginType);
       var accountRequest:any = {};
       accountRequest['name']        = name;
       accountRequest['username']    = username;
       accountRequest['email']       = email;
       accountRequest['phone']       = phone;
-      accountRequest['photo_url']   = '';
+      accountRequest['photo_url']   = photo_url;
       accountRequest['credentials'] = {};
       accountRequest['credentials'].type  = this.loginService.loginType;
       accountRequest['credentials'].id    = this.id;
       accountRequest['credentials'].token = this.token;
       console.log('Account Request: ', accountRequest);
-      this.connect.post(this.loginService.register_url, accountRequest);
+      this.connect.post(this.loginService.register_url, accountRequest,
+          (response:any) => {
+              console.log(response);
+              if (response.auth_token) {
+                  this.accountService.setUser(name, username, email, phone, photo_url);
+                  this.loginService.accountExists = true;
+                  this.loginService.bad_phone = false;
+                  this.loginService.userLogin('facebook');
+              }
+          },
+          (fail:any) => {
+              console.log(fail);
+              if (fail.status === 422) {
+                  this.loginService.bad_phone = true;
+              }
+          });
     }
 }
