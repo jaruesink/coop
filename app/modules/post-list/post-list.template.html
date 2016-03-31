@@ -15,7 +15,7 @@
         </div>
         <hr class="m-b-0 m-t-0">
         <div class="card-footer">
-            <comment-list *ngIf="post.comments.length" [commentList]="post.comments"></comment-list>
+            <comment-list *ngIf="post.comments.length" [commentList]="post.comments" [post-index]="index"></comment-list>
             <add-comment [index]="index"></add-comment>
         </div>
 </div>

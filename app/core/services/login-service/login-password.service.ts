@@ -14,6 +14,7 @@ export class PasswordLoginService {
         console.log('Password login service is loaded.');
     }
     login(username: string, password: string) {
+        this.loginService.login_loading.emit(true);
         var loginRequest:any = {};
         loginRequest['type'] = 'password';
         loginRequest['username'] = username;
@@ -23,6 +24,9 @@ export class PasswordLoginService {
             (response:any) => {
                 if (response.auth_token) {
                     this.loginService.bad_login = false;
+                    this.loginService.accountExists = true;
+                    this.loginService.userLogin('password');
+                    this.loginService.login_loading.emit(false);
                 }
             },
             (fail:any) => {

@@ -12,6 +12,7 @@ import {GroupService} from "../../core/services/group-service/group.service";
 })
 export class CommentList {
     @Input() commentList: Array<any>;
+    @Input() postIndex: number;
     constructor(private groupService: GroupService) {
         console.log("Comment list component loaded");
     }

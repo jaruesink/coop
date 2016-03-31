@@ -22,6 +22,7 @@ export class Login {
     goog: any = window.gapi;
     fb_loading: boolean;
     goog_loading: boolean;
+    login_loading: boolean;
     login_form: ControlGroup;
     username: Control;
     password: Control;
@@ -63,6 +64,13 @@ export class Login {
               this.goog_loading = true;
           } else {
               this.goog_loading = false;
+          }
+        });
+        this.loginService.login_loading.subscribe((isLoading:any) => {
+          if(isLoading) {
+              this.login_loading = true;
+          } else {
+              this.login_loading = false;
           }
         });
     }

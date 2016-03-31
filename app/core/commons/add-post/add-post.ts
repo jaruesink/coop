@@ -35,12 +35,12 @@ export class AddPost {
         new_post['content'] = input.value;
         this.groupService.postInfo[randomID].content = input.value;
         new_post['author'] = {};
-        new_post['author']['name'] = this.accountService.me.fullName;
+        new_post['author']['name'] = this.accountService.me.name;
         new_post['author']['photo_url'] = this.accountService.me.photo_url;
         new_post['comments'] = [];
         this.groupService.postInfo[randomID].comments = [];
         this.groupService.postInfo[randomID].author = {};
-        this.groupService.postInfo[randomID].author.name = this.accountService.me.fullName;
+        this.groupService.postInfo[randomID].author.name = this.accountService.me.name;
         this.groupService.postInfo[randomID].author.photo_url = this.accountService.me.photo_url;
         this.groupService.groupInfo[this.groupService.currentGroupID].posts.unshift(new_post);
         input.focus();

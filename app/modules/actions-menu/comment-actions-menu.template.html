@@ -1,5 +1,5 @@
 <div class="actions-menu">
-    <button type="button" name="button" class="action-top" (click)="favoriteGroup(index)"><i class="fa fa-heart"></i></button>
+    <button type="button" name="button" class="action-top" (click)="heartComment(index)"><i class="fa" [ngClass]="{'fa-heart': comment.hearted, 'fa-heart-o': !comment.hearted}"></i></button>
     <button type="button" name="button" class="action-bottom" [ngClass]="{open: isOpen, tall: confirmLeave}" (click)="toggleActions()"><i class="fa fa-ellipsis-v"></i></button>
     <div [ngClass]="{open: isOpen}" class="action-menu bg-primary">
       <h6 class="hidden-xs-down">Actions</h6>

@@ -29,7 +29,7 @@ export class AddComment {
         new_comment['id'] = randomID;
         new_comment['content'] = input.value;
         new_comment['author'] = {};
-        new_comment['author']['name'] = this.accountService.me.fullName;
+        new_comment['author']['name'] = this.accountService.me.name;
         new_comment['author']['photo_url'] = this.accountService.me.photo_url;
         // this.groupService.postInfo[currentPostID].comments.push(new_comment);
         this.groupService.groupInfo[currentGroupID].posts[this.index].comments.push(new_comment);

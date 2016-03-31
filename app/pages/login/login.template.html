@@ -25,7 +25,10 @@
         <label for="password">Password</label>
         <input type="password" class="form-control" id="password" ngControl="password" minlength="6" maxlength="32" required>
     </fieldset>
-    <button [disabled]="!login_form.valid" class="btn btn-lg btn-success btn-block m-t-1" type="submit">Enter</button>
+    <button [disabled]="!login_form.valid" class="btn btn-lg btn-success btn-block m-t-1" type="submit">
+        <span *ngIf="!login_loading">Enter</span>
+        <i *ngIf="login_loading" class="fa fa-lg fa-spinner fa-inverse fa-spin"></i>
+    </button>
 </form>
 
 <hr class="or m-y-2">

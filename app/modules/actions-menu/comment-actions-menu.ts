@@ -13,7 +13,8 @@ import {GroupService} from "../../core/services/group-service/group.service";
 })
 export class CommentActionsMenu {
     @Input() comment:any;
-    @Input() index:number ;
+    @Input() index:number;
+    @Input() postIndex:number;
     isOpen: boolean;
     localEvent: any;
     listener: any;
@@ -46,8 +47,9 @@ export class CommentActionsMenu {
     handleClick(event:any) {
         this.toggleActions();
     }
-    favoriteGroup(index:number) {
-        this.groupService.groups[index].starred = !this.groupService.groups[index].starred;
+    heartComment(index:number) {
+      debugger;
+        this.groupService.groupInfo[this.groupService.currentGroupID].posts[this.postIndex].comments[index].hearted = !this.groupService.groupInfo[this.groupService.currentGroupID].posts[this.postIndex].comments[index].hearted;
     }
     editPost() {
         return;
