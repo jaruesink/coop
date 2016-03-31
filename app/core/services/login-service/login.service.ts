@@ -14,11 +14,12 @@ export class LoginService {
     register_url: string = 'auth/register';
     login_url: string = 'auth/login';
     loginType: string;
-    phonenumber: string;
+    phone: string;
     username: string;
     name: string;
     email: string;
     bad_login: boolean = false;
+    bad_phone: boolean = false;
     constructor(public router: Router) {
         console.log('Login service is loaded.');
     }

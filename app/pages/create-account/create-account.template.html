@@ -4,35 +4,38 @@
 <form [ngFormModel]="create_account_form" (ngSubmit)="createAccount()">
     <div class="row">
     <fieldset class="form-group col-sm-9">
-        <label for="username">Username</label>
+        <label class="form-control-label" for="username">Username</label>
         <input type="text" class="form-control" id="username" ngControl="username" minlength="5" maxlength="16" required>
     </fieldset>
     </div>
     <div class="row">
     <fieldset class="form-group col-sm-9">
-        <label for="fullName">Full Name</label>
+        <label class="form-control-label" for="fullName">Full Name</label>
         <input type="text" class="form-control" id="fullName" ngControl="name" required>
     </fieldset>
     </div>
     <div class="row">
     <fieldset class="form-group col-sm-9">
-        <label for="email">Email</label>
+        <label class="form-control-label" for="email">Email</label>
         <input type="email" class="form-control" id="email" ngControl="email" required>
     </fieldset>
     </div>
     <div class="row">
-    <fieldset class="form-group col-sm-9">
-        <label for="phonenumber">Phone Number</label>
-        <input type="tel" class="form-control" id="phonenumber" minlength="10" ngControl="phonenumber" pattern="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$" required>
+    <fieldset class="form-group col-sm-9" [ngClass]="{'has-danger': loginService.bad_phone}">
+        <label class="form-control-label" for="phone">Phone Number</label>
+        <input type="tel" class="form-control" id="phone" minlength="10" ngControl="phone" pattern="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$" required>
+        <small *ngIf="loginService.bad_phone" class="text-muted m-t-1">
+            This phone number already has an account, please try again.
+        </small>
     </fieldset>
     </div>
     <div *ngIf="loginService.loginType === 'password'" class="row">
     <fieldset class="form-group col-sm-9">
-        <label for="password">Password</label>
+        <label class="form-control-label" for="password">Password</label>
         <input type="password" class="form-control" id="password" ngControl="password" minlength="6" maxlength="32" required>
     </fieldset>
     <fieldset class="form-group col-sm-9">
-        <label for="password_verification">Password Verification</label>
+        <label class="form-control-label" for="password_verification">Password Verification</label>
         <input type="password" class="form-control" id="password_verification" [ngClass]="{'invalid':passwordMatchError}" ngControl="password_verification" minlength="6" maxlength="32" (keyup)="passwordsMatch()" required>
     </fieldset>
     </div>

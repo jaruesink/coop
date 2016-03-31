@@ -1,4 +1,4 @@
-"use strict";
+ "use strict";
 
 // import Angular 2
 import {Injectable, EventEmitter} from "angular2/core";
@@ -29,7 +29,7 @@ export class ConnectService {
             doNext(success);
         }, (error:any) => {
             console.log(error);
-            onFail();
+            onFail(error);
         });
     }
 }

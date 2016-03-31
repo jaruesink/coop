@@ -11,20 +11,20 @@ import {AccountService} from "../../core/services/account-service/account.servic
 })
 export class EditAccount {
     username: string;
-    fullName: string;
-    userNumber: string;
+    name: string;
+    phone: string;
     email: string;
     constructor(public accountService:AccountService, private router:Router) {
         console.log("Edit account component loaded");
         this.username = accountService.me.username;
-        this.fullName = accountService.me.fullName;
-        this.userNumber = accountService.me.userNumber;
-        this.email = accountService.me.userEmail;
+        this.name     = accountService.me.name;
+        this.phone    = accountService.me.phone;
+        this.email    = accountService.me.email;
         }
     saveProfile() {
-        this.accountService.me.username   = this.username;
-        this.accountService.me.fullName   = this.fullName;
-        this.accountService.me.userNumber = this.userNumber;
+        this.accountService.me.username = this.username;
+        this.accountService.me.name     = this.name;
+        this.accountService.me.phone    = this.phone;
         this.router.navigate(['/Home']);
     }
 }

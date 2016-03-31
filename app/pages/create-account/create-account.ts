@@ -19,7 +19,7 @@ export class CreateAccount {
     create_account_form: ControlGroup;
     username: Control;
     name: Control;
-    phonenumber: Control;
+    phone: Control;
     email: Control;
     password: Control;
     password_verification: Control;
@@ -29,7 +29,7 @@ export class CreateAccount {
         if ( this.loginService.loginType ) {
           this.name = new Control(this.loginService.name, Validators.compose([Validators.required]));
           this.email = new Control(this.loginService.email, Validators.compose([Validators.required]));
-          this.phonenumber = new Control(this.loginService.phonenumber, Validators.compose([Validators.required]));
+          this.phone = new Control(this.loginService.phone, Validators.compose([Validators.required]));
           this.username = new Control(this.loginService.username, Validators.compose([Validators.required]));
           if ( this.loginService.loginType === 'password' ) {
             this.password = new Control('', Validators.compose([Validators.required]));
@@ -38,7 +38,7 @@ export class CreateAccount {
           this.create_account_form = builder.group({
             name:        this.name,
             email:       this.email,
-            phonenumber: this.phonenumber,
+            phone: this.phone,
             username:    this.username,
             password:    this.password,
             password_verification: this.password_verification
@@ -48,37 +48,37 @@ export class CreateAccount {
         }
     }
     createAccount() {
-        var phonenumber = this.sanitizePhonenumber(this.create_account_form.value.phonenumber);
+        var phone = this.sanitizePhonenumber(this.create_account_form.value.phone);
         if (this.loginService.loginType === 'facebook') {
-            this.facebookLoginService.createAccountWithFacebook(this.create_account_form.value.name, this.create_account_form.value.username, this.create_account_form.value.email, phonenumber);
+            this.facebookLoginService.createAccountWithFacebook(this.create_account_form.value.name, this.create_account_form.value.username, this.create_account_form.value.email, phone);
         }
         if (this.loginService.loginType === 'google') {
-            this.googleLoginService.createAccountWithGoogle(this.create_account_form.value.name, this.create_account_form.value.username, this.create_account_form.value.email, phonenumber);
+            this.googleLoginService.createAccountWithGoogle(this.create_account_form.value.name, this.create_account_form.value.username, this.create_account_form.value.email, phone);
         }
         if (this.loginService.loginType === 'password') {
             if (this.passwordsMatch()) {
-                this.passwordLoginService.createAccount(this.create_account_form.value.name, this.create_account_form.value.username, this.create_account_form.value.email, phonenumber, this.create_account_form.value.password);
+                this.passwordLoginService.createAccount(this.create_account_form.value.name, this.create_account_form.value.username, this.create_account_form.value.email, phone, 'photo_url', this.create_account_form.value.password);
             } else {
                 this.passwordMatchError = true;
             }
         }
     }
-    sanitizePhonenumber(phonenumber:any) {
-        phonenumber.replace(/[\D]/g, '');
-        if ( phonenumber.length === 10 ) {
-            return phonenumber.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3");
-        } else if ( phonenumber.length === 11 ) {
-            return phonenumber.replace(/(\d{1})(\d{3})(\d{3})(\d{4})/, "$1-$2-$3-$4");
-        } else if ( phonenumber.length === 12 ) {
-            return phonenumber.replace(/(\d{2})(\d{3})(\d{3})(\d{4})/, "$1-$2-$3-$4");
-        } else if ( phonenumber.length === 13 ) {
-            return phonenumber.replace(/(\d{3})(\d{3})(\d{3})(\d{4})/, "$1-$2-$3-$4");
-        } else if ( phonenumber.length === 14 ) {
-            return phonenumber.replace(/(\d{4})(\d{3})(\d{3})(\d{4})/, "$1-$2-$3-$4");
-        } else if ( phonenumber.length === 15 ) {
-            return phonenumber.replace(/(\d{5})(\d{3})(\d{3})(\d{4})/, "$1-$2-$3-$4");
+    sanitizePhonenumber(phone:any) {
+        phone.replace(/[\D]/g, '');
+        if ( phone.length === 10 ) {
+            return phone.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3");
+        } else if ( phone.length === 11 ) {
+            return phone.replace(/(\d{1})(\d{3})(\d{3})(\d{4})/, "$1-$2-$3-$4");
+        } else if ( phone.length === 12 ) {
+            return phone.replace(/(\d{2})(\d{3})(\d{3})(\d{4})/, "$1-$2-$3-$4");
+        } else if ( phone.length === 13 ) {
+            return phone.replace(/(\d{3})(\d{3})(\d{3})(\d{4})/, "$1-$2-$3-$4");
+        } else if ( phone.length === 14 ) {
+            return phone.replace(/(\d{4})(\d{3})(\d{3})(\d{4})/, "$1-$2-$3-$4");
+        } else if ( phone.length === 15 ) {
+            return phone.replace(/(\d{5})(\d{3})(\d{3})(\d{4})/, "$1-$2-$3-$4");
         } else {
-            return 'phonenumber error';
+            return 'phone error';
         }
     }
     passwordsMatch() {
