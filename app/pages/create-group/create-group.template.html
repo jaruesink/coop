@@ -1,17 +1,17 @@
 <div class="container">
 <div class="card card-block">
 <h1 class="card-title">Create Group</h1>
-<form (ngSubmit)="saveGroup()">
+<form [ngFormModel]="create_group_form" (ngSubmit)="saveGroup()">
     <div class="row">
     <fieldset class="form-group col-sm-9 ">
-        <label for="groupName">Group Name</label>
-        <input type="text" class="form-control" id="groupName" [(ngModel)]="groupName">
+        <label for="group_name">Group Name</label>
+        <input type="text" class="form-control" id="group_name" ngControl="group_name">
     </fieldset>
     </div>
     <div class="row">
     <fieldset class="form-group col-sm-9 ">
-        <label for="groupDescription">Description</label>
-        <textarea type="text" class="form-control" id="groupDescription" [(ngModel)]="groupDescription"></textarea>
+        <label for="description">Description</label>
+        <textarea type="text" class="form-control" id="description" ngControl="description"></textarea>
     </fieldset>
     </div>
     <div class="row">
