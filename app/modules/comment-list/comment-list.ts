@@ -1,4 +1,4 @@
-"use strict";
+ "use strict";
 
 import {Component, Input, Output, EventEmitter} from "angular2/core";
 import {ROUTER_DIRECTIVES, Router, RouterLink} from "angular2/router";

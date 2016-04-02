@@ -52,8 +52,8 @@ export class PasswordLoginService {
                 console.log(response);
                 if (response.auth_token) {
                     this.accountService.setUser(name, username, email, phone, photo_url);
-                    this.loginService.accountExists = true;
                     this.loginService.bad_phone = false;
+                    this.loginService.accountExists = true;
                     this.loginService.userLogin('password');
                 }
             },

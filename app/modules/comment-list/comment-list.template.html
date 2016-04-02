@@ -1,5 +1,5 @@
 <section class="comment-list">
-<div id="{{comment.id}}" class="comment" *ngFor="#comment of commentList">
+<div id="{{comment.id}}" class="comment" *ngFor="#comment of commentList #index=index">
     <div class="comment-content">
         <img class="photo" [src]="comment.author.photo_url" />
         <p class="comment-text">{{comment.content}}</p>
@@ -7,6 +7,6 @@
             {{comment.author.name}}, 2 minutes ago
         </p>
     </div>
-    <comment-actions-menu [comment]="comment" [index]="index" [post-index]="postIndex"></comment-actions-menu>
+    <comment-actions-menu [comment]="comment" [index]="index" [postIndex]="postIndex"></comment-actions-menu>
 </div>
 </section>

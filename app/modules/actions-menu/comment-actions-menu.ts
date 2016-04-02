@@ -48,7 +48,6 @@ export class CommentActionsMenu {
         this.toggleActions();
     }
     heartComment(index:number) {
-      debugger;
         this.groupService.groupInfo[this.groupService.currentGroupID].posts[this.postIndex].comments[index].hearted = !this.groupService.groupInfo[this.groupService.currentGroupID].posts[this.postIndex].comments[index].hearted;
     }
     editPost() {
