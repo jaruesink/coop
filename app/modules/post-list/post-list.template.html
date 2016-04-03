@@ -2,8 +2,21 @@
 <div id="{{post.id}}" class="card" *ngFor="#post of posts #index=index">
         <div class="card-block">
             <div class="card-content">
-                <img class="photo" [src]="post.author.photo_url" />
-                <p class="card-text">{{post.content}}</p>
+                <img *ngIf="!editingPost" class="photo" [src]="post.author.photo_url" />
+                <p *ngIf="!editingPost" class="card-text">{{post.content}} <small *ngIf="post.edited" class="text-muted">(edited)</small></p>
+                <div *ngIf="editingPost" class="edit-post">
+                    <form [ngFormModel]="edit_post_form" (ngSubmit)="savePost(index)">
+                        <textarea ngControl="post_content" class="form-control"></textarea>
+                        <div class="row m-b-1">
+                            <div class="col-xs-6 col-sm-3 col-sm-offset-6">
+                                <button class="btn btn-success btn-block m-t-1" type="submit">Save</button>
+                            </div>
+                            <div class="col-xs-6 col-sm-3">
+                                <button class="btn btn-danger btn-block m-t-1" type="button" (click)="cancelEdit()">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
                 <div class="card-details row text-muted">
                     <div class="col-sm-6">
                         <p class="m-b-0"><i *ngIf="post.isImportant" class="fa fa-sm fa-bullhorn fa-flip-horizontal"></i> {{post.author.name}}, 1 day ago</p>
@@ -11,7 +24,7 @@
                     <div class="col-sm-6"><p class="m-b-0 text-sm-right">{{post.comments.length}} <i class="fa fa-comments"></i></p></div>
                 </div>
             </div>
-            <post-actions-menu [post]="post" [index]="index"></post-actions-menu>
+            <post-actions-menu [post]="post" [index]="index" (editingPost)="editPost(post.content)"></post-actions-menu>
         </div>
         <hr class="m-b-0 m-t-0">
         <div class="card-footer">

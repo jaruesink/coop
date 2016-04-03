@@ -1,6 +1,6 @@
 "use strict";
 
-import {Component, Renderer, Input, EventEmitter, HostListener} from "angular2/core";
+import {Component, Renderer, Input, Output, EventEmitter, HostListener} from "angular2/core";
 import {ROUTER_DIRECTIVES, RouteConfig, Route, RouterOutlet, RouterLink, Router, Location} from "angular2/router";
 import {AccountService} from "../../core/services/account-service/account.service";
 import {LoginService} from "../../core/services/login-service/login.service";
@@ -13,7 +13,8 @@ import {GroupService} from "../../core/services/group-service/group.service";
 })
 export class PostActionsMenu {
     @Input() post:any;
-    @Input() index:number ;
+    @Input() index:number;
+    @Output() editingPost = new EventEmitter();
     isOpen: boolean;
     localEvent: any;
     listener: any;
@@ -22,7 +23,6 @@ export class PostActionsMenu {
     onClick(event: any) {
         this.localEvent = event;
     }
-
     constructor(public accountService: AccountService, public loginService: LoginService, public groupService: GroupService, public router: Router, private renderer: Renderer) {
 
     }
@@ -50,6 +50,7 @@ export class PostActionsMenu {
         this.groupService.groupInfo[this.groupService.currentGroupID].posts[index].hearted = !this.groupService.groupInfo[this.groupService.currentGroupID].posts[index].hearted;
     }
     editPost() {
-        return;
+        this.toggleActions();
+        this.editingPost.emit(true);
     }
 }

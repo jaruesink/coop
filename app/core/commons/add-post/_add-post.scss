@@ -1,4 +1,7 @@
 .add-post{
+    .card-block{
+        padding: .75rem .75rem .25rem .75rem;
+    }
     .col-xs-12 {
         display:flex;
         justify-content: space-around;
@@ -6,6 +9,20 @@
     textarea {
         flex-grow:1;
         margin-right: 5px;
+        height: 38px;
     }
-
+    button{
+        width:auto;
+    }
+    .add-post-actions{
+        margin-top: 4px;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        span{
+            cursor: pointer;
+            font-size: 80%;
+            letter-spacing: 0;
+        }
+    }
 }
