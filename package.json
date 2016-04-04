@@ -1,64 +1,53 @@
 {
-  "name": "chattr",
-  "description": "prototyping",
+  "name": "coop",
+  "description": "Created by the ModernWebDev Yeoman Generator",
   "author": {
-    "name": "jaruesink/djrobotfreak",
+    "name": "Jake Ruesink",
     "email": "jaruesink@gmail.com",
-    "url": "http://jakeruesink.com"
+    "url": "http://coopchatapp.com"
   },
   "contributors": [],
-  "homepage": "http://jakeruesink.com",
+  "homepage": "https://coopchatapp.com",
+  "bugs": "https://coopchatapp.com",
   "keywords": [
     "web"
   ],
-  "bugs": "jaruesink@gmail.com",
-  "licenses": [
-    {
-      "type": "none - all rights reserved",
-      "url": "http://google.com"
-    }
-  ],
-  "repository": "https://github.com/jaruesink/chattr",
   "private": true,
   "version": "0.0.1",
   "jspm": {
     "configFile": "jspm.conf.js",
     "dependencies": {
       "angular2": "npm:angular2@2.0.0-beta.13",
-      "babel-core": "npm:babel-core@6.5.1",
-      "babel-runtime": "npm:babel-runtime@6.5.0",
-      "es6-shim": "npm:es6-shim@0.35",
+      "babel-runtime": "npm:babel-runtime@6.6.1",
       "normalize.css": "github:necolas/normalize.css@3.0.3",
       "rxjs": "npm:rxjs@5.0.0-beta.2",
-      "zone.js": "npm:zone.js@0.6.6"
+      "twbs/bootstrap": "github:twbs/bootstrap@4.0.0-alpha.2"
     },
     "devDependencies": {
-      "babel": "npm:babel-core@6.5.1"
+      "babel": "npm:babel-core@6.7.4"
     }
   },
   "dependencies": {
-    "angular2": "2.0.0-beta.13",
-    "babel-core": "6.5.1",
-    "babel-runtime": "6.5.x",
-    "es6-shim": "^0.35",
-    "font-awesome": "^4.5.0",
-    "reflect-metadata": "0.1.2",
+    "babel-runtime": "^6.6.1",
+    "reflect-metadata": "^0.1.3",
+    "zone.js": "^0.6.6",
+    "es6-shim": "^0.35.0",
     "rxjs": "5.0.0-beta.2",
-    "twilio": "^3.3.0-edge",
-    "zone.js": "^0.6.6"
+    "angular2": "2.0.0-beta.13"
   },
   "devDependencies": {
-    "babel-plugin-transform-es2015-modules-commonjs": "6.5.x",
-    "babel-preset-es2015": "6.5.x",
-    "gulp": "3.9.x",
-    "jasmine-core": "2.4.x",
-    "jspm": "^0.16.30",
-    "karma-jasmine": "0.3.x",
-    "modern-web-dev-build": "0.5.x",
-    "nodemon": "1.8.x",
-    "tsd": "0.6.5",
-    "typescript": "1.8.x",
-    "typings": "0.5.x"
+    "babel-core": "^6.7.4",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.7.0",
+    "babel-preset-es2015": "^6.6.0",
+    "font-awesome": "^4.5.0",
+    "gulp": "^3.9.1",
+    "jasmine-core": "^2.4.1",
+    "jspm": "^0.16.31",
+    "karma-jasmine": "^0.3.8",
+    "modern-web-dev-build": "^0.5.3",
+    "nodemon": "^1.9.1",
+    "typescript": "^1.8.9",
+    "typings": "^0.7.9"
   },
   "engines": {
     "node": ">=4.2.6",
@@ -69,7 +58,7 @@
     "typings": "typings",
     "clean": "gulp clean",
     "compile": "gulp",
-    "build": "npm run compile",
+    "build": "npm run compile && npm run test",
     "test": "gulp prepare-test-unit && gulp test-unit",
     "start": "npm run serve",
     "serve": "nodemon --watch gulpfile.js --watch gulpfile.babel.js --watch package.json --watch .jshintrc --watch .jscsrc --watch tsconfig.json --watch tslint.json --watch jspm.conf.js --exec gulp serve",

@@ -1,14 +1,14 @@
 {
   "version": "0.0.1",
-  "name": "chattr",
+  "name": "coop",
   "launch_path": "/index.html",
-  "description": "prototyping",
+  "description": "Created by the ModernWebDev Yeoman Generator",
   "icons": {
     "128": "/images/touch/icon-128x128.png"
   },
   "developer": {
-    "name": "jaruesink/djrobotfreak",
-    "url": "http://jakeruesink.com"
+    "name": "Jake Ruesink",
+    "url": "http://coopchatapp.com"
   },
   "installs_allowed_from": [
     "*"
@@ -18,8 +18,8 @@
   },
   "locales": {
     "en": {
-      "name": "chattr",
-      "description": "prototyping"
+      "name": "coop",
+      "description": "Created by the ModernWebDev Yeoman Generator"
     }
   }
 }

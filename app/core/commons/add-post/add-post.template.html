@@ -1,6 +1,7 @@
 <section class="add-post m-b-1">
 <div class="card">
     <div class="card-block">
+    <img class="photo" [src]="accountService.me.photo_url" />
     <form [ngFormModel]="add_post_form" (ngSubmit)="addPost(content)">
         <div class="row">
             <div class="col-xs-12">
@@ -8,8 +9,9 @@
                 <button [disabled]="!add_post_form.valid" class="btn btn-block btn-success" type="submit"><i class="fa fa-fw fa-lg fa-paper-plane-o"></i></button>
             </div>
         </div>
-        <div class="add-post-actions">
-            <span class="text-muted" [ngClass]="{'text-danger': isImportant}" (click)="makeImportant()">
+        <div class="add-post-actions text-muted">
+            <span>{{accountService.me.name}} | </span>
+            <span [ngClass]="{'text-danger': isImportant}" (click)="makeImportant()">
                 <i class="fa" [ngClass]="{'fa-toggle-on': isImportant, 'fa-toggle-off': !isImportant}"></i> <i class="fa fa-bullhorn fa-flip-horizontal"></i> important
             </span>
             <!-- <button class="btn btn-sm" [ngClass]="{'btn-danger': isImportant, 'btn-secondary': !isImportant}" type="button" (click)="makeImportant()"><i class="fa fa-bullhorn fa-flip-horizontal"></i></button> -->

@@ -43,15 +43,14 @@ main .btn, #logout .btn, .nav-tabs .nav-link{
         padding: .75rem;
     }
 }
-
+.photo{
+    height: 38px; width: 38px;
+    margin: 0 10px 4px 0;
+    float: left;
+}
 .group-list, .post-list, .comment-list{
     .card{
       min-height: 80px;
-    }
-    .photo{
-        height: 38px; width: 38px;
-        margin: 0 10px 10px 0;
-        float: left;
     }
     .card-header{
       border-bottom: 0;
