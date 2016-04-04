@@ -16,7 +16,6 @@ import {AddComment} from '../../core/commons/add-comment/add-comment';
 export class PostList {
     posts: Array<any>;
     currentGroupID: string;
-    editingPost:boolean = false;
     edit_post_form: ControlGroup;
     post_content: Control;
     constructor(private groupService: GroupService, private builder: FormBuilder) {
@@ -24,8 +23,8 @@ export class PostList {
         this.currentGroupID = this.groupService.currentGroupID;
         this.posts = this.groupService.groupInfo[this.groupService.currentGroupID].posts;
     }
-    editPost(content:string) {
-        this.editingPost = !this.editingPost;
+    editPost(content:string, index:number) {
+        this.posts[index].editingPost = !this.posts[index].editingPost;
         this.post_content = new Control(content, Validators.compose([Validators.required]));
         this.edit_post_form = this.builder.group({
           post_content: this.post_content
@@ -36,9 +35,9 @@ export class PostList {
             this.posts[index].content = this.edit_post_form.value.post_content;
             this.posts[index].edited = true;
         }
-        this.editingPost = false;
+        this.posts[index].editingPost = false;
     }
-    cancelEdit() {
-        this.editingPost = false;
+    cancelEdit(index:number) {
+        this.posts[index].editingPost = false;
     }
 }

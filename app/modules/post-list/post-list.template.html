@@ -12,7 +12,7 @@
                                 <button class="btn btn-success btn-block m-t-1" type="submit">Save</button>
                             </div>
                             <div class="col-xs-6 col-sm-3">
-                                <button class="btn btn-danger btn-block m-t-1" type="button" (click)="cancelEdit()">Cancel</button>
+                                <button class="btn btn-danger btn-block m-t-1" type="button" (click)="cancelEdit(index)">Cancel</button>
                             </div>
                         </div>
                     </form>
@@ -24,7 +24,7 @@
                     <div class="col-sm-6"><p class="m-b-0 text-sm-right">{{post.comments.length}} <i class="fa fa-comments"></i></p></div>
                 </div>
             </div>
-            <post-actions-menu [post]="post" [index]="index" (editingPost)="editPost(post.content)"></post-actions-menu>
+            <post-actions-menu [post]="post" [index]="index" (editingPost)="editPost(post.content, index)"></post-actions-menu>
         </div>
         <hr class="m-b-0 m-t-0">
         <div class="card-footer">
