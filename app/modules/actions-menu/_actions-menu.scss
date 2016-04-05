@@ -53,6 +53,9 @@
               position: relative;
               top: -6px;
               font-size: 14px;
+              &.fa-warning{
+                top: -4px;
+              }
           }
           span{
               position: absolute;

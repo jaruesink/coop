@@ -77,34 +77,34 @@ export class GroupService {
                 ]
             }
         };
-        this.postInfo = {
-            "samplePostID1": {
-                "content": "This is a post.",
-                "author": {"name": "Jake Ruesink","photo_url":"./images/profile_placeholder.png"},
-                "time_stamp": "Two Weeks Ago",
-                "comments": [
-                    {
-                        "id": "sampleCommentID1",
-                        "content": "This is stupid.",
-                        "author": {"name": "Derek Wene","photo_url":"./images/profile_placeholder.png"},
-                        "time_stamp": "Last Week"
-                    }
-                ]
-            },
-            "samplePostID2": {
-                "id": "samplePostID2",
-                "content": "Our game is tomorrow!",
-                "author": {"name": "Jake Ruesink","photo_url":"./images/profile_placeholder.png"},
-                "time_stamp": "Yesterday",
-                "comments": [
-                    {
-                        "id": "sampleCommentID2",
-                        "content": "Stop making errors.",
-                        "author": {"name": "Kenzie Muckway","photo_url":"./images/profile_placeholder.png"},
-                        "time_stamp": "5 Minutes Ago"
-                    }
-                ]
-            }
-        };
+        // this.postInfo = {
+        //     "samplePostID1": {
+        //         "content": "This is a post.",
+        //         "author": {"name": "Jake Ruesink","photo_url":"./images/profile_placeholder.png"},
+        //         "time_stamp": "Two Weeks Ago",
+        //         "comments": [
+        //             {
+        //                 "id": "sampleCommentID1",
+        //                 "content": "This is stupid.",
+        //                 "author": {"name": "Derek Wene","photo_url":"./images/profile_placeholder.png"},
+        //                 "time_stamp": "Last Week"
+        //             }
+        //         ]
+        //     },
+        //     "samplePostID2": {
+        //         "id": "samplePostID2",
+        //         "content": "Our game is tomorrow!",
+        //         "author": {"name": "Jake Ruesink","photo_url":"./images/profile_placeholder.png"},
+        //         "time_stamp": "Yesterday",
+        //         "comments": [
+        //             {
+        //                 "id": "sampleCommentID2",
+        //                 "content": "Stop making errors.",
+        //                 "author": {"name": "Kenzie Muckway","photo_url":"./images/profile_placeholder.png"},
+        //                 "time_stamp": "5 Minutes Ago"
+        //             }
+        //         ]
+        //     }
+        // };
     }
 }
