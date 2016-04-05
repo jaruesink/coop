@@ -3,9 +3,9 @@
     <button type="button" name="button" class="action-bottom" [ngClass]="{open: isOpen, tall: confirmLeave}" (click)="toggleActions()"><i class="fa fa-ellipsis-v"></i></button>
     <div [ngClass]="{open: isOpen}" class="action-menu bg-primary">
       <h6 class="hidden-xs-down">Actions</h6>
-      <a class="action-item btn btn-primary btn-sm" (click)="inviteMembers()">
+      <a class="action-item btn btn-primary btn-sm" (click)="addMembers()">
           <i class="fa fa-fw fa-user-plus"></i>
-          <span>invite</span>
+          <span>add</span>
       </a>
       <a class="action-item btn btn-primary btn-sm" (click)="shareGroup()">
           <i class="fa fa-fw fa-share-alt"></i>

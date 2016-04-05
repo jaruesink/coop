@@ -1,10 +1,10 @@
 <div class="add-comment">
 <form [ngFormModel]="add_comment_form" (ngSubmit)="addComment(content)">
-<div class="input-group">
-  <input ngControl="content" #content type="text" class="form-control" placeholder="Enter your comment">
-  <span class="input-group-btn">
-  <button [disabled]="!add_comment_form.valid" class="btn btn-success" type="submit"><i class="fa fa-lg fa-comment-o"></i></button>
-  </span>
-</div>
+  <div class="row">
+      <div class="col-xs-12">
+          <textarea ngControl="content" #content class="form-control" (keydown.enter)="addComment(content)" placeholder="Enter your comment"></textarea>
+          <button [disabled]="!add_comment_form.valid" class="btn btn-success" type="submit"><i class="fa fa-lg fa-comment-o"></i></button>
+      </div>
+  </div>
 </form>
 </div>

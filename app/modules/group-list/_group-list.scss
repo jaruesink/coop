@@ -3,7 +3,6 @@
         cursor: pointer;
         position: relative;
         padding-right: 40px;
-        min-height: 80px;
         &:hover{
           box-shadow: $shadow3;
         }
@@ -12,7 +11,7 @@
         }
     }
     .card-block{
-        min-height: 28px;
+        min-height: 30px;
     }
     .card:hover{
         border-color:#0275d8;
@@ -21,6 +20,9 @@
         padding: .75rem .75rem 0rem .75rem;
         h3{font-size: 22px; line-height:.9; font-weight: 600;}
         p{line-height: 8px;}
+    }
+    .card-footer{
+      margin-bottom: 4px;
     }
     .group-details{
       font-size: 12px;

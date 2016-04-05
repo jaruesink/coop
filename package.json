@@ -42,7 +42,7 @@
     "font-awesome": "^4.5.0",
     "gulp": "^3.9.1",
     "jasmine-core": "^2.4.1",
-    "jspm": "^0.16.31",
+    "jspm": "^0.16.32",
     "karma-jasmine": "^0.3.8",
     "modern-web-dev-build": "^0.5.3",
     "nodemon": "^1.9.1",
