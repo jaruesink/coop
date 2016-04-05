@@ -76,8 +76,7 @@
 		"typings/main.d.ts",
 		"typings/main/ambient/es6-shim/index.d.ts",
 		"typings/main/ambient/jasmine/index.d.ts",
-		"typings/main/ambient/zone.js/index.d.ts",
-		"typings/main/definitions/jasmine/jasmine.d.ts"
+		"typings/main/ambient/zone.js/index.d.ts"
 	],
 	"atom": {
 		"rewriteTsconfig": true

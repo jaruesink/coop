@@ -2,9 +2,9 @@
 <div id="{{post.id}}" class="card" *ngFor="#post of posts #index=index">
         <div class="card-block">
             <div class="card-content">
-                <img *ngIf="!editingPost" class="photo" [src]="post.author.photo_url" />
-                <p *ngIf="!editingPost" class="card-text">{{post.content}} <small *ngIf="post.edited" class="text-muted">(edited)</small></p>
-                <div *ngIf="editingPost" class="edit-post">
+                <img *ngIf="!post.editingPost" class="photo" [src]="post.author.photo_url" />
+                <p *ngIf="!post.editingPost" class="card-text">{{post.content}} <small *ngIf="post.edited" class="text-muted">(edited)</small></p>
+                <div *ngIf="post.editingPost" class="edit-post">
                     <form [ngFormModel]="edit_post_form" (ngSubmit)="savePost(index)">
                         <textarea ngControl="post_content" class="form-control"></textarea>
                         <div class="row m-b-1">
