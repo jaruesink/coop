@@ -1,12 +1,25 @@
 <section class="comment-list">
-<div id="{{comment.id}}" class="comment" *ngFor="#comment of commentList #index=index">
+<div id="{{comment.id}}" class="comment" *ngFor="#comment of comments #index=index">
     <div class="comment-content">
-        <img class="photo" [src]="comment.author.photo_url" />
-        <p class="comment-text">{{comment.content}}</p>
+        <img  *ngIf="!comment.editingComment" class="photo" [src]="comment.author.photo_url" />
+		<p *ngIf="!comment.editingComment" class="card-text">{{comment.content}} <small *ngIf="comment.edited" class="text-muted">(edited)</small></p>
+		<div *ngIf="comment.editingComment" class="edit-comment">
+			<form [ngFormModel]="edit_comment_form" (ngSubmit)="saveComment(index)">
+				<textarea #content ngControl="comment_content" class="form-control"></textarea>
+				<div class="row m-b-1">
+					<div class="col-xs-6 col-sm-3 col-sm-offset-6">
+						<button [disabled]="comment.content === edit_comment_form.value.comment_content" class="btn btn-success btn-block m-t-1" type="submit">Save</button>
+					</div>
+					<div class="col-xs-6 col-sm-3">
+						<button class="btn btn-danger btn-block m-t-1" type="button" (click)="cancelEdit(index)">Cancel</button>
+					</div>
+				</div>
+			</form>
+		</div>
         <p class="comment-details text-muted">
             {{comment.author.name}}, 2 minutes ago
         </p>
     </div>
-    <comment-actions-menu [comment]="comment" [index]="index" [postIndex]="postIndex"></comment-actions-menu>
+    <comment-actions-menu [comment]="comment" [index]="index" [postIndex]="postIndex" (editingComment)="editComment(comment.content, index)"></comment-actions-menu>
 </div>
 </section>

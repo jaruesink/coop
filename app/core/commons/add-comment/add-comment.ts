@@ -31,6 +31,6 @@ export class AddComment {
         new_comment['author']['name'] = this.accountService.me.name;
         new_comment['author']['photo_url'] = this.accountService.me.photo_url;
         this.groupService.groupInfo[currentGroupID].posts[this.index].comments.push(new_comment);
-        input.value = '';
+		setTimeout(() => {input.value = '';}, 0);
     }
 }

@@ -1,6 +1,6 @@
 "use strict";
 
-import {Component, Renderer, Input, EventEmitter, HostListener} from "angular2/core";
+import {Component, Renderer, Input, Output, EventEmitter, HostListener} from "angular2/core";
 import {ROUTER_DIRECTIVES, RouteConfig, Route, RouterOutlet, RouterLink, Router, Location} from "angular2/router";
 import {AccountService} from "../../core/services/account-service/account.service";
 import {LoginService} from "../../core/services/login-service/login.service";
@@ -15,6 +15,7 @@ export class CommentActionsMenu {
     @Input() comment:any;
     @Input() index:number;
     @Input() postIndex:number;
+	@Output() editingComment = new EventEmitter();
     isOpen: boolean;
     localEvent: any;
     listener: any;
@@ -50,7 +51,8 @@ export class CommentActionsMenu {
     heartComment(index:number) {
         this.groupService.groupInfo[this.groupService.currentGroupID].posts[this.postIndex].comments[index].hearted = !this.groupService.groupInfo[this.groupService.currentGroupID].posts[this.postIndex].comments[index].hearted;
     }
-    editPost() {
-        return;
-    }
+	editComment() {
+		this.toggleActions();
+		this.editingComment.emit(true);
+	}
 }

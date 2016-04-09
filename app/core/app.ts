@@ -35,18 +35,18 @@ import {LoginService} from "../core/services/login-service/login.service";
     directives: [RouterOutlet, RouterLink, AppHeader]
 })
 @RouteConfig([
-    { path: "/get-started", component: Register, as: "Register", data: undefined, useAsDefault: true },
-    { path: "/login", component: Login, as: "Login", data: undefined },
+    { path: "/get-started", component: Register, as: "Register", data: undefined, useAsDefault: true},
+    { path: "/login", component: Login, as: "Login", data: undefined},
     { path: "/not-connected", component: NotConnected, as: "NotConnected", data: undefined},
-    { path: "/verify-registration", component: VerifyRegistration, as: "VerifyRegistration", data: undefined },
-    { path: "/create-account", component: CreateAccount, as: "CreateAccount", data: undefined },
-    { path: "/verify-account", component: VerifyAccount, as: "VerifyAccount", data: undefined },
+    { path: "/verify-registration", component: VerifyRegistration, as: "VerifyRegistration", data: undefined},
+    { path: "/create-account", component: CreateAccount, as: "CreateAccount", data: undefined},
+    { path: "/verify-account", component: VerifyAccount, as: "VerifyAccount", data: undefined},
     { path: "/edit-account", component: EditAccount, as: "EditAccount", data: undefined},
-    { path: "/", component: Home, as: "Home", data: undefined },
-    { path: "/create-group", component: CreateGroup, as: "CreateGroup", data: undefined },
+    { path: "/", component: Home, as: "Home", data: undefined},
+    { path: "/create-group", component: CreateGroup, as: "CreateGroup", data: undefined},
     { path: "/edit-group", component: EditGroup, as: "EditGroup", data: undefined},
-    { path: "/:group_id", component: Group, as: "Group", data: undefined },
-    { path: "/:group_id/:post_id", component: Post, as: "Post", data: undefined }
+    { path: "/:group_id", component: Group, as: "Group", data: undefined},
+    { path: "/:group_id/:post_id", component: Post, as: "Post", data: undefined}
 ])
 export class App {
     constructor(public loginService:LoginService, public router:Router, private location:Location) {

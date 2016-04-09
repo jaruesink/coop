@@ -6,10 +6,10 @@
                 <p *ngIf="!post.editingPost" class="card-text">{{post.content}} <small *ngIf="post.edited" class="text-muted">(edited)</small></p>
                 <div *ngIf="post.editingPost" class="edit-post">
                     <form [ngFormModel]="edit_post_form" (ngSubmit)="savePost(index)">
-                        <textarea ngControl="post_content" class="form-control"></textarea>
+                        <textarea #content ngControl="post_content" class="form-control"></textarea>
                         <div class="row m-b-1">
                             <div class="col-xs-6 col-sm-3 col-sm-offset-6">
-                                <button class="btn btn-success btn-block m-t-1" type="submit">Save</button>
+                                <button [disabled]="post.content === edit_post_form.value.post_content" class="btn btn-success btn-block m-t-1" type="submit">Save</button>
                             </div>
                             <div class="col-xs-6 col-sm-3">
                                 <button class="btn btn-danger btn-block m-t-1" type="button" (click)="cancelEdit(index)">Cancel</button>
@@ -28,7 +28,7 @@
         </div>
         <hr class="m-b-0 m-t-0">
         <div class="card-footer">
-            <comment-list *ngIf="post.comments.length" [commentList]="post.comments" [postIndex]="index"></comment-list>
+            <comment-list *ngIf="post.comments.length" [comments]="post.comments" [postIndex]="index"></comment-list>
             <add-comment [index]="index"></add-comment>
         </div>
 </div>
