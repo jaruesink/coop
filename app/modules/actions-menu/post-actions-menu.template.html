@@ -11,7 +11,7 @@
           <i class="fa fa-fw fa-lg fa-share-alt"></i>
           <span>share</span>
       </a>
-      <a class="action-item btn btn-primary btn-sm" (click)="editPost()">
+      <a *ngIf="post.author.username === accountService.me.username" class="action-item btn btn-primary btn-sm" (click)="editPost()">
           <i class="fa fa-fw fa-lg fa-pencil-square-o"></i>
           <span>edit</span>
       </a>

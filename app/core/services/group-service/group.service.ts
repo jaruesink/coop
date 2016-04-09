@@ -41,14 +41,14 @@ export class GroupService {
                     {
                         "id": "samplePostID1",
                         "content": "This is a post.",
-                        "author": {"name": "Jake Ruesink","photo_url":"./images/profile_placeholder.png"},
+                        "author": {"name": "Jake Ruesink", "username":"jaruesink", "photo_url":"./images/profile_placeholder.png"},
                         "time_stamp": "Two Weeks Ago",
                         "photo_url": "./images/profile_placeholder.png",
                         "comments": [
                             {
                                 "id": "sampleCommentID1",
                                 "content": "This is a comment.",
-                                "author": {"name": "Derek Wene","photo_url":"./images/profile_placeholder.png"},
+                                "author": {"name": "Derek Wene", "username":"dwene","photo_url":"./images/profile_placeholder.png"},
                                 "time_stamp": "Last Week"
                             }
                         ]
@@ -63,13 +63,13 @@ export class GroupService {
                     {
                         "id": "samplePostID2",
                         "content": "Our game is tomorrow!",
-                        "author": {"name": "Jake Ruesink","photo_url":"./images/profile_placeholder.png"},
+                        "author": {"name":"Jake Ruesink", "username":"jaruesink", "photo_url":"./images/profile_placeholder.png"},
                         "time_stamp": "Yesterday",
                         "comments": [
                             {
                                 "id": "sampleCommentID2",
                                 "content": "Stop making errors.",
-                                "author": {"name": "Kenzie Muckway","photo_url":"./images/profile_placeholder.png"},
+                                "author": {"name": "Kenzie Muckway", "usename":"kenziem", "photo_url":"./images/profile_placeholder.png"},
                                 "time_stamp": "5 Minutes Ago"
                             }
                         ]
