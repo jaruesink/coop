@@ -17,7 +17,7 @@
 			</form>
 		</div>
         <p class="comment-details text-muted">
-            {{comment.author.name}}, 2 minutes ago
+            Comment by {{comment.author.name}} 2 minutes ago
         </p>
     </div>
     <comment-actions-menu [comment]="comment" [index]="index" [postIndex]="postIndex" (editingComment)="editComment(comment.content, index)"></comment-actions-menu>

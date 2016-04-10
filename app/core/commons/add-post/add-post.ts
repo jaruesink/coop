@@ -36,7 +36,6 @@ export class AddPost {
         new_post['author']['photo_url'] = this.accountService.me.photo_url;
         new_post['comments'] = [];
         this.groupService.groupInfo[this.groupService.currentGroupID].posts.unshift(new_post);
-        input.focus();
         setTimeout(() => {input.value = '';}, 0);
         this.isImportant = false;
     }
